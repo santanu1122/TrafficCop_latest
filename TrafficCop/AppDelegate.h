@@ -11,7 +11,6 @@
 #import "ShowAllReportViewController.h"
 #import "DashboardViewController.h"
 
-// From sovik... with love 
 
 
 @class ViewController;

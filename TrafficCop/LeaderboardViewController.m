@@ -160,15 +160,22 @@
              [MainCEllView addSubview:ImageView];
         
              ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-             imageView.defaultImage = [UIImage imageNamed:@"FH-noimage-circle.png"];
+             imageView.defaultImage = [UIImage imageNamed:@"NEWNOIMAGE.png"];
              imageView.imageUrl = [item objectForKey:@"user_image"];
              imageView.contentMode = UIViewContentModeScaleAspectFill;
              imageView.clipsToBounds = YES;
-             // imageView.corners = ZSRoundCornerAll;
-             imageView.cornerRadius = 0;
+              imageView.corners = ZSRoundCornerAll;
+             imageView.cornerRadius = 20;
              [ImageView addSubview:imageView];
-        
-        
+    
+    
+        UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
+        [ImageView addSubview:ImageOverlay];
+    
+    
+    
+    
         UIImageView *ImageViewBadghe = [[UIImageView alloc] initWithFrame:CGRectMake(15, 65, 25, 25)];
         ImageViewBadghe.backgroundColor = [UIColor clearColor];
         [MainCEllView addSubview:ImageViewBadghe];
@@ -183,7 +190,7 @@
         
           UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 0, 250, 25)];
           TitleLabel.backgroundColor = [UIColor clearColor];
-          TitleLabel.font = [UIFont fontWithName:@"Arial" size:16];
+          TitleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
           TitleLabel.textColor = UIColorFromRGB(0xfcb714);
          TitleLabel.text = [item objectForKey:@"username"];//[NSString stringWithFormat:@"%@ %@",[[LeaderBoardHelper stripTags:[item objectForKey:@"first_name"]] capitalizedString],[[LeaderBoardHelper stripTags:[item objectForKey:@"last_name"]] capitalizedString]];
         [MainCEllView addSubview:TitleLabel];
@@ -206,7 +213,7 @@
         NSLog(@"the cell text lable is :%@",cell.textLabel.text);
         UILabel *LabelTitleRankText = [[UILabel alloc] initWithFrame:CGRectMake(90, 0, 130, 20)];
         LabelTitleRankText.backgroundColor = [UIColor clearColor];
-        LabelTitleRankText.font = [UIFont fontWithName:@"Arial" size:12];
+        LabelTitleRankText.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
         LabelTitleRankText.textColor = UIColorFromRGB(0x000000);
         LabelTitleRankText.text = [NSString stringWithFormat:@"%@",[item objectForKey:@"rank"]];
         [documentViewRank addSubview:LabelTitleRankText];
@@ -229,7 +236,7 @@
         
         UILabel *LabelTitleUsernameText = [[UILabel alloc] initWithFrame:CGRectMake(90, 0, 130, 20)];
         LabelTitleUsernameText.backgroundColor = [UIColor clearColor];
-        LabelTitleUsernameText.font = [UIFont fontWithName:@"Arial" size:12];
+        LabelTitleUsernameText.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
         LabelTitleUsernameText.textColor = UIColorFromRGB(0x000000);
         LabelTitleUsernameText.text = [NSString stringWithFormat:@"%@",[item objectForKey:@"username"]];
         [documentViewUsername addSubview:LabelTitleUsernameText];
@@ -252,7 +259,7 @@
         
         UILabel *LabelTitleReportsText = [[UILabel alloc] initWithFrame:CGRectMake(90, 0, 130, 20)];
         LabelTitleReportsText.backgroundColor = [UIColor clearColor];
-        LabelTitleReportsText.font = [UIFont fontWithName:@"Arial" size:12];
+        LabelTitleReportsText.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
         LabelTitleReportsText.textColor = UIColorFromRGB(0x000000);
         LabelTitleReportsText.text = [NSString stringWithFormat:@"%@ reports",[item objectForKey:@"totalreport"]];
         [documentViewReports addSubview:LabelTitleReportsText];
@@ -275,7 +282,7 @@
         
         UILabel *LabelTitleCommentsText = [[UILabel alloc] initWithFrame:CGRectMake(90, 0, 130, 20)];
         LabelTitleCommentsText.backgroundColor = [UIColor clearColor];
-        LabelTitleCommentsText.font = [UIFont fontWithName:@"Arial" size:12];
+        LabelTitleCommentsText.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
         LabelTitleCommentsText.textColor = UIColorFromRGB(0x000000);
         LabelTitleCommentsText.text = [NSString stringWithFormat:@"%@ comments",[item objectForKey:@"totalcomment"]];
         [documentViewComments addSubview:LabelTitleCommentsText];
@@ -299,7 +306,7 @@
         
         UILabel *LabelTitleTotalpointsText = [[UILabel alloc] initWithFrame:CGRectMake(90, 0, 130, 20)];
         LabelTitleTotalpointsText.backgroundColor = [UIColor clearColor];
-        LabelTitleTotalpointsText.font = [UIFont fontWithName:@"Arial" size:12];
+        LabelTitleTotalpointsText.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
         LabelTitleTotalpointsText.textColor = UIColorFromRGB(0x000000);
         LabelTitleTotalpointsText.text = [NSString stringWithFormat:@"%@ points",[item objectForKey:@"totalpoint"]];
         [documentViewTotalpoints addSubview:LabelTitleTotalpointsText];

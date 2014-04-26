@@ -141,7 +141,7 @@ int GlobalSelectedIndexPathOne = 0;
         for (NSDictionary *Dic in ReportresultArry)
         {
             NSMutableDictionary *mutdic=[[NSMutableDictionary alloc]initWithCapacity:5];
-           
+            
             [mutdic setValue:[Dic valueForKey:@"user_image"] forKey:@"user_image"];
             [mutdic setValue:[Dic valueForKey:@"report_title"] forKey:@"report_title"];
             [mutdic setValue:[Dic valueForKey:@"report_desc"] forKey:@"report_desc"];
@@ -160,7 +160,7 @@ int GlobalSelectedIndexPathOne = 0;
     [self performSelectorOnMainThread:@selector(tablereload) withObject:nil waitUntilDone:YES];
     
 }
-    
+
 -(void)tablereload
 {
     [self.UIloadingData stopAnimating];
@@ -190,7 +190,7 @@ int GlobalSelectedIndexPathOne = 0;
     }
     NSMutableDictionary *CellData = [UserReportClassDataArray objectAtIndex:indexPath.row];
     
-  //  UIActivityIndicatorView *CellImageBadgeActivity     = (UIActivityIndicatorView *)[tableCell viewWithTag:256];
+    //  UIActivityIndicatorView *CellImageBadgeActivity     = (UIActivityIndicatorView *)[tableCell viewWithTag:256];
     UIImageView *CellBadgeImage                         = (UIImageView *)[tableCell viewWithTag:257];
     UILabel *CellBadgeTitleLable                        = (UILabel *)[tableCell viewWithTag:258];
     UILabel *CellBadgeFooterLable                       = (UILabel *)[tableCell viewWithTag:555];
@@ -200,12 +200,14 @@ int GlobalSelectedIndexPathOne = 0;
     UILabel *CellBadgeShareOnLabel                      = (UILabel *)[tableCell viewWithTag:666];//654
     UITextView *Detailslabel                            = (UITextView *)[tableCell viewWithTag:654];
     
+    
     [CellBadgeTitleLable setText:[CellData objectForKey:@"report_title"]];
     [CellBadgeShareOnView setBackgroundColor:UIColorFromRGB(0xF3EFEF)];
     [CellBadgeShareOnLabel setBackgroundColor:UIColorFromRGB(0xc5c5c5)];
     [CellBadgeFooterLable setBackgroundColor:UIColorFromRGB(0xc5c5c5)];
-    [CellBadgeTitleLable setTextColor:UIColorFromRGB(0x000000)];
-    [CellBadgeTitleLable setFont:[UIFont fontWithName:GLOBALTEXTFONT size:14.0]];
+    [CellBadgeTitleLable setTextColor:UIColorFromRGB(0x211e1f)];
+    //[CellBadgeTitleLable setFont:[UIFont fontWithName:GLOBALTEXTFONT size:14.0]];
+    [CellBadgeTitleLable setFont:[UIFont fontWithName:@"OpenSans-Semibold" size:14.0]];
     
     [CellBadgeShareOnFacebook setTitle:[NSString stringWithFormat:@"%d",indexPath.row] forState:UIControlStateNormal];
     [CellBadgeShareOnFacebook.titleLabel setHidden:YES];
@@ -219,22 +221,22 @@ int GlobalSelectedIndexPathOne = 0;
     [CellBadgeShareOnTwitter setTitleColor:[UIColor clearColor] forState:UIControlStateHighlighted];
     [CellBadgeShareOnTwitter addTarget:self action:@selector(ShareOnTwitter:) forControlEvents:UIControlEventTouchUpInside];
     
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-//        
-//        [CellImageBadgeActivity startAnimating];
-//        
-//        NSError *ImageDownloadError;
-//        NSURL *ImageUrl         = [[NSURL alloc] initWithString:[CellData objectForKey:@"user_image"]];
-//        NSData *ImageData       = [NSData dataWithContentsOfURL:ImageUrl options:kNilOptions error:&ImageDownloadError];
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^(void) {
-//            
-//            [CellImageBadgeActivity stopAnimating];
-//            [CellBadgeImage setImage:[UIImage imageWithData:ImageData]];
-//            
-//        });
-//        
-//    });
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+    //
+    //        [CellImageBadgeActivity startAnimating];
+    //
+    //        NSError *ImageDownloadError;
+    //        NSURL *ImageUrl         = [[NSURL alloc] initWithString:[CellData objectForKey:@"user_image"]];
+    //        NSData *ImageData       = [NSData dataWithContentsOfURL:ImageUrl options:kNilOptions error:&ImageDownloadError];
+    //
+    //        dispatch_async(dispatch_get_main_queue(), ^(void) {
+    //
+    //            [CellImageBadgeActivity stopAnimating];
+    //            [CellBadgeImage setImage:[UIImage imageWithData:ImageData]];
+    //
+    //        });
+    //
+    //    });
     
     tableCell.textLabel.text=[CellData valueForKey:@"report_id"];
     tableCell.textLabel.hidden=YES;
@@ -259,69 +261,81 @@ int GlobalSelectedIndexPathOne = 0;
     Detailslabel.textAlignment = NSTextAlignmentLeft;
     [tableCell.contentView addSubview:Detailslabel];
     
-//    
-//    tableViewCell=[tableView dequeueReusableCellWithIdentifier:CellID];
-//    if (tableViewCell==nil)
-//    {
-//        tableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
-//        NSMutableDictionary *CellData = [UserReportClassDataArray objectAtIndex:indexPath.row];
-//        UIView  *MainCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
-//        MainCellView.backgroundColor = [UIColor clearColor];
-//    UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 60, 60)];
-//    ImageView.backgroundColor = [UIColor clearColor];
-////    ImageView.layer.cornerRadius=6.0f;
-////    ImageView.layer.borderWidth=1.0f;
-////    ImageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
-//        
-//        
-//
-//    [MainCellView addSubview:ImageView];
-//    
+    //
+    //    tableViewCell=[tableView dequeueReusableCellWithIdentifier:CellID];
+    //    if (tableViewCell==nil)
+    //    {
+    //        tableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
+    //        NSMutableDictionary *CellData = [UserReportClassDataArray objectAtIndex:indexPath.row];
+    //        UIView  *MainCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+    //        MainCellView.backgroundColor = [UIColor clearColor];
+    //    UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 60, 60)];
+    //    ImageView.backgroundColor = [UIColor clearColor];
+    ////    ImageView.layer.cornerRadius=6.0f;
+    ////    ImageView.layer.borderWidth=1.0f;
+    ////    ImageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
+    //
+    //
+    //
+    //    [MainCellView addSubview:ImageView];
+    //
+    
+    
     ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-    imageView.defaultImage = [UIImage imageNamed:@"Noimage.png"];
+    //    imageView.defaultImage = [UIImage imageNamed:@"Noimage.png"];
+    imageView.defaultImage = [UIImage imageNamed:@"NEWNOIMAGE.png"];
     imageView.imageUrl = [CellData objectForKey:@"user_image"];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
-    imageView.cornerRadius = 0;
+    imageView.corners = ZSRoundCornerAll;
+    imageView.cornerRadius = 20;
     [CellBadgeImage addSubview:imageView];
-//
-//    tableViewCell.textLabel.text=[CellData valueForKey:@"report_id"];
-//    tableViewCell.textLabel.hidden=YES;
-//    
-//    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 220, 20)];
-//    TitleLabel.backgroundColor = [UIColor clearColor];
-//    TitleLabel.numberOfLines = 0;
-//    TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:16];
-//    TitleLabel.textColor = UIColorFromRGB(0x000000);
-//    TitleLabel.text = [UserReportClass stripTags:[CellData objectForKey:@"report_title"]];
-//    [MainCellView addSubview:TitleLabel];
-//    
-//    UITextView *Detailslabel = [[UITextView alloc] initWithFrame:CGRectMake(67, 35, 223, 40)];
-//        Detailslabel.userInteractionEnabled=NO;
-//        Detailslabel.scrollEnabled=NO;
-//    Detailslabel.backgroundColor = [UIColor clearColor];
-//    Detailslabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
-//    Detailslabel.textColor = UIColorFromRGB(0x000000);
-//        NSString *descriptioText=[CellData objectForKey:@"report_desc"];
-//        if (descriptioText.length<2)
-//        {
-//            Detailslabel.text=@"Add Description Here";
-//        }
-//        else
-//        {
-//        Detailslabel.text = [UserReportClass stripTags:descriptioText];
-//        }
-//    
-//    Detailslabel.textAlignment = NSTextAlignmentLeft;
-//    [MainCellView addSubview:Detailslabel];
-//    UILabel *Separator=[[UILabel alloc]initWithFrame:CGRectMake(67, 79, 320-60, .5)];
-//    [Separator.layer setOpacity:.2];
-//        [Separator setBackgroundColor:[UIColor blackColor]];
-//        [MainCellView addSubview:Separator];
-//    
-//    [tableViewCell addSubview:MainCellView];
-//
-//    }
+    
+    
+    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
+    [CellBadgeImage addSubview:ImageOverlay];
+    
+    
+    
+    //
+    //    tableViewCell.textLabel.text=[CellData valueForKey:@"report_id"];
+    //    tableViewCell.textLabel.hidden=YES;
+    //
+    //    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 220, 20)];
+    //    TitleLabel.backgroundColor = [UIColor clearColor];
+    //    TitleLabel.numberOfLines = 0;
+    //    TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:16];
+    //    TitleLabel.textColor = UIColorFromRGB(0x000000);
+    //    TitleLabel.text = [UserReportClass stripTags:[CellData objectForKey:@"report_title"]];
+    //    [MainCellView addSubview:TitleLabel];
+    //
+    //    UITextView *Detailslabel = [[UITextView alloc] initWithFrame:CGRectMake(67, 35, 223, 40)];
+    //        Detailslabel.userInteractionEnabled=NO;
+    //        Detailslabel.scrollEnabled=NO;
+    //    Detailslabel.backgroundColor = [UIColor clearColor];
+    //    Detailslabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
+    //    Detailslabel.textColor = UIColorFromRGB(0x000000);
+    //        NSString *descriptioText=[CellData objectForKey:@"report_desc"];
+    //        if (descriptioText.length<2)
+    //        {
+    //            Detailslabel.text=@"Add Description Here";
+    //        }
+    //        else
+    //        {
+    //        Detailslabel.text = [UserReportClass stripTags:descriptioText];
+    //        }
+    //
+    //    Detailslabel.textAlignment = NSTextAlignmentLeft;
+    //    [MainCellView addSubview:Detailslabel];
+    //    UILabel *Separator=[[UILabel alloc]initWithFrame:CGRectMake(67, 79, 320-60, .5)];
+    //    [Separator.layer setOpacity:.2];
+    //        [Separator setBackgroundColor:[UIColor blackColor]];
+    //        [MainCellView addSubview:Separator];
+    //
+    //    [tableViewCell addSubview:MainCellView];
+    //
+    //    }
     return tableCell;
 }
 
@@ -594,12 +608,12 @@ int GlobalSelectedIndexPathOne = 0;
 -(IBAction)FinalShareOnTwitter:(UIButton *)sender {
     //exit(0);
     
-   
-        
+    
+    
     
     
     [UserReportClass AddBlackOverlay:self.view xcord:0 ycord:0 width:self.view.frame.size.width height:self.view.frame.size.height backgroundColor:[UIColor blackColor] OpacitY:0.9f Text:@"Please wait" TextColor:[UIColor whiteColor] FontName:globalTEXTFIELDPLACEHOLDERFONT FontSize:18 IsTextEnabled:YES];
-
+    
     NSMutableDictionary *CellData   = [UserReportClassDataArray objectAtIndex:GlobalSelectedIndexPathOne];
     
     TextDataForSocialShare              = _SharepopupviewTextView.text;
@@ -618,68 +632,68 @@ int GlobalSelectedIndexPathOne = 0;
             {
                 
                 @try {
-                     
-                SLRequestHandler requestHandler =
-                ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                     
-                    NSLog(@"responseData ------ %@",responseData);
-                    if (responseData) {
-                        NSInteger statusCode = urlResponse.statusCode;
+                    SLRequestHandler requestHandler =
+                    ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                         
-                        NSLog(@"urlResponse.statusCode ---- %ld",(long)urlResponse.statusCode);
-                        if (statusCode >= 200 && statusCode < 300) {
-                            [UserReportClass HidePopupView];
-                            NSDictionary *postResponseData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:NULL];
-                            NSLog(@"----- %@",postResponseData);
+                        NSLog(@"responseData ------ %@",responseData);
+                        if (responseData) {
+                            NSInteger statusCode = urlResponse.statusCode;
+                            
+                            NSLog(@"urlResponse.statusCode ---- %ld",(long)urlResponse.statusCode);
+                            if (statusCode >= 200 && statusCode < 300) {
+                                [UserReportClass HidePopupView];
+                                NSDictionary *postResponseData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:NULL];
+                                NSLog(@"----- %@",postResponseData);
+                            } else {
+                                [UserReportClass HidePopupView];
+                                NSLog(@"[ERROR] Server responded: status code %ld %@", (long)statusCode,[NSHTTPURLResponse localizedStringForStatusCode:statusCode]);
+                                UIAlertView *TwitterAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unexpected Error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                                [TwitterAlertView show];
+                            }
                         } else {
                             [UserReportClass HidePopupView];
-                            NSLog(@"[ERROR] Server responded: status code %ld %@", (long)statusCode,[NSHTTPURLResponse localizedStringForStatusCode:statusCode]);
-                            UIAlertView *TwitterAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unexpected Error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                            NSString *ErrString = [NSString stringWithFormat:@"[ERROR] An error occurred while posting: %@", [error localizedDescription]];
+                            UIAlertView *TwitterAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:ErrString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                             [TwitterAlertView show];
                         }
-                    } else {
-                        [UserReportClass HidePopupView];
-                        NSString *ErrString = [NSString stringWithFormat:@"[ERROR] An error occurred while posting: %@", [error localizedDescription]];
-                        UIAlertView *TwitterAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:ErrString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                        [TwitterAlertView show];
-                    }
-                };
-                ACAccountStoreRequestAccessCompletionHandler accountStoreHandler =
-                ^(BOOL granted, NSError *error) {
-                    if (granted) {
-                        
-                        
-                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                        
-                            NSURL *url = [NSURL URLWithString:@"https://api.twitter.com"
-                                          @"/1.1/statuses/update.json"];
-                            NSDictionary *params = @{@"status" : [NSString stringWithFormat:@"%@",TextDataForSocialShare]};
-                            SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
-                                                                    requestMethod:SLRequestMethodPOST
-                                                                              URL:url
-                                                                       parameters:params];
-                            [request setAccount:[accountsArray lastObject]];
-                            [request performRequestWithHandler:requestHandler];
-                            [UserReportClass HidePopupView];
+                    };
+                    ACAccountStoreRequestAccessCompletionHandler accountStoreHandler =
+                    ^(BOOL granted, NSError *error) {
+                        if (granted) {
                             
-                            dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                 
-                                UIAlertView *TwitterAlertView = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Report Shared successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                                [TwitterAlertView show];
-                            
+                                NSURL *url = [NSURL URLWithString:@"https://api.twitter.com"
+                                              @"/1.1/statuses/update.json"];
+                                NSDictionary *params = @{@"status" : [NSString stringWithFormat:@"%@",TextDataForSocialShare]};
+                                SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                                                        requestMethod:SLRequestMethodPOST
+                                                                                  URL:url
+                                                                           parameters:params];
+                                [request setAccount:[accountsArray lastObject]];
+                                [request performRequestWithHandler:requestHandler];
+                                [UserReportClass HidePopupView];
+                                
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    UIAlertView *TwitterAlertView = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Report Shared successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                                    [TwitterAlertView show];
+                                    
+                                });
+                                
                             });
-                        
-                        });
-                    }
-                    else {
-                        [UserReportClass HidePopupView];
-                        NSString *ErrString = [NSString stringWithFormat:@"[ERROR] An error occurred while asking for user authorization: %@",[error localizedDescription]];
-                        UIAlertView *TwitterAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:ErrString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                        [TwitterAlertView show];
-                    }
-                };
-                [accountStore requestAccessToAccountsWithType:accountType options:NULL completion:accountStoreHandler];
-                
+                        }
+                        else {
+                            [UserReportClass HidePopupView];
+                            NSString *ErrString = [NSString stringWithFormat:@"[ERROR] An error occurred while asking for user authorization: %@",[error localizedDescription]];
+                            UIAlertView *TwitterAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:ErrString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                            [TwitterAlertView show];
+                        }
+                    };
+                    [accountStore requestAccessToAccountsWithType:accountType options:NULL completion:accountStoreHandler];
+                    
                 }
                 @catch (NSException *Exception) {
                     NSLog(@"Exception ---- %@",Exception);

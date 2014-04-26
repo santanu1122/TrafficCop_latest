@@ -233,7 +233,27 @@ int GlobalSelectedIndexPath = 0;
         dispatch_async(dispatch_get_main_queue(), ^(void) {
         
             [CellImageBadgeActivity stopAnimating];
+           [CellBadgeImage setImage:[UIImage imageWithData:ImageData]];
+           // CellBadgeImage.layer.cornerRadius = 35;
+            CellBadgeImage.clipsToBounds = YES;
+            
             [CellBadgeImage setImage:[UIImage imageWithData:ImageData]];
+            
+            
+//            ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
+//            imageView.image = [UIImage imageWithData:ImageData];
+//            imageView.contentMode = UIViewContentModeScaleAspectFill;
+//            imageView.clipsToBounds = YES;
+//            imageView.corners = ZSRoundCornerAll;
+//            imageView.cornerRadius = 30;
+//            [CellBadgeImage addSubview:imageView];
+            
+            
+//            UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(6, 6, 58, 58)];
+//            [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
+//            [CellBadgeImage addSubview:ImageOverlay];
+            
+            
         
         });
     

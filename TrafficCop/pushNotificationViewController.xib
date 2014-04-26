@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" id="vVp-fw-BhQ">
-                    <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                    <rect key="frame" x="0.0" y="49" width="320" height="519"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="PaV-ZX-pWk"/>

@@ -30,17 +30,17 @@ typedef enum {
     SegmentedControl *DetailsTabbing;
     int currentImage;
     NSMutableArray *ImageArray;
- 
+    
     CGFloat commentBoxPosition;
     CGFloat HightOfTheComment;
     UIView *ShowAll;
     NSString *userID;
     NSMutableDictionary *UserDetailDic;
-  
-   
+    
+    
     NSOperationQueue *ReportOperation;
-   
-
+    
+    
     UITextView *DetailsTextView;
     NSURLConnection *connection;
     AppDelegate *MainDelegate;
@@ -51,13 +51,13 @@ typedef enum {
     BOOL isAddedtoevidenceLocker;
     UIButton *buttonEvidencel;
     
-     NSString *rating;
+    NSString *rating;
     NSString *userimage;
     NSString *Name;
     NSString *curDate;
     NSMutableArray *AllComment;
-   
-  
+    
+    
     NSString *Errorstatus;
     
     BOOL isCommentpost;
@@ -68,8 +68,8 @@ typedef enum {
     
     
     UILabel *NolocationLablel;
-   
-
+    
+    
 }
 @property (weak) IBOutlet UIView *backgroundRatting;
 @property (strong, nonatomic) IBOutlet UIButton *Addnewcomment;
@@ -84,7 +84,7 @@ typedef enum {
 @property (nonatomic,retain) IBOutlet UIView *LocationMapView;
 
 
-
+@property (nonatomic, strong) SegmentedControl *SegmentedControl;
 
 @property (nonatomic, retain) NSString *report_title;
 @property (nonatomic, retain) NSString *reportAvaragerate;
@@ -156,45 +156,45 @@ int TotalCommentbyme = 0;
 -(void)viewWillAppear:(BOOL)animated
 {
     
-//    NSLog(@"in view will appear");
-//    
-//    currentImage = 0;
-//    iscommentpresh=YES;
-//   
-//      AllComment=[[NSMutableArray alloc]init];
-//    
-//    MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    
-//
-//   
-//    NSUserDefaults *userDefalds=[NSUserDefaults standardUserDefaults];
-//    userID=[userDefalds valueForKey:@"userid"];
-//   
-//    ReportDetailsHelper = [[HelperClass alloc] init];
-//    [ReportDetailsHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
-//    UserDetailDic=[[NSMutableDictionary alloc]initWithCapacity:9];
-//    [ReportDetailsHelper SetupHeaderView:self.view viewController:self];
-//    [ReportDetailsHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
-//    
-//    [self.navigationController setNavigationBarHidden:YES];
-//    ReportOperation=[[NSOperationQueue alloc]init];
-//    
-////    DetailsTabbing = [[SegmentedControl alloc] initWithSectionTitles:@[@"Description", @"Map", @"Comment"]];
-////    DetailsTabbing.frame = CGRectMake(10, 60, 300, 60);
-////    [DetailsTabbing addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-////    DetailsTabbing.backgroundColor = [UIColor clearColor];
-////    [self.view addSubview:DetailsTabbing];
-//    NSInvocationOperation *operation=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(LoadAlldata) object:nil];
-//    [ReportOperation addOperation:operation];
+    //    NSLog(@"in view will appear");
+    //
+    //    currentImage = 0;
+    //    iscommentpresh=YES;
+    //
+    //      AllComment=[[NSMutableArray alloc]init];
+    //
+    //    MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //
+    //
+    //
+    //    NSUserDefaults *userDefalds=[NSUserDefaults standardUserDefaults];
+    //    userID=[userDefalds valueForKey:@"userid"];
+    //
+    //    ReportDetailsHelper = [[HelperClass alloc] init];
+    //    [ReportDetailsHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
+    //    UserDetailDic=[[NSMutableDictionary alloc]initWithCapacity:9];
+    //    [ReportDetailsHelper SetupHeaderView:self.view viewController:self];
+    //    [ReportDetailsHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+    //
+    //    [self.navigationController setNavigationBarHidden:YES];
+    //    ReportOperation=[[NSOperationQueue alloc]init];
+    //
+    ////    DetailsTabbing = [[SegmentedControl alloc] initWithSectionTitles:@[@"Description", @"Map", @"Comment"]];
+    ////    DetailsTabbing.frame = CGRectMake(10, 60, 300, 60);
+    ////    [DetailsTabbing addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+    ////    DetailsTabbing.backgroundColor = [UIColor clearColor];
+    ////    [self.view addSubview:DetailsTabbing];
+    //    NSInvocationOperation *operation=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(LoadAlldata) object:nil];
+    //    [ReportOperation addOperation:operation];
     
     
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-   /*
-    Scroll View declaration
-    */
+    /*
+     Scroll View declaration
+     */
     [super viewDidLoad];
     NSLog(@"in view will appear");
     
@@ -226,90 +226,101 @@ int TotalCommentbyme = 0;
     //    [self.view addSubview:DetailsTabbing];
     NSInvocationOperation *operation=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(LoadAlldata) object:nil];
     [ReportOperation addOperation:operation];
-
+    
     
     
 }
 
 - (void)viewDidLoad
 {
-
+    SegmentedControl *segmentedControl1 = [[SegmentedControl alloc] initWithSectionTitles:@[@"Description", @"Map", @"Comment"]];
+    segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    segmentedControl1.frame = CGRectMake(0, 51, 320, 43);
+    segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    segmentedControl1.selectionStyle = SegmentedControlSelectionStyleFullWidthStripe;
+    segmentedControl1.selectionIndicatorLocation = SegmentedControlSelectionIndicatorLocationDown;
+    segmentedControl1.selectionIndicatorColor = UIColorFromRGB(0xde2629);
+    segmentedControl1.selectedTextColor = UIColorFromRGB(0xde2629);
+    segmentedControl1.scrollEnabled = NO;
+    [segmentedControl1 addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentedControl1];
+    
 }
 
-    
+
 -(void)LoadAlldata
 {
     
     ImageArray=[[NSMutableArray alloc]init];
-  dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void)
-{
-    
-    NSString *StringUrl=[NSString stringWithFormat:@"%@result_details.php?id=%@&loginuser=%@",DomainURL,reportId,userID];
-    NSLog(@"the value for key:%@",StringUrl);
-      NSURL *url=[NSURL URLWithString:StringUrl];
-         NSData *data=[NSData dataWithContentsOfURL:url];
-   NSDictionary *mainDic=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    NSArray *reportImageArray=[mainDic objectForKey:@"reportimage"];
-    
-   NSDictionary *reportDetail=[mainDic valueForKey:@"reportdetails"];
-  report_title=[reportDetail valueForKey:@"report_title"];
-   reportAvaragerate=[reportDetail valueForKey:@"report_avg_rating"];
-  postby=[reportDetail valueForKey:@"posted_by"];
-  location=[reportDetail valueForKey:@"location"];
-  licenceplate=[reportDetail valueForKey:@"licence_plate"];
-    NSString *makeBywhom=[reportDetail valueForKey:@"make"];
-    if ([makeBywhom isKindOfClass:NULL]||[makeBywhom isEqualToString:@""])
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void)
     {
-        makeby=@"N/A";
-    }
-    else
-    {
-        makeby=[reportDetail valueForKey:@"make"];
-    }
-    
-
-self.model=[reportDetail valueForKey:@"model"];
-    if ([self.model isKindOfClass:NULL]||[self.model isEqualToString:@""]) {
-        self.model=@"N/A";
-    }
-   year=[reportDetail valueForKey:@"year"];
-    if ([year isKindOfClass:NULL]||[year isEqualToString:@""])
-    {
-       year=@"N/A";
-    }
-characteristics=[reportDetail valueForKey:@"characteristics"];
-    if ([characteristics isKindOfClass:NULL]||[characteristics isEqualToString:@""])
-    {
-        characteristics=@"N/A";
-    }
-report_description=[reportDetail valueForKey:@"report_desc"];
-    if ([report_description isKindOfClass:NULL]||[report_description isEqualToString:@""])
-    {
-        report_description=@"N/A";
-    }
-totalComment=[reportDetail valueForKey:@"report_comment_text"];
-Latetude=[reportDetail valueForKey:@"latitude"];
-Longitude=[reportDetail valueForKey:@"longitude"];
-    NSLog(@"lat and long is--- %@   --  %@", Latetude, Longitude);
-    
-ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
-    photos=[reportDetail valueForKey:@"report_total_image_text"];
-    for (NSString *imageReport in reportImageArray)
-    {
-        [ImageArray addObject:imageReport];
-    }
-    NSLog(@"the image array:%@",ImageArray);
-    dispatch_async( dispatch_get_main_queue(), ^(void)
-    {
-        [self REportDetailsview];
-     });
-
-});
+        
+        NSString *StringUrl=[NSString stringWithFormat:@"%@result_details.php?id=%@&loginuser=%@",DomainURL,reportId,userID];
+        NSLog(@"the value for key:%@",StringUrl);
+        NSURL *url=[NSURL URLWithString:StringUrl];
+        NSData *data=[NSData dataWithContentsOfURL:url];
+        NSDictionary *mainDic=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        NSArray *reportImageArray=[mainDic objectForKey:@"reportimage"];
+        
+        NSDictionary *reportDetail=[mainDic valueForKey:@"reportdetails"];
+        report_title=[reportDetail valueForKey:@"report_title"];
+        reportAvaragerate=[reportDetail valueForKey:@"report_avg_rating"];
+        postby=[reportDetail valueForKey:@"posted_by"];
+        location=[reportDetail valueForKey:@"location"];
+        licenceplate=[reportDetail valueForKey:@"licence_plate"];
+        NSString *makeBywhom=[reportDetail valueForKey:@"make"];
+        if ([makeBywhom isKindOfClass:NULL]||[makeBywhom isEqualToString:@""])
+        {
+            makeby=@"N/A";
+        }
+        else
+        {
+            makeby=[reportDetail valueForKey:@"make"];
+        }
+        
+        
+        self.model=[reportDetail valueForKey:@"model"];
+        if ([self.model isKindOfClass:NULL]||[self.model isEqualToString:@""]) {
+            self.model=@"N/A";
+        }
+        year=[reportDetail valueForKey:@"year"];
+        if ([year isKindOfClass:NULL]||[year isEqualToString:@""])
+        {
+            year=@"N/A";
+        }
+        characteristics=[reportDetail valueForKey:@"characteristics"];
+        if ([characteristics isKindOfClass:NULL]||[characteristics isEqualToString:@""])
+        {
+            characteristics=@"N/A";
+        }
+        report_description=[reportDetail valueForKey:@"report_desc"];
+        if ([report_description isKindOfClass:NULL]||[report_description isEqualToString:@""])
+        {
+            report_description=@"N/A";
+        }
+        totalComment=[reportDetail valueForKey:@"report_comment_text"];
+        Latetude=[reportDetail valueForKey:@"latitude"];
+        Longitude=[reportDetail valueForKey:@"longitude"];
+        NSLog(@"lat and long is--- %@   --  %@", Latetude, Longitude);
+        
+        ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
+        photos=[reportDetail valueForKey:@"report_total_image_text"];
+        for (NSString *imageReport in reportImageArray)
+        {
+            [ImageArray addObject:imageReport];
+        }
+        NSLog(@"the image array:%@",ImageArray);
+        dispatch_async( dispatch_get_main_queue(), ^(void)
+                       {
+                           [self REportDetailsview];
+                       });
+        
+    });
 }
 
 -(IBAction)GotoTheAllSimilerreportPage:(id)sender
 {
-   
+    
     SimiarReportViewController *SimilerreportDetails = [[SimiarReportViewController alloc] initWithNibName:@"SimiarReportViewController" bundle:nil];
     SimilerreportDetails.Reportid=reportId;
     [self.navigationController pushViewController:SimilerreportDetails animated:YES];
@@ -327,14 +338,14 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     // NSLog(@"the value of yello:%d",YELLOW);
     for(int i=0; i < YELLOW; i++)
     {
-        [ReportDetailsHelper CreateImageviewWithImage:MAinScrollview xcord:SIZEX ycord:50 width:16 height:16 backgroundColor:[UIColor clearColor] imageName:@"YELLOWSTER"];
+        [ReportDetailsHelper CreateImageviewWithImage:MAinScrollview xcord:SIZEX ycord:50 width:16 height:16 backgroundColor:[UIColor clearColor] imageName:@"starNEW"];
         SIZEX = SIZEX + 16;
     }
     for(int j=0; j < GRAY; j++)
     {
         if(GRAY==5 && j==0)
-            SIZEX = 60+5;
-        [ReportDetailsHelper CreateImageviewWithImage:MAinScrollview xcord:SIZEX ycord:49 width:16 height:16 backgroundColor:[UIColor clearColor] imageName:@"GRAYSTAR"];
+            SIZEX = 5;
+        [ReportDetailsHelper CreateImageviewWithImage:MAinScrollview xcord:SIZEX ycord:49 width:16 height:16 backgroundColor:[UIColor clearColor] imageName:@"star1NEW"];
         SIZEX = SIZEX + 16;
     }
     
@@ -344,7 +355,7 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     
     [ReportDetailsHelper CreateImageviewWithImage:ViewForPostedComment xcord:0 ycord:12 width:15 height:15 backgroundColor:[UIColor clearColor] imageName:@"SMALL_USER"];
     
-    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"Posted By: " fontName:@"Arial" fontSize:14 addView:ViewForPostedComment];
+    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"Posted By: " fontName:@"OpenSans-Semibold" fontSize:12 addView:ViewForPostedComment];
     
     
     [ViewForPostedComment setBackgroundColor:[UIColor clearColor]];
@@ -395,7 +406,7 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     Evidencelocker.textAlignment=NSTextAlignmentCenter;
     Evidencelocker.textColor=[UIColor greenColor];
     Evidencelocker.font=[UIFont systemFontOfSize:10.0f];
-   [ViewForLicensePlate addSubview:buttonEvidencel];
+    [ViewForLicensePlate addSubview:buttonEvidencel];
     
     [ViewForLicensePlate addSubview:Evidencelocker];
     [ViewForLicensePlate setBackgroundColor:[UIColor clearColor]];
@@ -459,7 +470,7 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     [ReportDetailsHelper CreateImageviewWithImage:ViewForPhotoes xcord:0 ycord:10 width:15 height:15 backgroundColor:[UIColor clearColor] imageName:@"SMALL_BADGHE"];
     
     [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"Photos: " fontName:@"Arial" fontSize:12.0f addView:ViewForPhotoes];
-     [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:photos fontName:@"Arial" fontSize:12.0f addView:ViewForPhotoes];
+    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:photos fontName:@"Arial" fontSize:12.0f addView:ViewForPhotoes];
     
     
     [ViewForPhotoes setBackgroundColor:[UIColor clearColor]];
@@ -468,11 +479,17 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     
     
     [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:postby fontName:@"Arial" fontSize:12.0f addView:ViewForPostedComment];
-    [ReportDetailsHelper CreatelabelWithValueCenter:10 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:report_title fontName:@"Arial" fontSize:12.0f addView:MAinScrollview];
+    
+    [ReportDetailsHelper CreatelabelWithValueCenter:10 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x211e1f) labeltext:report_title fontName:@"OpenSans-Semibold" fontSize:15.0f addView:MAinScrollview];
+    
+    //[TitleLabel setTextColor:UIColorFromRGB(0x211e1f)];
+    
+    
     [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:[licenceplate uppercaseString] fontName:@"Arial" fontSize:12.0f addView:ViewForLicensePlate];
+    
     [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:makeby fontName:@"Arial" fontSize:12.0f addView:ViewForMake];
     
-
+    
     [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:year fontName:@"Arial" fontSize:12.0f addView:ViewForYear];
     
     [ReportDetailsHelper CreatelabelWithValueCenter:SIZEX+10 ycord:51 width:100 height:16 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:[NSString stringWithFormat:@"%@ comments",totalComment] fontName:@"Arial" fontSize:12 addView:MAinScrollview];
@@ -531,7 +548,7 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
         [MAinScrollview setFrame:frame];
         for (int i=0; i<[ImageArray count]; i++)
         {
-          
+            
             
             ZSImageView *imageview=[[ZSImageView alloc]initWithFrame:CGRectMake(30*(i+1)+i*260+30*i, 0, 260, 150)];
             imageview.imageUrl=[ImageArray objectAtIndex:i];
@@ -553,26 +570,26 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
 
 -(void)buttonEvidenceclick
 {
-        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-   
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
     if (isAddedToAvidencelocker) {
-       // dispatch_async(dispatch_get_main_queue(), ^(){
+        // dispatch_async(dispatch_get_main_queue(), ^(){
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Confirmation" message:@"Remove this from Evidence Locker?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [alert show];
         //});
     }
     else
     {
-           // dispatch_async(dispatch_get_main_queue(), ^(){
+        // dispatch_async(dispatch_get_main_queue(), ^(){
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Confirmation" message:@"Add this to Evidence Locker?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [alert show];
-           // });
+        // });
     }
-       // });
+    // });
 }
 
 - (void)uisegmentedControlChangedValue:(UISegmentedControl *)segmentedControl {
-   // NSLog(@"Selected index %i", segmentedControl.selectedSegmentIndex);
+    // NSLog(@"Selected index %i", segmentedControl.selectedSegmentIndex);
 }
 
 
@@ -601,10 +618,10 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     self.noCommentFound.hidden=YES;
     NSArray *array=[MAinScrollview subviews];
     for (UIView *subview in array)
-      {
+    {
         [subview removeFromSuperview];
-          
-      }
+        
+    }
     [self CommentPageopen];
 }
 
@@ -676,17 +693,17 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     {
         
     }
-   else if (buttonIndex==1)
-   {
-    if(isAddedToAvidencelocker==NO)
+    else if (buttonIndex==1)
     {
-    [self Addtoevidence];
+        if(isAddedToAvidencelocker==NO)
+        {
+            [self Addtoevidence];
+        }
+        else
+        {
+            [self Addtoevidence];
+        }
     }
-    else
-    {
-    [self Addtoevidence];
-    }
-   }
 }
 
 -(void)Addtoevidence
@@ -697,18 +714,18 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     if (isAddedToAvidencelocker)
     {
         strAdd=[NSString stringWithFormat:@"%@appweb.php?mode=delete_evidance_locker&getuser=%@&licence=%@",DomainURL,userID,licenceplate];
-         [buttonEvidencel setBackgroundImage:[UIImage imageNamed:@"AddToEvidenceLocker.jpg"] forState:UIControlStateNormal];
+        [buttonEvidencel setBackgroundImage:[UIImage imageNamed:@"AddToEvidenceLocker.jpg"] forState:UIControlStateNormal];
         isAddedToAvidencelocker=NO;
         
     }
     else
     {
         
-         strAdd=[NSString stringWithFormat:@"%@appweb.php?mode=add_evidance_locker&getuser=%@&licence=%@",DomainURL,userID,licenceplate];
+        strAdd=[NSString stringWithFormat:@"%@appweb.php?mode=add_evidance_locker&getuser=%@&licence=%@",DomainURL,userID,licenceplate];
         [buttonEvidencel setBackgroundImage:[UIImage imageNamed:@"RemoveFromEvidenceLocker.jpg"] forState:UIControlStateNormal];
         isAddedToAvidencelocker=YES;
     }
-   
+    
     NSURL *Url=[NSURL URLWithString:strAdd];
     NSData *datta=[NSData dataWithContentsOfURL:Url];
     NSDictionary *dicTion=[NSJSONSerialization JSONObjectWithData:datta options:kNilOptions error:nil];
@@ -725,30 +742,30 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     NSUserDefaults *userdefals=[NSUserDefaults standardUserDefaults];
     Name=[NSString stringWithFormat:@"%@ %@",[userdefals valueForKey:@"first_name"],[userdefals valueForKey:@"last_name"]];
     
-     NSDate *currentDate = [[NSDate alloc] init];
-     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-     curDate = [dateFormatter stringFromDate:currentDate];
-     [ReportDetailsHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
-     [commentShowtable setDelegate:self];
-     [commentShowtable setDataSource:self];
-     [MAinScrollview setScrollEnabled:NO];
-     [MAinScrollview setContentOffset:CGPointMake(0, 0)];
+    NSDate *currentDate = [[NSDate alloc] init];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    curDate = [dateFormatter stringFromDate:currentDate];
+    [ReportDetailsHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
+    [commentShowtable setDelegate:self];
+    [commentShowtable setDataSource:self];
+    [MAinScrollview setScrollEnabled:NO];
+    [MAinScrollview setContentOffset:CGPointMake(0, 0)];
     
-     _UIViewForCommentListing.frame=CGRectMake(10, 0, 300, 454);
-     [MAinScrollview addSubview:_UIViewForCommentListing];
-     [_UIViewForPostComment setFrame:CGRectMake(0, 10, 300, 300)];
-     [_UIViewForCommentListing addSubview:_UIViewForPostComment];
-     self.UIViewForPostComment.hidden=YES;
-
-     [_UITextViewForPostComment setTag:100];
-     [_UITextViewForPostComment setDelegate:self];
-     [_UITextViewForPostComment setText:@"Add Comment Here"];
-     [_UITextViewForPostComment setTextColor:UIColorFromRGB(0xc5c5c5)];
-     _UIViewForPostComment.layer.cornerRadius=4.0f;
+    _UIViewForCommentListing.frame=CGRectMake(10, 0, 300, 454);
+    [MAinScrollview addSubview:_UIViewForCommentListing];
+    [_UIViewForPostComment setFrame:CGRectMake(0, 10, 300, 300)];
+    [_UIViewForCommentListing addSubview:_UIViewForPostComment];
+    self.UIViewForPostComment.hidden=YES;
+    
+    [_UITextViewForPostComment setTag:100];
+    [_UITextViewForPostComment setDelegate:self];
+    [_UITextViewForPostComment setText:@"Add Comment Here"];
+    [_UITextViewForPostComment setTextColor:UIColorFromRGB(0xc5c5c5)];
+    _UIViewForPostComment.layer.cornerRadius=4.0f;
     
     [_UIViewForPostComment addSubview:_UITextViewForPostComment];
-   // [_backgroundRatting removeFromSuperview];
+    // [_backgroundRatting removeFromSuperview];
     
     float SIZEX = 0;
     float SIZEY = 3;
@@ -768,10 +785,10 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
         [GreyImageButton addTarget:self action:@selector(UiGreyImageButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
         [GreyImageButton setTag:(10000+i)];
         [_backgroundRatting addSubview:GreyImageButton];
-         SIZEX = SIZEX + SIZEW;
+        SIZEX = SIZEX + SIZEW;
     }
     
-     [self fetchAllooent];
+    [self fetchAllooent];
 }
 
 -(void)fetchAllooent
@@ -800,13 +817,13 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
                                NSString *comment_Getbdgimage=[dic2 valueForKey:@"get_badge"];
                                NSString *comment_ratingimg=[dic2 valueForKey:@"rating_image"];
                                NSString *comment_review=[dic2 valueForKey:@"review"];
-
+                               
                                NSString *commentSubmit_on=[dic2 valueForKey:@"submit_on"];
                                
                                
                                NSMutableDictionary *mutDic=[[NSMutableDictionary alloc]initWithCapacity:7];
                                
-                              
+                               
                                [mutDic setObject:comment_id forKey:@"comment_id"];
                                [mutDic setObject:comment_image forKey:@"image"];
                                [mutDic setObject:comment_name forKey:@"name"];
@@ -833,18 +850,18 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
                        [self performSelectorOnMainThread:@selector(reloadAllCmtforuser) withObject:nil waitUntilDone:YES];
                        
                    });
-  
+    
 }
 -(void)reloadAllCmtforuser
 {
-      [ReportDetailsHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor   clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
-        commentShowtable.hidden=NO;
-        [commentShowtable reloadData];
+    [ReportDetailsHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor   clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
+    commentShowtable.hidden=NO;
+    [commentShowtable reloadData];
 }
 -(IBAction)UiGreyImageButtonSelected:(UIButton *)sender
 {
     TotalCommentbyme=0;
-  
+    
     int LastButtonTapped            = sender.tag;
     int ButtonShouldBehighLited     = LastButtonTapped - 9999;
     
@@ -874,8 +891,8 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-  
-   
+    
+    
     
     switch (textView.tag)
     {
@@ -884,7 +901,7 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
             if([ReportDetailsHelper CleanTextField:_UITextViewForPostComment.text].length == 0 || [[ReportDetailsHelper CleanTextField:_UITextViewForPostComment.text] isEqualToString:@"Add Comment Here"]) {
                 _UITextViewForPostComment.text = @"";
                 [UIView animateWithDuration:.25 animations:^{
-                  
+                    
                 }];
                 _UITextViewForPostComment.textColor = [UIColor blackColor];
             }
@@ -896,7 +913,7 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     return YES;
 }
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
-   
+    
     switch (textView.tag) {
             
         case 100:
@@ -905,9 +922,9 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
                 _UITextViewForPostComment.textColor = UIColorFromRGB(0xc5c5c5);
                 
                 [UIView animateWithDuration:.25 animations:^{
-//                    MAinScrollview.contentOffset = CGPointMake(0, 0);
-//                    [_UIViewForPostComment setFrame:CGRectMake(10, 100, 300, 300)];
-//                    [MAinScrollview addSubview:_UIViewForPostComment];
+                    //                    MAinScrollview.contentOffset = CGPointMake(0, 0);
+                    //                    [_UIViewForPostComment setFrame:CGRectMake(10, 100, 300, 300)];
+                    //                    [MAinScrollview addSubview:_UIViewForPostComment];
                 }];
             }
             break;
@@ -931,9 +948,9 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
 -(IBAction)SaveComment:(id)sender {
     
     [commentShowtable reloadData];
-     ReportOperation=[[NSOperationQueue alloc]init];
+    ReportOperation=[[NSOperationQueue alloc]init];
     
-     if([ReportDetailsHelper CleanTextField:_UITextViewForPostComment.text].length == 0 || [[ReportDetailsHelper CleanTextField:_UITextViewForPostComment.text] isEqualToString:@"Add Comment Here"]) {
+    if([ReportDetailsHelper CleanTextField:_UITextViewForPostComment.text].length == 0 || [[ReportDetailsHelper CleanTextField:_UITextViewForPostComment.text] isEqualToString:@"Add Comment Here"]) {
         
         MBAlertView *Alert = [MBAlertView alertWithBody:@"Add Comment First !!" cancelTitle:nil cancelBlock:nil];
         [Alert addButtonWithText:@"Ok" type:MBAlertViewItemTypePositive block:^{
@@ -952,14 +969,14 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     {
         
         
-       
+        
         rating=[NSString stringWithFormat:@"%d",TotalCommentbyme];
         theReviewtext=[_UITextViewForPostComment.text  stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         _UITextViewForPostComment.text=nil;
         NSLog(@"The user id:%@",userID);
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
-//            NSMutableDictionary *mutDic=[[NSMutableDictionary alloc]initWithCapacity:8];
+            //            NSMutableDictionary *mutDic=[[NSMutableDictionary alloc]initWithCapacity:8];
             NSString *Strurl=[NSString stringWithFormat:@"%@save_reviewdata.php?review=%@&rating=%@&userid=%@&reportid=%@",DomainURL,theReviewtext,rating,userID,reportId];
             NSLog(@"The string url is:%@",Strurl);
             NSURL *urlForCooment=[NSURL URLWithString:Strurl];
@@ -976,47 +993,89 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
                     
                     [self commentoperation];
                 }
-             
-               
-
+                
+                
+                
             });
         });
     }
 }
 //Slide Content Slidercalue
 
-
-- (IBAction)ShowContentOnebyone:(UISegmentedControl *)sender
-{
-    NSLog(@"hereee");
+- (void)segmentedControlChangedValue:(SegmentedControl *)segmentedControl {
     
-    if (sender.selectedSegmentIndex==0)
+    switch (segmentedControl.selectedSegmentIndex) {
+        case 0: segmentedControl.selectionIndicatorColor = UIColorFromRGB(0xde2629);
+            segmentedControl.selectedTextColor = UIColorFromRGB(0xde2629);
+            break;
+        case 1: segmentedControl.selectionIndicatorColor = UIColorFromRGB(0xfab81e);
+            segmentedControl.selectedTextColor = UIColorFromRGB(0xfab81e);
+            break;
+        case 2: segmentedControl.selectionIndicatorColor = UIColorFromRGB(0x22b350);
+            segmentedControl.selectedTextColor = UIColorFromRGB(0x22b350);
+            break;
+    }
+    
+    if (segmentedControl.selectedSegmentIndex==0)
     {
         [MAinScrollview setScrollEnabled:YES];
-       // [MAinScrollview setContentOffset:CGPointMake(320, 470)];
+        // [MAinScrollview setContentOffset:CGPointMake(320, 470)];
         [_imageSliderview setHidden:NO];
         [self LoadDetailsAgain];
     }
-    else if (sender.selectedSegmentIndex==1)
+    else if (segmentedControl.selectedSegmentIndex==1)
     {
+        
         [MAinScrollview setScrollEnabled:YES];
         //[MAinScrollview setContentOffset:CGPointMake(320, 470)];
-         [_imageSliderview setHidden:YES];
+        [_imageSliderview setHidden:YES];
         MAinScrollview.frame=CGRectMake(0, 98, 320, 470);
         [self Loadmapview];
     }
-    else if (sender.selectedSegmentIndex==2)
+    else
     {
         MAinScrollview.frame=CGRectMake(0, 98, 320, 470);
         [_imageSliderview setHidden:YES];
         [self commentoperation];
     }
-    else
-    {
-        
-        NSLog(@"No such data Present");
-    }
 }
+
+
+/*
+ - (IBAction)ShowContentOnebyone:(UISegmentedControl *)sender
+ {
+ NSLog(@"hereee");
+ 
+ if (sender.selectedSegmentIndex==0)
+ {
+ [MAinScrollview setScrollEnabled:YES];
+ // [MAinScrollview setContentOffset:CGPointMake(320, 470)];
+ [_imageSliderview setHidden:NO];
+ [self LoadDetailsAgain];
+ }
+ else if (sender.selectedSegmentIndex==1)
+ {
+ [MAinScrollview setScrollEnabled:YES];
+ //[MAinScrollview setContentOffset:CGPointMake(320, 470)];
+ [_imageSliderview setHidden:YES];
+ MAinScrollview.frame=CGRectMake(0, 98, 320, 470);
+ [self Loadmapview];
+ }
+ else if (sender.selectedSegmentIndex==2)
+ {
+ MAinScrollview.frame=CGRectMake(0, 98, 320, 470);
+ [_imageSliderview setHidden:YES];
+ [self commentoperation];
+ }
+ else
+ {
+ 
+ NSLog(@"No such data Present");
+ }
+ }
+ */
+
+
 -(void)tablereloadForremprtdetais
 {
     NSLog(@"The uitableview:%@",commentShowtable);
@@ -1027,11 +1086,11 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
         
         UIButton *_infoButton = (UIButton *)[_UIViewForPostComment viewWithTag:(10000+s)];
         [_infoButton setImage:[UIImage imageNamed:@"GRAYSTAR"] forState:UIControlStateNormal];
-       
+        
     }
-   
+    
     [commentShowtable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-  
+    
     
 }
 
@@ -1047,7 +1106,7 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     NSLog(@"AllComment ---- %@",AllComment);
     
     UIView  *MainCellView = [[UIView alloc] init];
-   
+    
     MainCellView.backgroundColor = [UIColor clearColor];
     
     
@@ -1174,7 +1233,7 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
     [MainHeaderView setBackgroundColor:[UIColor whiteColor]];
     UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 320, 35)];
     Titlelabel.text = @"Total Comments";
-    [MainHeaderView addSubview:Titlelabel]; 
+    [MainHeaderView addSubview:Titlelabel];
     
     UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 49, 320/3,1)];
     greenLabel.backgroundColor = UIColorFromRGB(0x1aad4b);
@@ -1245,47 +1304,47 @@ ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
         _UIViewForPostComment.alpha=0;
         
     }
-    completion:^(BOOL finished)
+                     completion:^(BOOL finished)
      {
          _UIViewForPostComment.hidden=YES;
          [_backgroundRatting removeFromSuperview];
          
      }];
-
+    
     
 }
 
 - (IBAction)AddcommentToview:(id)sender
 {
     
-//    if ([theisreportpostbyme integerValue]==1)
-//    {
-//        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"You Can,t Add comment on Your Own Report ?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//        [alert show];
-//        
-//    }
-//    
-//    else
-//    {
+    //    if ([theisreportpostbyme integerValue]==1)
+    //    {
+    //        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"You Can,t Add comment on Your Own Report ?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    //        [alert show];
+    //        
+    //    }
+    //    
+    //    else
+    //    {
     _UIViewForPostComment.alpha=0;
     _UIViewForPostComment.hidden=NO;
     
     [UIView animateWithDuration:0.6f animations:^{
-       
+        
         _UIViewForPostComment.alpha=1;
         
     }
-    completion:^(BOOL finished)
-    {
-       
-     self.UIViewForPostComment.layer.shadowOffset = CGSizeMake(0, 10);
-       self.UIViewForPostComment.layer.shadowRadius = 5;
-        self.UIViewForPostComment.layer.shadowOpacity = 0.5;
-        
-    }];
+                     completion:^(BOOL finished)
+     {
+         
+         self.UIViewForPostComment.layer.shadowOffset = CGSizeMake(0, 10);
+         self.UIViewForPostComment.layer.shadowRadius = 5;
+         self.UIViewForPostComment.layer.shadowOpacity = 0.5;
+         
+     }];
     
-  //  }
-   
+    //  }
+    
     
 }
 

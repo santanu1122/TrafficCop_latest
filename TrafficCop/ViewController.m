@@ -49,61 +49,67 @@
     
     
     NSUserDefaults *prefss = [NSUserDefaults standardUserDefaults];
+    
+    [prefss setObject:@"6" forKey:@"userid"];
     NSString *str=[prefss valueForKey:@"userid"];
     
     if ([str intValue] > 0) {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            
-            
-            NSString *USERDEVICETOKEN = [prefss objectForKey:@"USERDEVICETOKEN"];
-            NSString *Username        = [prefss objectForKey:@"USERNAME"];
-            NSString *UserPassword    = [prefss objectForKey:@"PASSWORD"];
-            
-            
-            NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
-            [tempDict setObject:Username forKey:@"email_username"];
-            [tempDict setObject:UserPassword forKey:@"password"];
-            [tempDict setObject:LOGINMODE forKey:@"mode"];
-            [tempDict setObject:USERDEVICETOKEN forKey:@"device_token"];
-            
-            NSString *REturnedURL = [SS CallURLForServerReturn:tempDict URL:LOGINPAGE];
-            NSLog(@"userdevicetoken ----- %@",REturnedURL);
-            
-            NSDictionary *Retrneddata = [SS executeFetch:REturnedURL];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [SS HidePopupView];
-                
-                for (NSDictionary *statData in [Retrneddata objectForKey:@"extraparam"]) {
-                    
-                    if([[statData objectForKey:@"response"] isEqualToString:GLOBALERRSTRING]) {
-                        
-                        [self HideIndicator];
-                        
-                    } else {
-                        for (NSDictionary *statDataone in [Retrneddata objectForKey:@"userdetails"]) {
-                            
-                            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-                            [prefs setObject:[statDataone objectForKey:@"first_name"] forKey:@"first_name"];
-                            [prefs setObject:[statDataone objectForKey:@"last_name"] forKey:@"last_name"];
-                            [prefs setObject:[statDataone objectForKey:@"user_image"] forKey:@"user_image"];
-                            [prefs setObject:[statDataone objectForKey:@"userid"] forKey:@"userid"];
-                            [prefs setObject:[statDataone objectForKey:@"username"] forKey:@"username"];
-                            [prefs setObject:[statDataone objectForKey:@"email"] forKey:@"email"];
-                            [prefs setObject:UserPassword forKey:@"password"];
-                            [[NSUserDefaults standardUserDefaults] synchronize];
-                            
-                            AppDelegate *maindelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                            DashboardViewController *dashbord=[[DashboardViewController alloc]init];
-                            [maindelegate SetUpTabbarControllerwithcenterView:dashbord];
-                            
-                        }
-                    }
-                }
-            });
-        });
+        AppDelegate *maindelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        DashboardViewController *dashbord=[[DashboardViewController alloc]init];
+        [maindelegate SetUpTabbarControllerwithcenterView:dashbord];
+        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+//            
+//            
+//            NSString *USERDEVICETOKEN = [prefss objectForKey:@"USERDEVICETOKEN"];
+//            NSString *Username        = [prefss objectForKey:@"USERNAME"];
+//            NSString *UserPassword    = [prefss objectForKey:@"PASSWORD"];
+//            
+//            
+//            NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+//            [tempDict setObject:Username forKey:@"email_username"];
+//            [tempDict setObject:UserPassword forKey:@"password"];
+//            [tempDict setObject:LOGINMODE forKey:@"mode"];
+//            [tempDict setObject:USERDEVICETOKEN forKey:@"device_token"];
+//            
+//            NSString *REturnedURL = [SS CallURLForServerReturn:tempDict URL:LOGINPAGE];
+//            NSLog(@"userdevicetoken ----- %@",REturnedURL);
+//            
+//            NSDictionary *Retrneddata = [SS executeFetch:REturnedURL];
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                
+//                [SS HidePopupView];
+//                
+//                for (NSDictionary *statData in [Retrneddata objectForKey:@"extraparam"]) {
+//                    
+//                    if([[statData objectForKey:@"response"] isEqualToString:GLOBALERRSTRING]) {
+//                        
+//                        [self HideIndicator];
+//                        
+//                    } else {
+//                        for (NSDictionary *statDataone in [Retrneddata objectForKey:@"userdetails"]) {
+//                            
+//                            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+//                            [prefs setObject:[statDataone objectForKey:@"first_name"] forKey:@"first_name"];
+//                            [prefs setObject:[statDataone objectForKey:@"last_name"] forKey:@"last_name"];
+//                            [prefs setObject:[statDataone objectForKey:@"user_image"] forKey:@"user_image"];
+//                            [prefs setObject:[statDataone objectForKey:@"userid"] forKey:@"userid"];
+//                            [prefs setObject:[statDataone objectForKey:@"username"] forKey:@"username"];
+//                            [prefs setObject:[statDataone objectForKey:@"email"] forKey:@"email"];
+//                            [prefs setObject:UserPassword forKey:@"password"];
+//                            [[NSUserDefaults standardUserDefaults] synchronize];
+//                            
+//                            AppDelegate *maindelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                            DashboardViewController *dashbord=[[DashboardViewController alloc]init];
+//                            [maindelegate SetUpTabbarControllerwithcenterView:dashbord];
+//                            
+//                        }
+//                    }
+//                }
+//            });
+//        });
     }
     else {
         self.Timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(HideIndicator) userInfo:nil repeats:NO];
