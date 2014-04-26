@@ -1,0 +1,140 @@
+//
+// Prefix header for all source files of the 'TrafficCop' target in the 'TrafficCop' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#define UIColorFromRGB(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define adminemail @"santanu@esolzmail.com"
+#define DomainURL @"http://www.esolzdemos.com/lab3/trafficcop/IOS/"
+#define GLOBALERRSTRING @"error"
+#define GLOBALSUCCESSSTRING @"error"
+#define DomainURL2 @"http://www.esolzdemos.com/lab3/trafficcop/IOS/appweb.php?"
+#define Domenurl3 @"http://esolzdemos.com/lab3/trafficcop/IOS/pages/"
+#define PADDING 10.0f
+#define Domain5 @"http://www.esolzdemos.com/lab3/trafficcop/IOS/forgot.php?"
+#define DemoProfile @"http://www.esolzdemos.com/lab3/trafficcop/IOS/myprofile.php?"
+
+// DEFINE ALL URLs and MODE
+
+#define LOGINPAGE @"appweb.php"
+#define AUDIOUPLOADPAGE @"fileupload.php"
+#define LOGINMODE @"login"
+#define DELETEAUDIO @"deleteaudio"
+#define AUTOSUGGESSATIONMODE @"autosuggestion"
+#define AUDIOFETCHMODE @"audioupload"
+#define AUDIOUPLOADMODE @"audioupload"
+#define REGISTRATIONMODE @"register_save"
+#define FACEBOOKREGMODE @"facebook_register"
+#define TWITTERREGMODE @"twitter_register"
+#define LEADERBOARDMODE @"leaderboard"
+#define USERLISTMODE @"userlist"
+#define SEARCHUSER @"userlist"
+#define LATESTREPORT @"latest"
+#define HIGHRATEDREPORT @"latest&option=highest_rated"
+#define LATESTCOMMENTES @"mode=latest&option=comment"
+
+// ERR Message
+#define USERNAMEBLANKERR @"Username Cannot Be Blank"
+#define FIRSTNAMEBLANKERR @"First name Cannot Be Blank"
+#define LASTNAMEBLANKERR @"Last name Cannot Be Blank"
+#define USERNAMESPECLCHR @"Please Remove Specal Characetr From Username"
+#define EMAILBLANKERR @"Email Cannot Be Blank"
+#define INVALIEDEMAIL @"Not A Proper Email"
+#define PASSWORDBLANKERR @"Password Cannot Be Blank"
+#define MINCHRPASS @"Minimum Password Length is 6 and maximum is 12"
+#define REPASSWORDBLANKERR @"Put Your Password Again"
+#define MISMATCHPASSWORD @"Password Didnot Match"
+#define AGREETERMS @"Please Agree Terms And Condition"
+#define LOGINFAILED @"Please check your email and password"
+#define SEARCHFIELDBLANKALERT @"Please Add sometihing to search"
+#define IMAGEDOMAINURL @"http://www.esolzdemos.com/lab3/trafficcop/starrating/images/"
+
+#define VIHICLEDESCMAKEERR @"Vehicle Make Cannot Be Blank"
+#define VIHICLEDESCMODELERR @"Vehicle Model Cannot Be Blank"
+#define VIHICLEDESCYEARERR @"Vehicle Year Cannot Be Blank"
+#define VIHICLEDESCUQERR @"Vehicle Characteristics Cannot Be Blank"
+// Success Message
+
+#define VALIDEMAIL @"Email Validated"
+
+
+/* App Font List */
+
+#define TEXTFIELDPLACEHOLDERFONTNAME @"Raleway-SemiBold"
+#define GLOBALTEXTFONT @"ProximaNova-Light"
+#define TEXTFIELDPLACEHOLDERFONTSIZE 15
+
+#define globalTextFiledColor [UIColor colorWithRed:(35.0f/255.0f) green:(149.0f/255.0f)  blue:(207.0f/255.0f)  alpha:1.0f]
+#define globalTextFieldWidth 200
+#define globalTextFieldHeight 40.5
+#define globalTextFieldXCord 50
+#define globalLOGOHEIGHT 50.0
+#define globalLOGOWIDTH 200
+#define globalACTIVITYDOTCOLOR UIColorFromRGB(0xde1d23)
+#define globalTEXTFIELDPLACEHOLDERCOLOR UIColorFromRGB(0xcfcfcf)
+#define globalTEXTFIELDPLACEHOLDERFONT @"Arial"
+#define globalTEXTFIELDPLACEHOLDERFONTSIZE 12
+
+/* App Images List */
+
+// Global
+
+#define BACKBUTTON @"back_btn"
+#define TEXTFIELDBACKGROUND @"email_blank"
+#define APPHEADERIMAGE @"grek_pic"
+#define SCROLLVIEWBACKGROUND @"main_bg"
+
+// Login Scrren
+
+    /* Text */
+
+    #define LOGINFIELDPLACEHOLDER @"User name"
+    #define PASSWORDFIELDPLACEHOLDER @"Password"
+    #define REMEMBERME @"remember me"
+    #define FORGETPASSWORD @"forgot password ?"
+    #define LOGINBUTTON @"Login"
+    #define REGISTERBUTTON @"register now !"
+    #define ALTERNATIVELOGINTEXT @"or you can login with"
+    #define FACEBOOKLOGIN @"Facebook"
+    #define TWITTERLOGIN @"Twitter"
+
+    /* Images */
+
+    #define LOGINTEXTREGIONBACKGROUNDIMG @"user_box"
+    #define USERNAMEFIELDIMAGE @"user_pic@2x"
+    #define LOGINDEVIDERIMAGE @"Loginsec-dev"
+    #define PASSWORDFIELDIMAGE @"confrm_pic@2x"
+    #define LOGINBUTTONIMG @"LOGIN_NEW"
+    #define REGISTERBUTTIMG @"REGNEWICON.jpg"
+    #define LOGINFACEBOOK @"facebook_icon"
+    #define LOGINTWITTER @"twitter_pic"
+     #define EVEDENCELOCKERMODE @"evidance_locker"
+
+
+// Images
+
+#define GLOBALBACKGROUND @"virgen_bg1"
+#define GLOBALLOGOIMAGE @"traffic_logo"
+#define TERMANDCONDITION @"http://www.esolzdemos.com/lab3/trafficcop/index.php?pages=features&articleid=42&menuid=198"
+#define PRIVACYPOLICE @"http://www.esolzdemos.com/lab3/trafficcop/index.php?pages=features&articleid=43&menuid=199"
+
+#define GraphAPI @"https://graph.facebook.com/"
+
+#define GraphAPIFACEBOOK @"https://graph.facebook.com/"
+
+#define FACEBOOKIMAGEHEIGHT 200
+#define FACEBOOKIMAGEREDIRECT @"false"

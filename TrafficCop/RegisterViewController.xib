@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController">
+            <connections>
+                <outlet property="REGScrollview" destination="TpI-07-Fm1" id="uJ8-zp-1xx"/>
+                <outlet property="SwitchTerms" destination="cX2-6j-8x3" id="nWg-zG-omn"/>
+                <outlet property="TermsAndCondition" destination="jV9-pL-vFN" id="ghO-oC-NU2"/>
+                <outlet property="UserEmailField" destination="WDc-Zh-uef" id="d32-pk-7jo"/>
+                <outlet property="UserFirstNameField" destination="CR4-gk-urz" id="PHh-kj-A7p"/>
+                <outlet property="UserLastNameField" destination="Loc-Nx-6Ju" id="PDw-AH-bpQ"/>
+                <outlet property="UserNameField" destination="pW7-Xk-jXp" id="fFm-w8-5us"/>
+                <outlet property="UserPasswordField" destination="Qip-jy-l3a" id="QyP-6f-fPe"/>
+                <outlet property="UserRetypepassField" destination="B93-am-wLm" id="4IE-6a-yHS"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpI-07-Fm1">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="traffic_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="oI8-nX-yPX">
+                            <rect key="frame" x="45" y="48" width="225" height="47"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="REG_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="bZZ-Qe-1qS">
+                            <rect key="frame" x="20" y="92" width="280" height="321"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Mk-aa-Wcl">
+                            <rect key="frame" x="51" y="352" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="last name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Loc-Nx-6Ju">
+                            <rect key="frame" x="83" y="347" width="186" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="hideKeyboard:" destination="-1" eventType="editingDidEndOnExit" id="vVC-Oo-w4A"/>
+                                <action selector="movetotopone:" destination="-1" eventType="editingDidBegin" id="WXp-CE-AEg"/>
+                                <action selector="movetozero:" destination="-1" eventType="editingDidEnd" id="UMH-fA-ClW"/>
+                            </connections>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="av6-PJ-7YS">
+                            <rect key="frame" x="51" y="128" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="email.png" translatesAutoresizingMaskIntoConstraints="NO" id="z8Z-4U-U1i">
+                            <rect key="frame" x="51" y="169" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="password.png" translatesAutoresizingMaskIntoConstraints="NO" id="SSI-I2-MZa">
+                            <rect key="frame" x="51" y="213" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="confirm password'.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cu2-Qy-F61">
+                            <rect key="frame" x="51" y="258" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="user name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pW7-Xk-jXp">
+                            <rect key="frame" x="83" y="123" width="186" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="hideKeyboard:" destination="-1" eventType="editingDidEndOnExit" id="i3i-72-1Ib"/>
+                                <action selector="movetotop:" destination="-1" eventType="editingDidBegin" id="c3g-JX-htE"/>
+                                <action selector="movetozero:" destination="-1" eventType="editingDidEnd" id="QdW-5h-rjo"/>
+                            </connections>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="XCr-0G-2YM">
+                            <rect key="frame" x="51" y="310" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="first name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CR4-gk-urz">
+                            <rect key="frame" x="83" y="305" width="186" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="hideKeyboard:" destination="-1" eventType="editingDidEndOnExit" id="dgB-Tl-fkT"/>
+                                <action selector="movetotopone:" destination="-1" eventType="editingDidBegin" id="LCk-Wu-3Z2"/>
+                                <action selector="movetozero:" destination="-1" eventType="editingDidEnd" id="qLb-Ai-Gvs"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WDc-Zh-uef">
+                            <rect key="frame" x="83" y="166" width="186" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="hideKeyboard:" destination="-1" eventType="editingDidEndOnExit" id="M0P-Ya-Blm"/>
+                                <action selector="movetotop:" destination="-1" eventType="editingDidBegin" id="D83-2f-nH8"/>
+                                <action selector="movetozero:" destination="-1" eventType="editingDidEnd" id="JOD-vx-azz"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qip-jy-l3a">
+                            <rect key="frame" x="83" y="210" width="186" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <connections>
+                                <action selector="hideKeyboard:" destination="-1" eventType="editingDidEndOnExit" id="iaQ-vO-7kb"/>
+                                <action selector="movetotopone:" destination="-1" eventType="editingDidBegin" id="KfA-Nu-vUS"/>
+                                <action selector="movetozero:" destination="-1" eventType="editingDidEnd" id="LpE-qk-E5b"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="confirm password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B93-am-wLm">
+                            <rect key="frame" x="83" y="255" width="186" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <connections>
+                                <action selector="hideKeyboard:" destination="-1" eventType="editingDidEndOnExit" id="hMv-rn-7x5"/>
+                                <action selector="movetotopone:" destination="-1" eventType="editingDidBegin" id="2kp-Gm-0f7"/>
+                                <action selector="movetozero:" destination="-1" eventType="editingDidEnd" id="sYn-zp-ms4"/>
+                            </connections>
+                        </textField>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cX2-6j-8x3">
+                            <rect key="frame" x="39" y="408" width="51" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="ChangeSwitchValue:" destination="-1" eventType="valueChanged" id="aKt-0U-hSi"/>
+                            </connections>
+                        </switch>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="accept all terms &amp; conditions." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jV9-pL-vFN">
+                            <rect key="frame" x="102" y="413" width="178" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcS-Bo-37y">
+                            <rect key="frame" x="39" y="447" width="241" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Register Now" backgroundImage="register_btn1.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="RegButtonClicked:" destination="-1" eventType="touchUpInside" id="aaz-en-ovF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KM8-Ea-iCW">
+                            <rect key="frame" x="0.0" y="8" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title=" " backgroundImage="arrow-left.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="goBack:" destination="-1" eventType="touchUpInside" id="ivP-J3-EOn"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="REG_BG.png" width="564" height="578"/>
+        <image name="arrow-left.png" width="48" height="48"/>
+        <image name="confirm password'.png" width="50" height="50"/>
+        <image name="email.png" width="50" height="50"/>
+        <image name="password.png" width="50" height="50"/>
+        <image name="register_btn1.png" width="516" height="107"/>
+        <image name="traffic_logo.png" width="450" height="94"/>
+        <image name="user.png" width="50" height="50"/>
+    </resources>
+</document>
