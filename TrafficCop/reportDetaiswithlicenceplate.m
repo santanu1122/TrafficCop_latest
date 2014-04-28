@@ -183,7 +183,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 135.0f;
+    return 110.0f;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -223,19 +223,19 @@
     
     
     
-    UILabel *LablePostby=[[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
-    LablePostby.backgroundColor = [UIColor clearColor];
+//    UILabel *LablePostby=[[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
+//    LablePostby.backgroundColor = [UIColor clearColor];
+//    
+//    LablePostby.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0];
+//    
+//    LablePostby.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    LablePostby.text = [helprforlicencedetails stripTags:[item objectForKey:@"posted_by"]];
+//    
+//    [MainCellView addSubview:LablePostby];
     
-    LablePostby.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0];
     
-    LablePostby.textColor = UIColorFromRGB(0x211e1f);
-    
-    LablePostby.text = [helprforlicencedetails stripTags:[item objectForKey:@"posted_by"]];
-    
-    [MainCellView addSubview:LablePostby];
-    
-    
-    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 35, 250, 25)];
+    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
     
     TitleLabel.backgroundColor = [UIColor clearColor];
     
@@ -266,7 +266,7 @@
             //SIZEX = 60+5;
             SIZEX = 90;
         
-        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 63, 20, 20)];
+        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 35, 20, 20)];
         
         ImageViewone.backgroundColor = [UIColor clearColor];
         
@@ -285,7 +285,7 @@
             
             //SIZEX = 60+5;
               SIZEX = 90;
-        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 63, 20, 20)];
+        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 35, 20, 20)];
         
         ImageViewone.backgroundColor = [UIColor clearColor];
         
@@ -301,19 +301,20 @@
     cell.textLabel.text=[item objectForKey:@"report_id"];
     cell.textLabel.hidden=YES;
     
-    UILabel *Detailslabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 85, 230, 50)];
+    UILabel *Detailslabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 60, 230, 50)];
     Detailslabel.backgroundColor = [UIColor clearColor];
     Detailslabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:12.0];
     Detailslabel.textColor = UIColorFromRGB(0x575757);
     Detailslabel.text = [helprforlicencedetails stripTags:[item objectForKey:@"report_desc"]];
-    Detailslabel.numberOfLines = 0;
+    Detailslabel.numberOfLines = 2;
     Detailslabel.textAlignment = NSTextAlignmentLeft;
     [MainCellView addSubview:Detailslabel];
     
-    UILabel *SeparatorLable=[[UILabel alloc]initWithFrame:CGRectMake(0, 134, 320, .5)];
-    [SeparatorLable setBackgroundColor:[UIColor lightGrayColor]];
-    //[SeparatorLable.layer setOpacity:.2];
-    [cell.contentView addSubview:SeparatorLable];
+    UILabel *SeparatorLable=[[UILabel alloc]initWithFrame:CGRectMake(0, 109, 320, .5)];
+    [SeparatorLable setBackgroundColor:[UIColor blackColor]];
+    [SeparatorLable.layer setOpacity:.2];
+    [MainCellView addSubview:SeparatorLable];
+    [cell.contentView addSubview:MainCellView];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
