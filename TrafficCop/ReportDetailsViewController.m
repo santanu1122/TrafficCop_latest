@@ -440,7 +440,11 @@ float Basic_height                          = 0.0f;
     [ReportDetailsHelper CreatelabelWithValueCenter:SIZEX+50 ycord:Basic_height+3 width:100 height:16 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:@"Comment" fontName:GLOBALTEXTFONT fontSize:15.0f addView:MAinScrollview];
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"Posted By: " fontName:GLOBALTEXTFONT_Title fontSize:12 addView:ViewForPostedComment];
+=======
+    Basic_height                = Basic_height + 22 + 5;
+>>>>>>> FETCH_HEAD
 =======
     Basic_height                = Basic_height + 22 + 5;
 >>>>>>> FETCH_HEAD
@@ -544,7 +548,11 @@ float Basic_height                          = 0.0f;
     [ReportDetailsHelper CreatelabelWithValueCenter:120 ycord:3 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:makeby fontName:GLOBALTEXTFONT fontSize:13.0f addView:ViewForMake];
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     [ReportDetailsHelper CreatelabelWithValueCenter:10 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x211e1f) labeltext:report_title fontName:GLOBALTEXTFONT_Title fontSize:15.0f addView:MAinScrollview];
+=======
+    [ReportDetailsHelper CreatelabelWithValueCenter:120 ycord:3 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:year fontName:GLOBALTEXTFONT fontSize:13.0f addView:ViewForYear];
+>>>>>>> FETCH_HEAD
 =======
     [ReportDetailsHelper CreatelabelWithValueCenter:120 ycord:3 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:year fontName:GLOBALTEXTFONT fontSize:13.0f addView:ViewForYear];
 >>>>>>> FETCH_HEAD
