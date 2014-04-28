@@ -208,7 +208,7 @@ int GlobalSelectedIndexPathOne = 0;
     [CellBadgeFooterLable setBackgroundColor:UIColorFromRGB(0xc5c5c5)];
     [CellBadgeTitleLable setTextColor:UIColorFromRGB(0x211e1f)];
     //[CellBadgeTitleLable setFont:[UIFont fontWithName:GLOBALTEXTFONT size:14.0]];
-    [CellBadgeTitleLable setFont:[UIFont fontWithName:@"OpenSans-Semibold" size:14.0]];
+    [CellBadgeTitleLable setFont:[UIFont fontWithName:GLOBALTEXTFONT_Title size:14.0]];
     
     [CellBadgeShareOnFacebook setTitle:[NSString stringWithFormat:@"%d",indexPath.row] forState:UIControlStateNormal];
     [CellBadgeShareOnFacebook.titleLabel setHidden:YES];
@@ -363,7 +363,8 @@ int GlobalSelectedIndexPathOne = 0;
     UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     Titlelabel.backgroundColor=[UIColor whiteColor];
     Titlelabel.text = @"MY REPORTS";
-    [Titlelabel setFont:[UIFont fontWithName:GLOBALTEXTFONT size:16.0]];
+    [Titlelabel setFont:[UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0]];
+    Titlelabel.textColor = UIColorFromRGB(0x211e1f);
     Titlelabel.textAlignment=NSTextAlignmentCenter;
     [MainHeaderView addSubview:Titlelabel];
     

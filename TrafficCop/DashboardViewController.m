@@ -651,7 +651,7 @@
             
             UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
             TitleLabel.backgroundColor = [UIColor clearColor];
-            TitleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:15.0f];
+            TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0f];
             TitleLabel.textColor = UIColorFromRGB(0x211e1f);
             TitleLabel.text = [DashboardHelper stripTags:[item objectForKey:@"title"]];
             [MainCellView addSubview:TitleLabel];
@@ -770,7 +770,7 @@
             
             UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
             TitleLabel.backgroundColor = [UIColor clearColor];
-            TitleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:15.0];
+            TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0];
             [TitleLabel setTextColor:UIColorFromRGB(0x211e1f)];
             TitleLabel.text = [DashboardHelper stripTags:[item objectForKey:@"report_title"]];
             [MainCellView addSubview:TitleLabel];

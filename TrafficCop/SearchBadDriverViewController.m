@@ -104,11 +104,12 @@ int NumberOfPages = 1;
     [_SearchResultTableView setDataSource:self];
     
     [_SearchResultView setHidden:YES];
-    [_SearchResultView setFrame:CGRectMake(10, 160, 300, self.view.frame.size.height - 120)];
+//    [_SearchResultView setFrame:CGRectMake(10, 160, 300, self.view.frame.size.height - 120)];
+    [_SearchResultView setFrame:CGRectMake(0, 160, 320, self.view.frame.size.height - 120)];
     [self.view addSubview:_SearchResultView];
     
     [_SearchNoResult setHidden:YES];
-    [_SearchNoResult setFrame:CGRectMake(10, 160, 300, 100)];
+    [_SearchNoResult setFrame:CGRectMake(0, 160, 320, 100)];
     [self.view addSubview:_SearchNoResult];
     
     [_UIsearchBarTap setFrame:CGRectMake(10, 110, 300, 60)];
@@ -240,6 +241,8 @@ int NumberOfPages = 1;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *tableViewCell = [[UITableViewCell alloc] init];
+    tableViewCell.backgroundColor = [UIColor clearColor];
+    
     NSMutableDictionary *CellData = [SearchResultDataArray objectAtIndex:indexPath.row];
     
     UIView  *MainCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
@@ -247,34 +250,42 @@ int NumberOfPages = 1;
     UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 60, 60)];
     ImageView.backgroundColor = [UIColor clearColor];
     [MainCellView addSubview:ImageView];
-    ImageView.layer.cornerRadius=6.0f;
-    ImageView.layer.borderWidth=2.0f;
-    ImageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
+   // ImageView.layer.cornerRadius=6.0f;
+   // ImageView.layer.borderWidth=2.0f;
+   // ImageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
     
     
     ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-    imageView.defaultImage = [UIImage imageNamed:@"Noimage.png"];
+    imageView.defaultImage = [UIImage imageNamed:@"NEWNOIMAGE.png"];
     imageView.imageUrl = [CellData objectForKey:@"userimage"];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
-    
-    
-
+    imageView.clipsToBounds = YES;
+    imageView.backgroundColor = [UIColor clearColor];
+    imageView.corners = ZSRoundCornerAll;
+    imageView.cornerRadius = 20;
     [ImageView addSubview:imageView];
+    
+    
+    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
+    [ImageView addSubview:ImageOverlay];
+    
+    
     tableViewCell.textLabel.text=[CellData objectForKey:@"report_id"];
     tableViewCell.textLabel.hidden=YES;
     
-    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 220, 20)];
+    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 220, 20)];
     TitleLabel.backgroundColor = [UIColor clearColor];
     TitleLabel.numberOfLines = 0;
-    TitleLabel.font = [UIFont fontWithName:@"Arial" size:16.0f];
-    TitleLabel.textColor = UIColorFromRGB(0xfcb714);
+    TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0f];
+    TitleLabel.textColor = UIColorFromRGB(0x211e1f);
     TitleLabel.text = [SearchBadDriverHelper stripTags:[CellData objectForKey:@"report_title"]];
     [MainCellView addSubview:TitleLabel];
     
-    UITextView *Detailslabel = [[UITextView alloc] initWithFrame:CGRectMake(67, 35, 223, 40)];
+    UITextView *Detailslabel = [[UITextView alloc] initWithFrame:CGRectMake(77, 35, 223, 40)];
     Detailslabel.backgroundColor = [UIColor clearColor];
-    Detailslabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
-    Detailslabel.textColor = UIColorFromRGB(0x1aad4b);
+    Detailslabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:12.0f];
+    Detailslabel.textColor = UIColorFromRGB(0x575757);
    
     NSString *reportDescription=[CellData objectForKey:@"report_desc"];
     if (reportDescription.length<2)
@@ -290,7 +301,7 @@ int NumberOfPages = 1;
     Detailslabel.scrollEnabled=NO;
     Detailslabel.textAlignment = NSTextAlignmentLeft;
     UILabel *separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 79, 320, .5)];
-    separetor.layer.opacity=0.2f;
+    //separetor.layer.opacity=0.2f;
     [separetor setBackgroundColor:[UIColor blackColor]];
     [MainCellView addSubview:separetor];
     [MainCellView addSubview:Detailslabel];
@@ -363,6 +374,10 @@ int NumberOfPages = 1;
     [MainHeaderView setBackgroundColor:[UIColor whiteColor]];
     UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 320, 35)];
     Titlelabel.text = [NSString stringWithFormat:@"Search Result For %@",[_UIsearchBarTap text]];
+    
+    Titlelabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    Titlelabel.textColor = UIColorFromRGB(0x211e1f);
+    
     [MainHeaderView addSubview:Titlelabel];
     
     UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 49, 320/3,1)];

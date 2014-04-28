@@ -355,7 +355,7 @@ int TotalCommentbyme = 0;
     
     [ReportDetailsHelper CreateImageviewWithImage:ViewForPostedComment xcord:0 ycord:12 width:15 height:15 backgroundColor:[UIColor clearColor] imageName:@"SMALL_USER"];
     
-    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"Posted By: " fontName:@"OpenSans-Semibold" fontSize:12 addView:ViewForPostedComment];
+    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"Posted By: " fontName:GLOBALTEXTFONT_Title fontSize:12 addView:ViewForPostedComment];
     
     
     [ViewForPostedComment setBackgroundColor:[UIColor clearColor]];
@@ -480,7 +480,7 @@ int TotalCommentbyme = 0;
     
     [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:postby fontName:@"Arial" fontSize:12.0f addView:ViewForPostedComment];
     
-    [ReportDetailsHelper CreatelabelWithValueCenter:10 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x211e1f) labeltext:report_title fontName:@"OpenSans-Semibold" fontSize:15.0f addView:MAinScrollview];
+    [ReportDetailsHelper CreatelabelWithValueCenter:10 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x211e1f) labeltext:report_title fontName:GLOBALTEXTFONT_Title fontSize:15.0f addView:MAinScrollview];
     
     //[TitleLabel setTextColor:UIColorFromRGB(0x211e1f)];
     

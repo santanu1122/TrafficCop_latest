@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIView *headerViewController;
 @property (strong, nonatomic) IBOutlet UITableView *EvedenceLockertable;
 @property (strong, nonatomic) IBOutlet UIView *noResultFound;
+@property (weak, nonatomic) IBOutlet UILabel *EvidenceLockerLbl;
 
 @end
 
@@ -52,6 +53,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    _EvidenceLockerLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _EvidenceLockerLbl.textColor = UIColorFromRGB(0x211e1f);
+    
     helperAvidence=[[HelperClass alloc]init];
     [helperAvidence SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
       [helperAvidence SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
@@ -132,7 +137,23 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return _headerViewController;
+    //return _headerViewController;
+    
+    UIView *MainHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 54)];
+    MainHeaderView.backgroundColor = [UIColor whiteColor];
+    [MainHeaderView addSubview:_headerViewController];
+    
+    UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 52, 320/3,1)];
+    greenLabel.backgroundColor = UIColorFromRGB(0x1aad4b);
+    [MainHeaderView addSubview:greenLabel];
+    UILabel *yellowlabel = [[UILabel alloc] initWithFrame:CGRectMake(320/3, 52, 320/3,1)];
+    yellowlabel.backgroundColor = UIColorFromRGB(0xfcb714);
+    [MainHeaderView addSubview:yellowlabel];
+    UILabel *redlabel = [[UILabel alloc] initWithFrame:CGRectMake(320/3*2, 52, 320/3+5,1)];
+    redlabel.backgroundColor = UIColorFromRGB(0xde1d23);
+    [MainHeaderView addSubview:redlabel];
+    return MainHeaderView;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -163,6 +184,10 @@
      Serialno.text=[NSString stringWithFormat:@"%d",indexPath.row+1];
      UILabel *licencePlate=(UILabel *)[cell.contentView viewWithTag:991];
      licencePlate.text=[[mutdiction valueForKey:@"licence"] uppercaseString];
+     licencePlate.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0f];
+     licencePlate.textColor = UIColorFromRGB(0x211e1f);
+    
+    
      UILabel *numborOFreport=(UILabel *)[cell.contentView viewWithTag:992];
      numborOFreport.text=[NSString stringWithFormat:@"%@",[mutdiction valueForKey:@"totalreport"]];
      UIButton *DeleatButton=(UIButton *)[cell.contentView viewWithTag:994];
@@ -200,14 +225,10 @@
     NSMutableDictionary *mutDic=[StoreLicenceplate objectAtIndex:sender.tag];
     licenceplate=[mutDic valueForKey:@"licence"];
     
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Confirmation" message:@"Remove this from Evidence Locker?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Delete", nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Confirmation" message:@"Remove this from Evidence Locker?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
     [alert show];
     deletItemidex=sender.tag;
    
-   
-   
-    
-    
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

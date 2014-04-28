@@ -134,7 +134,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 145.0f;
+    return 148.0f;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -191,7 +191,7 @@
         
           UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
           TitleLabel.backgroundColor = [UIColor clearColor];
-          TitleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
+          TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
           TitleLabel.textColor = UIColorFromRGB(0x211e1f);
          TitleLabel.text = [item objectForKey:@"username"];//[NSString stringWithFormat:@"%@ %@",[[LeaderBoardHelper stripTags:[item objectForKey:@"first_name"]] capitalizedString],[[LeaderBoardHelper stripTags:[item objectForKey:@"last_name"]] capitalizedString]];
         [MainCEllView addSubview:TitleLabel];
@@ -204,7 +204,7 @@
         
         UILabel *LabelTitleRank = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 80, 20)];
         LabelTitleRank.backgroundColor = [UIColor clearColor];
-        LabelTitleRank.font = [UIFont fontWithName:@"OpenSans-Semibold" size:13];
+        LabelTitleRank.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:13];
         LabelTitleRank.textColor = UIColorFromRGB(0x000000);
         LabelTitleRank.text = @"Rank :";
         [documentViewRank addSubview:LabelTitleRank];
@@ -253,7 +253,7 @@
         
         UILabel *LabelTitleReports = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 80, 20)];
         LabelTitleReports.backgroundColor = [UIColor clearColor];
-        LabelTitleReports.font = [UIFont fontWithName:@"OpenSans-Semibold" size:13];
+        LabelTitleReports.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:13];
         LabelTitleReports.textColor = UIColorFromRGB(0x000000);
         LabelTitleReports.text = @"Reports :";
         [documentViewReports addSubview:LabelTitleReports];
@@ -276,7 +276,7 @@
         
         UILabel *LabelTitleComments = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 90, 20)];
         LabelTitleComments.backgroundColor = [UIColor clearColor];
-        LabelTitleComments.font = [UIFont fontWithName:@"OpenSans-Semibold" size:13];
+        LabelTitleComments.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:13];
         LabelTitleComments.textColor = UIColorFromRGB(0x000000);
         LabelTitleComments.text = @"Comments :";
         [documentViewComments addSubview:LabelTitleComments];
@@ -300,7 +300,7 @@
         
         UILabel *LabelTitleTotalpoints = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 90, 20)];
         LabelTitleTotalpoints.backgroundColor = [UIColor clearColor];
-        LabelTitleTotalpoints.font = [UIFont fontWithName:@"OpenSans-Semibold" size:13];
+        LabelTitleTotalpoints.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:13];
         LabelTitleTotalpoints.textColor = UIColorFromRGB(0x000000);
         LabelTitleTotalpoints.text = @"Total Points :";
         [documentViewTotalpoints addSubview:LabelTitleTotalpoints];
@@ -335,7 +335,10 @@
     MainHeaderView.backgroundColor = [UIColor whiteColor];
     UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 320, 35)];
     Titlelabel.text = @"Leader Board";
+    Titlelabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0];
+    [Titlelabel setTextColor:UIColorFromRGB(0x211e1f)];
     [MainHeaderView addSubview:Titlelabel];
+    
     UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 49, 320/3,1)];
     greenLabel.backgroundColor = UIColorFromRGB(0x1aad4b);
     [MainHeaderView addSubview:greenLabel];
