@@ -50,7 +50,7 @@
     
     NSUserDefaults *prefss = [NSUserDefaults standardUserDefaults];
     
-    [prefss setObject:@"6" forKey:@"userid"];
+    //[prefss setObject:@"6" forKey:@"userid"];
     NSString *str=[prefss valueForKey:@"userid"];
     
     if ([str intValue] > 0) {
