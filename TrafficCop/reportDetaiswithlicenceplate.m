@@ -316,6 +316,7 @@
     [MainCellView addSubview:SeparatorLable];
     [cell.contentView addSubview:MainCellView];
     return cell;
+    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
