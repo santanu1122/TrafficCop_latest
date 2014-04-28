@@ -26,11 +26,11 @@ typedef enum {
 
 
 typedef enum {
-
+    
     SegmentClickedDetails,
     SegmentClickedMap,
     SegmentClickedComment,
-
+    
 } SegmentClicked;
 
 @interface ReportDetailsViewController ()<UIAlertViewDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -275,75 +275,75 @@ float Basic_height                          = 0.0f;
     
     ImageArray=[[NSMutableArray alloc]init];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void)
-    {
-        
-        NSString *StringUrl=[NSString stringWithFormat:@"%@result_details.php?id=%@&loginuser=%@",DomainURL,reportId,userID];
-        NSLog(@"the value for key:%@",StringUrl);
-        NSURL *url=[NSURL URLWithString:StringUrl];
-        NSData *data=[NSData dataWithContentsOfURL:url];
-        NSDictionary *mainDic=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        NSArray *reportImageArray=[mainDic objectForKey:@"reportimage"];
-        
-        NSDictionary *reportDetail=[mainDic valueForKey:@"reportdetails"];
-        report_title=[reportDetail valueForKey:@"report_title"];
-        reportAvaragerate=[reportDetail valueForKey:@"report_avg_rating"];
-        postby=[reportDetail valueForKey:@"posted_by"];
-        
-        licenceplate=[reportDetail valueForKey:@"licence_plate"];
-        NSString *makeBywhom=[reportDetail valueForKey:@"make"];
-        if ([makeBywhom isKindOfClass:NULL]||[makeBywhom isEqualToString:@""])
-        {
-            makeby=@"N/A";
-        }
-        else
-        {
-            makeby=[reportDetail valueForKey:@"make"];
-        }
-        
-        
-        self.model=[reportDetail valueForKey:@"model"];
-        if ([self.model isKindOfClass:NULL]||[self.model isEqualToString:@""]) {
-            self.model=@"N/A";
-        }
-        year=[reportDetail valueForKey:@"year"];
-        if ([year isKindOfClass:NULL]||[year isEqualToString:@""])
-        {
-            year=@"N/A";
-        }
-        characteristics=[reportDetail valueForKey:@"characteristics"];
-        if ([characteristics isKindOfClass:NULL]||[characteristics isEqualToString:@""])
-        {
-            characteristics=@"N/A";
-        }
-        report_description=[reportDetail valueForKey:@"report_desc"];
-        if ([report_description isKindOfClass:NULL]||[report_description isEqualToString:@""])
-        {
-            report_description=@"N/A";
-        }
-        totalComment=[reportDetail valueForKey:@"report_comment_text"];
-        Latetude=[reportDetail valueForKey:@"latitude"];
-        Longitude=[reportDetail valueForKey:@"longitude"];
-        
-        if ([Latetude isEqualToString:@"0.000000"] && [Longitude isEqualToString:@"0.000000"]) {
-            location= @"N/A";
-        } else {
-           location=[reportDetail valueForKey:@"location"];
-        }
-        
-        NSLog(@"lat and long is--- %@   --  %@", Latetude, Longitude);
-        
-        ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
-        photos=[reportDetail valueForKey:@"report_total_image_text"];
-        for (NSString *imageReport in reportImageArray)
-        {
-            [ImageArray addObject:imageReport];
-        }
-        NSLog(@"the image array:%@",ImageArray);
-        dispatch_async( dispatch_get_main_queue(), ^(void)
-        {
-             [self REportDetailsview];
-        });
-    });
+                   {
+                       
+                       NSString *StringUrl=[NSString stringWithFormat:@"%@result_details.php?id=%@&loginuser=%@",DomainURL,reportId,userID];
+                       NSLog(@"the value for key:%@",StringUrl);
+                       NSURL *url=[NSURL URLWithString:StringUrl];
+                       NSData *data=[NSData dataWithContentsOfURL:url];
+                       NSDictionary *mainDic=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                       NSArray *reportImageArray=[mainDic objectForKey:@"reportimage"];
+                       
+                       NSDictionary *reportDetail=[mainDic valueForKey:@"reportdetails"];
+                       report_title=[reportDetail valueForKey:@"report_title"];
+                       reportAvaragerate=[reportDetail valueForKey:@"report_avg_rating"];
+                       postby=[reportDetail valueForKey:@"posted_by"];
+                       
+                       licenceplate=[reportDetail valueForKey:@"licence_plate"];
+                       NSString *makeBywhom=[reportDetail valueForKey:@"make"];
+                       if ([makeBywhom isKindOfClass:NULL]||[makeBywhom isEqualToString:@""])
+                       {
+                           makeby=@"N/A";
+                       }
+                       else
+                       {
+                           makeby=[reportDetail valueForKey:@"make"];
+                       }
+                       
+                       
+                       self.model=[reportDetail valueForKey:@"model"];
+                       if ([self.model isKindOfClass:NULL]||[self.model isEqualToString:@""]) {
+                           self.model=@"N/A";
+                       }
+                       year=[reportDetail valueForKey:@"year"];
+                       if ([year isKindOfClass:NULL]||[year isEqualToString:@""])
+                       {
+                           year=@"N/A";
+                       }
+                       characteristics=[reportDetail valueForKey:@"characteristics"];
+                       if ([characteristics isKindOfClass:NULL]||[characteristics isEqualToString:@""])
+                       {
+                           characteristics=@"N/A";
+                       }
+                       report_description=[reportDetail valueForKey:@"report_desc"];
+                       if ([report_description isKindOfClass:NULL]||[report_description isEqualToString:@""])
+                       {
+                           report_description=@"N/A";
+                       }
+                       totalComment=[reportDetail valueForKey:@"report_comment_text"];
+                       Latetude=[reportDetail valueForKey:@"latitude"];
+                       Longitude=[reportDetail valueForKey:@"longitude"];
+                       
+                       if ([Latetude isEqualToString:@"0.000000"] && [Longitude isEqualToString:@"0.000000"]) {
+                           location= @"N/A";
+                       } else {
+                           location=[reportDetail valueForKey:@"location"];
+                       }
+                       
+                       NSLog(@"lat and long is--- %@   --  %@", Latetude, Longitude);
+                       
+                       ItsEvidencelocker=[reportDetail valueForKey:@"its_evidance_locker"];
+                       photos=[reportDetail valueForKey:@"report_total_image_text"];
+                       for (NSString *imageReport in reportImageArray)
+                       {
+                           [ImageArray addObject:imageReport];
+                       }
+                       NSLog(@"the image array:%@",ImageArray);
+                       dispatch_async( dispatch_get_main_queue(), ^(void)
+                                      {
+                                          [self REportDetailsview];
+                                      });
+                   });
 }
 
 -(IBAction)GotoTheAllSimilerreportPage:(id)sender
@@ -439,15 +439,7 @@ float Basic_height                          = 0.0f;
     
     [ReportDetailsHelper CreatelabelWithValueCenter:SIZEX+50 ycord:Basic_height+3 width:100 height:16 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:@"Comment" fontName:GLOBALTEXTFONT fontSize:15.0f addView:MAinScrollview];
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"Posted By: " fontName:GLOBALTEXTFONT_Title fontSize:12 addView:ViewForPostedComment];
-=======
     Basic_height                = Basic_height + 22 + 5;
->>>>>>> FETCH_HEAD
-=======
-    Basic_height                = Basic_height + 22 + 5;
->>>>>>> FETCH_HEAD
     
     
     DetailsTextView = [[UITextView alloc] init];
@@ -474,7 +466,7 @@ float Basic_height                          = 0.0f;
     [MAinScrollview addSubview:ViewForPostedComment];
     
     Basic_height                = Basic_height + 20 + 5;
-
+    
     UIView *ViewForLocation = [[UIView alloc] initWithFrame:CGRectMake(0, Basic_height, 310, 20)];
     [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Location" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForLocation];
     [MAinScrollview addSubview:ViewForLocation];
@@ -520,7 +512,7 @@ float Basic_height                          = 0.0f;
     [MAinScrollview addSubview:ViewForMake];
     
     Basic_height                = Basic_height + 20 + 5;
-
+    
     UIView *ViewForModel = [[UIView alloc] initWithFrame:CGRectMake(0, Basic_height, 310, 20)];
     [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Model" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForModel];
     [ViewForModel setBackgroundColor:[UIColor clearColor]];
@@ -532,7 +524,7 @@ float Basic_height                          = 0.0f;
     [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Year" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForYear];
     [ViewForYear setBackgroundColor:[UIColor clearColor]];
     [MAinScrollview addSubview:ViewForYear];
-
+    
     Basic_height                = Basic_height + 20 + 5;
     
     UIView *ViewForCharacteristics = [[UIView alloc] initWithFrame:CGRectMake(0, Basic_height, 310, 20)];
@@ -547,15 +539,7 @@ float Basic_height                          = 0.0f;
     
     [ReportDetailsHelper CreatelabelWithValueCenter:120 ycord:3 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:makeby fontName:GLOBALTEXTFONT fontSize:13.0f addView:ViewForMake];
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    [ReportDetailsHelper CreatelabelWithValueCenter:10 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x211e1f) labeltext:report_title fontName:GLOBALTEXTFONT_Title fontSize:15.0f addView:MAinScrollview];
-=======
     [ReportDetailsHelper CreatelabelWithValueCenter:120 ycord:3 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:year fontName:GLOBALTEXTFONT fontSize:13.0f addView:ViewForYear];
->>>>>>> FETCH_HEAD
-=======
-    [ReportDetailsHelper CreatelabelWithValueCenter:120 ycord:3 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:year fontName:GLOBALTEXTFONT fontSize:13.0f addView:ViewForYear];
->>>>>>> FETCH_HEAD
     
     [ReportDetailsHelper CreatelabelWithValueCenter:120 ycord:3 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:self.model fontName:GLOBALTEXTFONT fontSize:13.0f addView:ViewForModel];
     
@@ -563,7 +547,7 @@ float Basic_height                          = 0.0f;
     
     [ReportDetailsHelper CreatelabelWithValueCenter:120 ycord:1.5f width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:characteristics fontName:GLOBALTEXTFONT fontSize:13.0f addView:ViewForCharacteristics];
     
-     Basic_height = Basic_height +50;
+    Basic_height = Basic_height +50;
     
     UIButton *ShowAllSimilerreport=[UIButton buttonWithType:UIButtonTypeCustom];
     [ShowAllSimilerreport setBackgroundColor:UIColorFromRGB(0x17b04a)];
@@ -581,215 +565,215 @@ float Basic_height                          = 0.0f;
     Basic_height = Basic_height +30;
     
     [MAinScrollview setContentSize:CGSizeMake(320, Basic_height+50)];
-//    
-//    
-//    
-//    int TOTAL = 5;
-//    int YELLOW = [reportAvaragerate integerValue] ;
-//    int GRAY = TOTAL - YELLOW;
-//    float SIZEX = 15;
-//    for(int i=0; i < YELLOW; i++)
-//    {
-//        [ReportDetailsHelper CreateImageviewWithImage:MAinScrollview xcord:SIZEX ycord:30 width:20 height:20 backgroundColor:[UIColor clearColor] imageName:@"starNEW"];
-//        SIZEX = SIZEX + 22;
-//    }
-//    for(int j=0; j < GRAY; j++)
-//    {
-//        if(GRAY==5 && j==0)
-//            SIZEX = 15;
-//        [ReportDetailsHelper CreateImageviewWithImage:MAinScrollview xcord:SIZEX ycord:30 width:20 height:20 backgroundColor:[UIColor clearColor] imageName:@"star1NEW"];
-//        SIZEX = SIZEX + 22;
-//    }
-//    
-//    _LocationMap.delegate = self;
-//    
-//    UIView *ViewForPostedComment = [[UIView alloc] initWithFrame:CGRectMake(5, 70, 310, 20)];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Posted By" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForPostedComment];
-//
-//    
-//    [ViewForPostedComment setBackgroundColor:[UIColor clearColor]];
-//    [MAinScrollview addSubview:ViewForPostedComment];
-//    [MAinScrollview setBackgroundColor:[UIColor whiteColor]];
-//    
-//    // Section for Location
-//    
-//    UIView *ViewForLocation = [[UIView alloc] initWithFrame:CGRectMake(5, 100, 310, 20)];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Location" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForLocation];
-//
-//    
-//    [ViewForLocation setBackgroundColor:[UIColor clearColor]];
-//    [MAinScrollview addSubview:ViewForLocation];
-//    
-//    // Section for License Plate
-//    
-//    UIView *ViewForLicensePlate = [[UIView alloc] initWithFrame:CGRectMake(5, 130, 320, 40)];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"License Plate" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForLicensePlate];
-//    Evidencelocker=[[UILabel alloc]initWithFrame:CGRectMake(182, 7, 140, 20)];
-//    
-//    buttonEvidencel=[[UIButton alloc]initWithFrame:CGRectMake(182, 7, 130, 20)];
-//    if ([ItsEvidencelocker integerValue]==1)
-//    {
-//        isAddedToAvidencelocker=YES;
-//        [buttonEvidencel setBackgroundImage:[UIImage imageNamed:@"RemoveFromEvidenceLocker.jpg"] forState:UIControlStateNormal];
-//        
-//    }
-//    else
-//    {
-//        isAddedToAvidencelocker=NO;
-//        
-//        [buttonEvidencel setBackgroundImage:[UIImage imageNamed:@"AddToEvidenceLocker.jpg"] forState:UIControlStateNormal];
-//    }
-//    
-//    [buttonEvidencel addTarget:self action:@selector(buttonEvidenceclick) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(AddToAvidenceLocker:)];
-//    [tapGesture setNumberOfTapsRequired:1];
-//    [ViewForLicensePlate addGestureRecognizer:tapGesture];
-//    Evidencelocker.textAlignment=NSTextAlignmentCenter;
-//    Evidencelocker.textColor=[UIColor greenColor];
-//    Evidencelocker.font=[UIFont systemFontOfSize:10.0f];
-//    [ViewForLicensePlate addSubview:buttonEvidencel];
-//    
-//    [ViewForLicensePlate addSubview:Evidencelocker];
-//    [ViewForLicensePlate setBackgroundColor:[UIColor clearColor]];
-//    [MAinScrollview addSubview:ViewForLicensePlate];
-//
-//    
-//    // Section for Make
-//    
-//    UIView *ViewForMake = [[UIView alloc] initWithFrame:CGRectMake(5, 160, 310, 20)];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Make" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForMake];
-//    
-//    
-//    [ViewForMake setBackgroundColor:[UIColor clearColor]];
-//    [MAinScrollview addSubview:ViewForMake];
-//
-//    // Section for Model
-//    
-//    UIView *ViewForModel = [[UIView alloc] initWithFrame:CGRectMake(5, 190, 310, 20)];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Model" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForModel];
-//
-//    [ViewForModel setBackgroundColor:[UIColor clearColor]];
-//    [MAinScrollview addSubview:ViewForModel];
-//    
-//    // Section for Year
-//    
-//    UIView *ViewForYear = [[UIView alloc] initWithFrame:CGRectMake(5, 220, 310, 20)];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Year" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForYear];
-//    
-//    
-//    [ViewForYear setBackgroundColor:[UIColor clearColor]];
-//    [MAinScrollview addSubview:ViewForYear];
-//
-//    // Section for Characteristics
-//    
-//    UIView *ViewForCharacteristics = [[UIView alloc] initWithFrame:CGRectMake(5, 250, 310, 20)];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Characteristics" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForCharacteristics];
-//    
-//    [ViewForCharacteristics setBackgroundColor:[UIColor clearColor]];
-//    [MAinScrollview addSubview:ViewForCharacteristics];
-//
-//    // Section for Photos
-//    
-//    UIView *ViewForPhotoes = [[UIView alloc] initWithFrame:CGRectMake(5, 280, 310, 20)];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Photos" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForPhotoes];
-//    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:photos fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForPhotoes];
-//    
-//    
-//    [ViewForPhotoes setBackgroundColor:[UIColor clearColor]];
-//    [MAinScrollview addSubview:ViewForPhotoes];
-//    
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:postby fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForPostedComment];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:10 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x211e1f) labeltext:report_title fontName:GLOBALTEXTFONT fontSize:13.0f addView:MAinScrollview];
-//    
-//    //[TitleLabel setTextColor:UIColorFromRGB(0x211e1f)];
-//    
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:[licenceplate uppercaseString] fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForLicensePlate];
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:makeby fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForMake];
-//    
-//    
-//    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:year fontName:GLOBALTEXTFONT fontSize:12.0f addView:ViewForYear];
-//
-//    [ReportDetailsHelper CreatelabelWithValueCenter:SIZEX+10 ycord:51 width:100 height:16 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:[NSString stringWithFormat:@"%@ comments",totalComment] fontName:@"OpenSans-Semibold" fontSize:13 addView:MAinScrollview];
-//    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:characteristics fontName:GLOBALTEXTFONT fontSize:14 addView:ViewForCharacteristics];
-//    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:location fontName:GLOBALTEXTFONT fontSize:12.0f addView:ViewForLocation];
-//    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:self.model fontName:GLOBALTEXTFONT fontSize:12.0f addView:ViewForModel];
-//
-//    
-//    UIView *DetailsCommentView = [[UIView alloc] initWithFrame:CGRectMake(0, 320, 320, 600)];
-//    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:300 height:20 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Description" fontName:GLOBALTEXTFONT fontSize:13.0f addView:DetailsCommentView];
-//    
-//    DetailsTextView = [[UITextView alloc] init];
-//    DetailsTextView.text=report_description;
-//    
-//    NSAttributedString *attributed1=[[NSAttributedString alloc]initWithString:report_description];
-//    [DetailsTextView setAttributedText:attributed1];
-//    CGSize size1 = [DetailsTextView sizeThatFits:CGSizeMake(300, FLT_MAX)];
-//
-//    DetailsTextView.frame = CGRectMake(10, 25, 300, size1.height);
-//    [DetailsTextView setTextAlignment:NSTextAlignmentJustified];
-//    [DetailsTextView setFont:[UIFont fontWithName:GLOBALTEXTFONT size:13]];
-//    [DetailsTextView setTextColor:UIColorFromRGB(0x8f8f8f)];
-//    [DetailsTextView setBackgroundColor:[UIColor clearColor]];
-//    [DetailsTextView setEditable:NO];
-//    [DetailsCommentView addSubview:DetailsTextView];
-//    [MAinScrollview addSubview:DetailsCommentView];
-//
-//    UIButton *ShowAllSimilerreport=[UIButton buttonWithType:UIButtonTypeCustom];
-//    [ShowAllSimilerreport setBackgroundColor:UIColorFromRGB(0x17b04a)];
-//    ShowAllSimilerreport.frame=CGRectMake(10,DetailsTextView.frame.origin.y+DetailsTextView.frame.size.height+40, 300, 30);
-//    
-//    [ShowAllSimilerreport setTitle:@"Similar Reports" forState:UIControlStateNormal];
-//    [ShowAllSimilerreport setTitle:@"Similar Reports" forState:UIControlStateHighlighted];
-//    [ShowAllSimilerreport setTitle:@"Similar Reports" forState:UIControlStateSelected];
-//    [ShowAllSimilerreport setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [ShowAllSimilerreport setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-//    [ShowAllSimilerreport setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-//    
-//    
-//    ShowAllSimilerreport.titleLabel.font=[UIFont fontWithName:globalTEXTFIELDPLACEHOLDERFONT size:17.0f];
-//    
-//    [ShowAllSimilerreport addTarget:self action:@selector(GotoTheAllSimilerreportPage:) forControlEvents:UIControlEventTouchUpInside];
-//    [DetailsCommentView addSubview:ShowAllSimilerreport];
-//    [DetailsCommentView setBackgroundColor:[UIColor clearColor]];
-//    [DetailsCommentView setFrame:CGRectMake(0, 320, 320, DetailsTextView.frame.origin.y+DetailsTextView.frame.size.height+50+50)];
-//    [MAinScrollview addSubview:DetailsCommentView];
-//    if ([ImageArray count]>0)
-//    {
-//        NSInteger numbor=[ImageArray count];
-//        
-//        CGRect frame=[MAinScrollview frame];
-//        [self.imageSliderview setFrame:CGRectMake(0, frame.origin.y, 320, 150)];
-//        [MAinScrollview addSubview:self.imageSliderview];
-//        frame.origin.y+=160;
-//        [MAinScrollview setFrame:frame];
-//        for (int i=0; i<[ImageArray count]; i++)
-//        {
-//            ZSImageView *imageview=[[ZSImageView alloc]initWithFrame:CGRectMake(30*(i+1)+i*260+30*i, 0, 260, 150)];
-//            imageview.imageUrl=[ImageArray objectAtIndex:i];
-//            [self.imageSlider addSubview:imageview];
-//        }
-//        [self.imageSlider setContentSize:CGSizeMake(30*(numbor+1)+numbor*260+30*numbor, 150)];
-//        [MAinScrollview setContentSize:CGSizeMake(320, DetailsCommentView.frame.origin.y+DetailsCommentView.frame.size.height+200)];
-//    }
-//    else
-//    {
-//        [MAinScrollview setContentSize:CGSizeMake(320, DetailsCommentView.frame.origin.y+DetailsCommentView.frame.size.height+50)];
-//    }
-//    
-//    [MAinScrollview setFrame:CGRectMake(0, 90, 320, DetailsCommentView.frame.origin.y+DetailsCommentView.frame.size.height+50)];
+    //
+    //
+    //
+    //    int TOTAL = 5;
+    //    int YELLOW = [reportAvaragerate integerValue] ;
+    //    int GRAY = TOTAL - YELLOW;
+    //    float SIZEX = 15;
+    //    for(int i=0; i < YELLOW; i++)
+    //    {
+    //        [ReportDetailsHelper CreateImageviewWithImage:MAinScrollview xcord:SIZEX ycord:30 width:20 height:20 backgroundColor:[UIColor clearColor] imageName:@"starNEW"];
+    //        SIZEX = SIZEX + 22;
+    //    }
+    //    for(int j=0; j < GRAY; j++)
+    //    {
+    //        if(GRAY==5 && j==0)
+    //            SIZEX = 15;
+    //        [ReportDetailsHelper CreateImageviewWithImage:MAinScrollview xcord:SIZEX ycord:30 width:20 height:20 backgroundColor:[UIColor clearColor] imageName:@"star1NEW"];
+    //        SIZEX = SIZEX + 22;
+    //    }
+    //
+    //    _LocationMap.delegate = self;
+    //
+    //    UIView *ViewForPostedComment = [[UIView alloc] initWithFrame:CGRectMake(5, 70, 310, 20)];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Posted By" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForPostedComment];
+    //
+    //
+    //    [ViewForPostedComment setBackgroundColor:[UIColor clearColor]];
+    //    [MAinScrollview addSubview:ViewForPostedComment];
+    //    [MAinScrollview setBackgroundColor:[UIColor whiteColor]];
+    //
+    //    // Section for Location
+    //
+    //    UIView *ViewForLocation = [[UIView alloc] initWithFrame:CGRectMake(5, 100, 310, 20)];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Location" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForLocation];
+    //
+    //
+    //    [ViewForLocation setBackgroundColor:[UIColor clearColor]];
+    //    [MAinScrollview addSubview:ViewForLocation];
+    //
+    //    // Section for License Plate
+    //
+    //    UIView *ViewForLicensePlate = [[UIView alloc] initWithFrame:CGRectMake(5, 130, 320, 40)];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"License Plate" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForLicensePlate];
+    //    Evidencelocker=[[UILabel alloc]initWithFrame:CGRectMake(182, 7, 140, 20)];
+    //
+    //    buttonEvidencel=[[UIButton alloc]initWithFrame:CGRectMake(182, 7, 130, 20)];
+    //    if ([ItsEvidencelocker integerValue]==1)
+    //    {
+    //        isAddedToAvidencelocker=YES;
+    //        [buttonEvidencel setBackgroundImage:[UIImage imageNamed:@"RemoveFromEvidenceLocker.jpg"] forState:UIControlStateNormal];
+    //
+    //    }
+    //    else
+    //    {
+    //        isAddedToAvidencelocker=NO;
+    //
+    //        [buttonEvidencel setBackgroundImage:[UIImage imageNamed:@"AddToEvidenceLocker.jpg"] forState:UIControlStateNormal];
+    //    }
+    //
+    //    [buttonEvidencel addTarget:self action:@selector(buttonEvidenceclick) forControlEvents:UIControlEventTouchUpInside];
+    //
+    //    tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(AddToAvidenceLocker:)];
+    //    [tapGesture setNumberOfTapsRequired:1];
+    //    [ViewForLicensePlate addGestureRecognizer:tapGesture];
+    //    Evidencelocker.textAlignment=NSTextAlignmentCenter;
+    //    Evidencelocker.textColor=[UIColor greenColor];
+    //    Evidencelocker.font=[UIFont systemFontOfSize:10.0f];
+    //    [ViewForLicensePlate addSubview:buttonEvidencel];
+    //
+    //    [ViewForLicensePlate addSubview:Evidencelocker];
+    //    [ViewForLicensePlate setBackgroundColor:[UIColor clearColor]];
+    //    [MAinScrollview addSubview:ViewForLicensePlate];
+    //
+    //
+    //    // Section for Make
+    //
+    //    UIView *ViewForMake = [[UIView alloc] initWithFrame:CGRectMake(5, 160, 310, 20)];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Make" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForMake];
+    //
+    //
+    //    [ViewForMake setBackgroundColor:[UIColor clearColor]];
+    //    [MAinScrollview addSubview:ViewForMake];
+    //
+    //    // Section for Model
+    //
+    //    UIView *ViewForModel = [[UIView alloc] initWithFrame:CGRectMake(5, 190, 310, 20)];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Model" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForModel];
+    //
+    //    [ViewForModel setBackgroundColor:[UIColor clearColor]];
+    //    [MAinScrollview addSubview:ViewForModel];
+    //
+    //    // Section for Year
+    //
+    //    UIView *ViewForYear = [[UIView alloc] initWithFrame:CGRectMake(5, 220, 310, 20)];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Year" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForYear];
+    //
+    //
+    //    [ViewForYear setBackgroundColor:[UIColor clearColor]];
+    //    [MAinScrollview addSubview:ViewForYear];
+    //
+    //    // Section for Characteristics
+    //
+    //    UIView *ViewForCharacteristics = [[UIView alloc] initWithFrame:CGRectMake(5, 250, 310, 20)];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Characteristics" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForCharacteristics];
+    //
+    //    [ViewForCharacteristics setBackgroundColor:[UIColor clearColor]];
+    //    [MAinScrollview addSubview:ViewForCharacteristics];
+    //
+    //    // Section for Photos
+    //
+    //    UIView *ViewForPhotoes = [[UIView alloc] initWithFrame:CGRectMake(5, 280, 310, 20)];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:100 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Photos" fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForPhotoes];
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:photos fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForPhotoes];
+    //
+    //
+    //    [ViewForPhotoes setBackgroundColor:[UIColor clearColor]];
+    //    [MAinScrollview addSubview:ViewForPhotoes];
+    //
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:postby fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForPostedComment];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:10 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x211e1f) labeltext:report_title fontName:GLOBALTEXTFONT fontSize:13.0f addView:MAinScrollview];
+    //
+    //    //[TitleLabel setTextColor:UIColorFromRGB(0x211e1f)];
+    //
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:300 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:[licenceplate uppercaseString] fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForLicensePlate];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:makeby fontName:@"OpenSans-Semibold" fontSize:13.0f addView:ViewForMake];
+    //
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:year fontName:GLOBALTEXTFONT fontSize:12.0f addView:ViewForYear];
+    //
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:SIZEX+10 ycord:51 width:100 height:16 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:[NSString stringWithFormat:@"%@ comments",totalComment] fontName:@"OpenSans-Semibold" fontSize:13 addView:MAinScrollview];
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:characteristics fontName:GLOBALTEXTFONT fontSize:14 addView:ViewForCharacteristics];
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:180 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:location fontName:GLOBALTEXTFONT fontSize:12.0f addView:ViewForLocation];
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:100 ycord:0 width:200 height:35 backgroundColor:[UIColor clearColor] textcolor:[UIColor darkGrayColor] labeltext:self.model fontName:GLOBALTEXTFONT fontSize:12.0f addView:ViewForModel];
+    //
+    //
+    //    UIView *DetailsCommentView = [[UIView alloc] initWithFrame:CGRectMake(0, 320, 320, 600)];
+    //    [ReportDetailsHelper CreatelabelWithValueCenter:15 ycord:0 width:300 height:20 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x1ab04c) labeltext:@"Description" fontName:GLOBALTEXTFONT fontSize:13.0f addView:DetailsCommentView];
+    //
+    //    DetailsTextView = [[UITextView alloc] init];
+    //    DetailsTextView.text=report_description;
+    //
+    //    NSAttributedString *attributed1=[[NSAttributedString alloc]initWithString:report_description];
+    //    [DetailsTextView setAttributedText:attributed1];
+    //    CGSize size1 = [DetailsTextView sizeThatFits:CGSizeMake(300, FLT_MAX)];
+    //
+    //    DetailsTextView.frame = CGRectMake(10, 25, 300, size1.height);
+    //    [DetailsTextView setTextAlignment:NSTextAlignmentJustified];
+    //    [DetailsTextView setFont:[UIFont fontWithName:GLOBALTEXTFONT size:13]];
+    //    [DetailsTextView setTextColor:UIColorFromRGB(0x8f8f8f)];
+    //    [DetailsTextView setBackgroundColor:[UIColor clearColor]];
+    //    [DetailsTextView setEditable:NO];
+    //    [DetailsCommentView addSubview:DetailsTextView];
+    //    [MAinScrollview addSubview:DetailsCommentView];
+    //
+    //    UIButton *ShowAllSimilerreport=[UIButton buttonWithType:UIButtonTypeCustom];
+    //    [ShowAllSimilerreport setBackgroundColor:UIColorFromRGB(0x17b04a)];
+    //    ShowAllSimilerreport.frame=CGRectMake(10,DetailsTextView.frame.origin.y+DetailsTextView.frame.size.height+40, 300, 30);
+    //
+    //    [ShowAllSimilerreport setTitle:@"Similar Reports" forState:UIControlStateNormal];
+    //    [ShowAllSimilerreport setTitle:@"Similar Reports" forState:UIControlStateHighlighted];
+    //    [ShowAllSimilerreport setTitle:@"Similar Reports" forState:UIControlStateSelected];
+    //    [ShowAllSimilerreport setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //    [ShowAllSimilerreport setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    //    [ShowAllSimilerreport setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    //
+    //
+    //    ShowAllSimilerreport.titleLabel.font=[UIFont fontWithName:globalTEXTFIELDPLACEHOLDERFONT size:17.0f];
+    //
+    //    [ShowAllSimilerreport addTarget:self action:@selector(GotoTheAllSimilerreportPage:) forControlEvents:UIControlEventTouchUpInside];
+    //    [DetailsCommentView addSubview:ShowAllSimilerreport];
+    //    [DetailsCommentView setBackgroundColor:[UIColor clearColor]];
+    //    [DetailsCommentView setFrame:CGRectMake(0, 320, 320, DetailsTextView.frame.origin.y+DetailsTextView.frame.size.height+50+50)];
+    //    [MAinScrollview addSubview:DetailsCommentView];
+    //    if ([ImageArray count]>0)
+    //    {
+    //        NSInteger numbor=[ImageArray count];
+    //
+    //        CGRect frame=[MAinScrollview frame];
+    //        [self.imageSliderview setFrame:CGRectMake(0, frame.origin.y, 320, 150)];
+    //        [MAinScrollview addSubview:self.imageSliderview];
+    //        frame.origin.y+=160;
+    //        [MAinScrollview setFrame:frame];
+    //        for (int i=0; i<[ImageArray count]; i++)
+    //        {
+    //            ZSImageView *imageview=[[ZSImageView alloc]initWithFrame:CGRectMake(30*(i+1)+i*260+30*i, 0, 260, 150)];
+    //            imageview.imageUrl=[ImageArray objectAtIndex:i];
+    //            [self.imageSlider addSubview:imageview];
+    //        }
+    //        [self.imageSlider setContentSize:CGSizeMake(30*(numbor+1)+numbor*260+30*numbor, 150)];
+    //        [MAinScrollview setContentSize:CGSizeMake(320, DetailsCommentView.frame.origin.y+DetailsCommentView.frame.size.height+200)];
+    //    }
+    //    else
+    //    {
+    //        [MAinScrollview setContentSize:CGSizeMake(320, DetailsCommentView.frame.origin.y+DetailsCommentView.frame.size.height+50)];
+    //    }
+    //
+    //    [MAinScrollview setFrame:CGRectMake(0, 90, 320, DetailsCommentView.frame.origin.y+DetailsCommentView.frame.size.height+50)];
     
     ////
     [self.view setUserInteractionEnabled:YES];
