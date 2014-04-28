@@ -177,6 +177,7 @@ int NumberOfPages = 1;
            // exit(0);
             
             NSDictionary *Retrneddata = [SearchBadDriverHelper executeFetch:REturnedURL];
+            NSLog(@"for str retrn data %@", ret)
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
