@@ -319,7 +319,6 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
     AppDelegate *maindelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
        cell.selectionStyle=UITableViewCellSelectionStyleNone;
