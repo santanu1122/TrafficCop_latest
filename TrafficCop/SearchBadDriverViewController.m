@@ -68,12 +68,35 @@ int NumberOfPages = 1;
     [SearchBadDriverHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
     [SearchBadDriverHelper SetupHeaderView:self.view viewController:self];
     
-    DetailsTabbing = [[SegmentedControl alloc] initWithSectionTitles:@[@"Location", @"Licence Plate", @"Vehicle Details"]];
-    DetailsTabbing.font = [UIFont fontWithName:@"Arial" size:14];
-    DetailsTabbing.frame = CGRectMake(2, 60, 300, 60);
-    [DetailsTabbing addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-    DetailsTabbing.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:DetailsTabbing];
+//    DetailsTabbing = [[SegmentedControl alloc] initWithSectionTitles:@[@"Location", @"Licence Plate", @"Vehicle Details"]];
+//    DetailsTabbing.font = [UIFont fontWithName:@"Arial" size:14];
+//    DetailsTabbing.frame = CGRectMake(2, 60, 300, 60);
+//    [DetailsTabbing addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+//    DetailsTabbing.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:DetailsTabbing];
+    
+    
+    
+    SegmentedControl *segmentedControl1 = [[SegmentedControl alloc] initWithSectionTitles:@[@"Location", @"Licence Plate", @"Vehicle Details"]];
+    segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    segmentedControl1.frame = CGRectMake(0, 51, 320, 43);
+    segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    segmentedControl1.selectionStyle = SegmentedControlSelectionStyleFullWidthStripe;
+    segmentedControl1.selectionIndicatorLocation = SegmentedControlSelectionIndicatorLocationDown;
+    segmentedControl1.selectionIndicatorColor = UIColorFromRGB(0xde2629);
+    segmentedControl1.selectedTextColor = UIColorFromRGB(0xde2629);
+    segmentedControl1.scrollEnabled = NO;
+    [segmentedControl1 addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentedControl1];
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     _SearchType = LocationBaseSearch;
     
@@ -289,24 +312,49 @@ int NumberOfPages = 1;
 - (void)segmentedControlChangedValue:(SegmentedControl *)segmentedControl {
     
     NumberOfPages = 1;
-    switch (segmentedControl.selectedSegmentIndex) {
-        case 0:
-            DetailsTabbing.selectionIndicatorColor = UIColorFromRGB(0xde1d23);
-            _SearchType = LocationBaseSearch;
-            break;
-        case 1:
-            DetailsTabbing.selectionIndicatorColor = UIColorFromRGB(0xfcb714);
-            _SearchType = LicencePlateBaseSearch;
-            break;
-        case 2:
-            DetailsTabbing.selectionIndicatorColor = UIColorFromRGB(0x1aad4b);
-            _SearchType = VehicleDeatilsBaseSearch;
-            break;
-        default:
-            DetailsTabbing.selectionIndicatorColor = UIColorFromRGB(0xde1d23);
-            _SearchType = LocationBaseSearch;
-            break;
-    }
+//    switch (segmentedControl.selectedSegmentIndex) {
+//        case 0:
+//            DetailsTabbing.selectionIndicatorColor = UIColorFromRGB(0xde1d23);
+//            _SearchType = LocationBaseSearch;
+//            break;
+//        case 1:
+//            DetailsTabbing.selectionIndicatorColor = UIColorFromRGB(0xfcb714);
+//            _SearchType = LicencePlateBaseSearch;
+//            break;
+//        case 2:
+//            DetailsTabbing.selectionIndicatorColor = UIColorFromRGB(0x1aad4b);
+//            _SearchType = VehicleDeatilsBaseSearch;
+//            break;
+//        default:
+//            DetailsTabbing.selectionIndicatorColor = UIColorFromRGB(0xde1d23);
+//            _SearchType = LocationBaseSearch;
+//            break;
+    
+            
+            
+            
+            switch (segmentedControl.selectedSegmentIndex) {
+                case 0: segmentedControl.selectionIndicatorColor = UIColorFromRGB(0xde2629);
+                    segmentedControl.selectedTextColor = UIColorFromRGB(0xde2629);
+                    _SearchType = LocationBaseSearch;
+                    break;
+                case 1: segmentedControl.selectionIndicatorColor = UIColorFromRGB(0xfab81e);
+                    segmentedControl.selectedTextColor = UIColorFromRGB(0xfab81e);
+                    _SearchType = LicencePlateBaseSearch;
+                    break;
+                case 2: segmentedControl.selectionIndicatorColor = UIColorFromRGB(0x22b350);
+                    segmentedControl.selectedTextColor = UIColorFromRGB(0x22b350);
+                    _SearchType = VehicleDeatilsBaseSearch;
+                    break;
+                    
+                default:
+                    segmentedControl.selectionIndicatorColor = UIColorFromRGB(0xde2629);
+                    segmentedControl.selectedTextColor = UIColorFromRGB(0xde2629);
+                    _SearchType = LocationBaseSearch;
+                    break;
+            }
+
+            
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

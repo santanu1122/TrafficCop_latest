@@ -154,6 +154,7 @@ int GlobalSelectedIndexPathOne = 0;
     }
     else
     {
+        NSLog(@"lbl hidden...");
         _UserreportNoResult.hidden=NO;
     }
     

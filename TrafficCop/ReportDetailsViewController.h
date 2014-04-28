@@ -35,8 +35,6 @@
 @property (strong, nonatomic) IBOutlet UIView *imageSliderview;
 
 
-- (IBAction)ShowContentOnebyone:(UISegmentedControl *)sender;
-
 
 
 @end

@@ -37,19 +37,6 @@
                         <outlet property="delegate" destination="1" id="JJJ-JH-Xag"/>
                     </connections>
                 </scrollView>
-                <segmentedControl opaque="NO" tag="113" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="fill" segmentControlStyle="bar" selectedSegmentIndex="0" id="XKe-HG-4yR">
-                    <rect key="frame" x="10" y="62" width="300" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <segments>
-                        <segment title="Description" width="105"/>
-                        <segment title="Map"/>
-                        <segment title="Comment" width="89"/>
-                    </segments>
-                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <action selector="ShowContentOnebyone:" destination="-1" eventType="valueChanged" id="at0-24-9dM"/>
-                    </connections>
-                </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
