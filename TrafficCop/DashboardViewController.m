@@ -37,6 +37,8 @@
     BOOL segment2Selected;
     BOOL segment3Selected;
     
+    UIActivityIndicatorView *ActivityIndicator;
+    
     UILabel *Nodatalabel;
     
 }
@@ -98,8 +100,10 @@
 //    }
     
     [DashboardHelper SetupHeaderView:self.view viewController:self];
+    [[self DashboardTable] setFrame:CGRectMake(0, 60, 320, 520)];
     [[self DashboardTable]setDelegate:self];
     [[self DashboardTable]setDataSource:self];
+    [self.view addSubview:[self DashboardTable]];
     DashboardTable.hidden = YES;
     
     UILabel *Seperatorlabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 320, 1)];
@@ -137,6 +141,11 @@
 }
 
 - (void)segmentedControlChangedValue:(SegmentedControl *)segmentedControl {
+    
+    [self.view setUserInteractionEnabled:NO];
+    [Nodatalabel removeFromSuperview];
+    
+    [DashboardHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
     
     switch (segmentedControl.selectedSegmentIndex) {
         case 0: segmentedControl.selectionIndicatorColor = UIColorFromRGB(0xde2629);
@@ -191,11 +200,28 @@
         [self loadmoreforlicenceplate];
     }
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 21.0f;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *TableFooter = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+    [TableFooter setBackgroundColor:[UIColor clearColor]];
+    
+    ActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 16, 16)];
+    [ActivityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [ActivityIndicator setCenter:CGPointMake(162, 3)];
+    [ActivityIndicator hidesWhenStopped];
+    [TableFooter addSubview:ActivityIndicator];
+    
+    return TableFooter;
+}
 -(void)LoadmoreforHeightrelated
 {
-    
     if (LoadmorebuttonClick==YES)
     {
+        [ActivityIndicator startAnimating];
         [Nodatalabel removeFromSuperview];
         [self.Spinner1 stopAnimating];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -220,8 +246,6 @@
             {
                 LoadmorebuttonClick=YES;
             }
-            
-            
             for(NSDictionary *HigstRatedReport in [mainDic objectForKey:@"Latest Report"])
             {
                 
@@ -254,29 +278,19 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [DashboardHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
+                [ActivityIndicator stopAnimating];
                 [DashboardTable reloadData];
-                
-                
-                
-                
+                [self.view setUserInteractionEnabled:YES];
             });
-            
-            
-            
-            
         });
-        
     }
-    
-    
-    
 }
 -(void)LoadmoreFormostrecent
 {
     if (LoadmorebuttonClick2==YES)
     {
         [Nodatalabel removeFromSuperview];
-        
+        [ActivityIndicator startAnimating];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
             NSString *mainString=[NSString stringWithFormat:@"%@appweb.php?mode=high_rated_report&last_id=%@",DomainURL,Updatedata2];
@@ -295,7 +309,6 @@
             if ([highstreportLoadmore integerValue]==0)
             {
                 LoadmorebuttonClick2=NO;
-                
             }
             else
             {
@@ -305,7 +318,6 @@
             for(NSDictionary *HigstRatedReport in [mainDic objectForKey:@"Highest Rated Report"]) {
                 
                 NSString *report_image = [HigstRatedReport objectForKey:@"report_image"];
-                
                 
                 NSString *report_title = [HigstRatedReport objectForKey:@"report_title"];
                 
@@ -332,15 +344,12 @@
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [DashboardHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
-                
+                [ActivityIndicator stopAnimating];
                 [DashboardTable reloadData];
+                [self.view setUserInteractionEnabled:YES];
             });
-            
-            
-            
         });
     }
-    
 }
 
 
@@ -348,8 +357,7 @@
 {
     if (LoadmorebuttonClick3==YES)
     {
-        NSLog(@"checkkk");
-        
+        [ActivityIndicator startAnimating];
         [Nodatalabel removeFromSuperview];
         [self.Spinner3 startAnimating];
         NSUserDefaults *userDefals=[NSUserDefaults standardUserDefaults];
@@ -363,8 +371,6 @@
             NSData *data=[NSData dataWithContentsOfURL:[NSURL URLWithString:mainString]];
             NSDictionary *mainDic=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             
-            NSLog(@"main dic in evidnce loker-- %@", mainDic);
-            
             NSDictionary *settingLimit=[mainDic valueForKey:@"Settings"];
             EvidenceLockerLoadmore=[settingLimit valueForKey:@"highest_report_load_more"];
             Updatedata2=[settingLimit valueForKey:@"last_id"];
@@ -372,7 +378,6 @@
             if ([EvidenceLockerLoadmore integerValue]==0)
             {
                 LoadmorebuttonClick3=NO;
-                
             }
             else
             {
@@ -412,18 +417,19 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [DashboardHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
+                [ActivityIndicator stopAnimating];
                 
-                NSLog(@"LatestreportArray santanu--- %d",LatestreportArray.count);
-                
+                [self.view setUserInteractionEnabled:YES];
                 if(LatestreportArray.count > 0) {
+                    NSLog(@"LatestreportArray santanu--- %d",LatestreportArray.count);
                     [DashboardTable reloadData];
                 } else {
                     
                     Nodatalabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height/2 - 10), 320, 20)];
                     [Nodatalabel setTextAlignment:NSTextAlignmentCenter];
+                    [Nodatalabel setFont:[UIFont fontWithName:GLOBALTEXTFONT size:16.0f]];
                     [Nodatalabel setText:@"There is no data"];
                     [self.view addSubview:Nodatalabel];
-                    //DashboardTable.hidden = YES;
                 }
                 
             });
@@ -431,42 +437,8 @@
             
         });
     }
-    
-    
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    CGPoint offset = scrollView.contentOffset;
-    CGRect bounds = scrollView.bounds;
-    CGSize size = scrollView.contentSize;
-    UIEdgeInsets inset = scrollView.contentInset;
-    float y = offset.y + bounds.size.height - inset.bottom;
-    float h = size.height;
-    
-    float reload_distance = -40.0f;
-    if(y > h + reload_distance)
-    {
-        if(Segment1Selected==YES)
-        {
-            NSLog(@"I ima in 1st");
-            [self LoadmoreforHeightrelated];
-            
-        }
-        
-        else if (segment2Selected==YES)
-        {
-            NSLog(@"I ima in 2st");
-            [self LoadmoreFormostrecent];
-        }
-        else
-        {
-            NSLog(@"I ima in 3st");
-            //[self LoadmoreFormostrecent]; //check
-            [self loadmoreforlicenceplate];
-        }
-    }
-}
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
     LatestreportArray=[[NSMutableArray alloc]init];
@@ -597,7 +569,33 @@
      
      }*/
 }
-
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [Nodatalabel removeFromSuperview];
+    CGPoint offset = scrollView.contentOffset;
+    CGRect bounds = scrollView.bounds;
+    CGSize size = scrollView.contentSize;
+    UIEdgeInsets inset = scrollView.contentInset;
+    float y = offset.y + bounds.size.height - inset.bottom;
+    float h = size.height;
+    
+    float reload_distance = -40.0f;
+    if(y > h + reload_distance)
+    {
+        if(Segment1Selected==YES)
+        {
+            [self LoadmoreforHeightrelated];
+        }
+        else if (segment2Selected==YES)
+        {
+            [self LoadmoreFormostrecent];
+        }
+        else
+        {
+            [self loadmoreforlicenceplate];
+        }
+    }
+}
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -649,7 +647,7 @@
             [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
             [ImageView addSubview:ImageOverlay];
             
-            UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
+            UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 220, 25)];
             TitleLabel.backgroundColor = [UIColor clearColor];
             TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0f];
             TitleLabel.textColor = UIColorFromRGB(0x211e1f);
@@ -658,14 +656,9 @@
             TitleLabel.textAlignment = NSTextAlignmentLeft;
             
             int TOTAL = 5;
-            
             int YELLOW = [[item objectForKey:@"rating"] intValue];
-            
             int GRAY = TOTAL - YELLOW;
-            
             float SIZEX = 5;
-            
-            
             
             for(int i=0; i < YELLOW; i++) {
                 
@@ -744,7 +737,6 @@
             
             MainCellView.backgroundColor = [UIColor whiteColor];
             
-            
             [cell.contentView addSubview:MainCellView];
             
             UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 16, 65, 65)];
@@ -767,8 +759,7 @@
             [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
             [ImageView addSubview:ImageOverlay];
             
-            
-            UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
+            UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 220, 25)];
             TitleLabel.backgroundColor = [UIColor clearColor];
             TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0];
             [TitleLabel setTextColor:UIColorFromRGB(0x211e1f)];
@@ -783,8 +774,6 @@
             int GRAY = TOTAL - YELLOW;
             
             float SIZEX = 5;
-            
-            
             
             for(int i=0; i < YELLOW; i++) {
                 
@@ -834,7 +823,7 @@
             [Detailslabel setAttributedText:attributed];
             //CGSize size = [Detailslabel sizeThatFits:CGSizeMake(310, FLT_MAX)];
             
-            Detailslabel.frame = CGRectMake(90, 60, 230, 50);
+            Detailslabel.frame = CGRectMake(85, 60, 230, 50);
             [Detailslabel setUserInteractionEnabled:NO];
             [Detailslabel setScrollEnabled:NO];
             Detailslabel.backgroundColor = [UIColor clearColor];
@@ -854,11 +843,8 @@
             [MainCellView addSubview:Seperatorlabel];
             
         }
-        
         return cell;
-        
     }
-    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
