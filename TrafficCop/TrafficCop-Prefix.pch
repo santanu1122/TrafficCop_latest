@@ -76,6 +76,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define TEXTFIELDPLACEHOLDERFONTNAME @"Raleway-SemiBold"
 #define GLOBALTEXTFONT @"ProximaNova-Light"
+#define GLOBALTEXTFONT_Title @"OpenSans-Semibold"
+
 #define TEXTFIELDPLACEHOLDERFONTSIZE 15
 
 #define globalTextFiledColor [UIColor colorWithRed:(35.0f/255.0f) green:(149.0f/255.0f)  blue:(207.0f/255.0f)  alpha:1.0f]

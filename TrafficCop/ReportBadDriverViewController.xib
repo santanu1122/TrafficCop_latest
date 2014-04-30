@@ -8,10 +8,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReportBadDriverViewController">
             <connections>
                 <outlet property="AddDescriptionLbl" destination="upJ-pj-tw7" id="JEB-VG-rrh"/>
+                <outlet property="AddLocationLbl" destination="foe-aS-nSC" id="f0O-Ic-0bX"/>
+                <outlet property="AddPicLbl" destination="csC-uh-Xtr" id="juq-CJ-GAm"/>
                 <outlet property="AddPicview" destination="Mty-mV-xCU" id="Gi9-an-Fjt"/>
                 <outlet property="AddVEhicledescview" destination="9KZ-7k-n2e" id="RW5-NS-Ra5"/>
                 <outlet property="AddVScrollView" destination="M6H-7K-Dne" id="2hx-zW-KZb"/>
                 <outlet property="AddVehicleDescView" destination="Ulo-Wu-GQn" id="sHM-bT-xYs"/>
+                <outlet property="AddVehicleDescriptionLbl" destination="vCh-80-Dwe" id="pgg-h3-zhn"/>
                 <outlet property="Cancelbutton" destination="1SI-6Z-nld" id="Uly-18-KRy"/>
                 <outlet property="DYNAMICIMAGEVIEW" destination="v00-RW-ygO" id="L9q-LA-cTt"/>
                 <outlet property="DescTextview" destination="1s8-6v-Idk" id="ZwE-q8-hZ1"/>
@@ -20,17 +23,21 @@
                 <outlet property="ImageShowview" destination="bRx-AV-MIU" id="yPm-p8-cy2"/>
                 <outlet property="LicencePlateTextview" destination="iPZ-NY-b63" id="Z1c-bM-png"/>
                 <outlet property="LicencePlateview" destination="BLd-1t-NK6" id="vmQ-E3-t3k"/>
+                <outlet property="LicensePlateLbl" destination="48D-Ro-Bl0" id="G9v-qr-fDs"/>
                 <outlet property="LocationAlert" destination="Tbf-Ic-0hR" id="mAr-eU-pG8"/>
                 <outlet property="LocationPoint" destination="XWC-gm-2J2" id="oAw-Be-fgc"/>
                 <outlet property="Locationview" destination="aE4-Nn-0dh" id="LP7-aq-2Y9"/>
+                <outlet property="MakeLbl" destination="ngN-Vm-A2W" id="YVU-zf-hiW"/>
                 <outlet property="Maketextview" destination="JGw-as-r0s" id="cML-iI-fmf"/>
                 <outlet property="Makeview" destination="39o-Sk-Vuf" id="Zje-5T-j5h"/>
+                <outlet property="ModelLbl" destination="hKv-ah-fKQ" id="G43-f9-4ZE"/>
                 <outlet property="Modeltextview" destination="5pU-50-kiW" id="EE9-eh-Xdh"/>
                 <outlet property="Modelview" destination="JZS-GS-ZF8" id="K8t-Qb-2rN"/>
                 <outlet property="PhotoSectionReview" destination="C9K-Bh-8ae" id="ADi-5y-IUa"/>
                 <outlet property="PriviewScroll" destination="B4S-Lo-Y6r" id="dw3-lo-Pbr"/>
                 <outlet property="PriviewShow" destination="cBe-7y-q4Q" id="7OZ-7c-JKg"/>
                 <outlet property="Processview" destination="ltY-1F-5K3" id="TS9-Oa-ESZ"/>
+                <outlet property="ReportAnIncidentLblInPriview" destination="Wuu-Cg-Qzh" id="UmR-Qp-YzX"/>
                 <outlet property="ReportBadDriver" destination="j0d-6U-Q1P" id="agg-9E-gaf"/>
                 <outlet property="Savebutton" destination="MrZ-jq-3zR" id="D2S-cW-8i7"/>
                 <outlet property="Subview" destination="zMD-ly-cEI" id="Vhb-Mh-dXm"/>
@@ -40,10 +47,12 @@
                 <outlet property="Titleview" destination="1Za-fg-BiY" id="6jf-tW-PY7"/>
                 <outlet property="TotalPoint" destination="OWd-BJ-y6j" id="uox-t2-Lci"/>
                 <outlet property="UIScrollViewMain" destination="iy2-Qs-U54" id="AqU-gI-fUY"/>
+                <outlet property="UniqueCharLbl" destination="GYa-Oi-V7e" id="W2Y-kk-D1h"/>
                 <outlet property="Uniquecharacteristicstextview" destination="aOZ-fg-oxe" id="5N2-6R-82d"/>
                 <outlet property="Uniquecharacteristicsview" destination="AZI-yL-YT3" id="ZBR-rP-HMD"/>
                 <outlet property="UserDesiredlocationView" destination="mo8-AD-hOr" id="QXL-7r-PCL"/>
                 <outlet property="ViewForreview" destination="0E3-KA-mIz" id="XkW-p3-U95"/>
+                <outlet property="YearLbl" destination="esB-qO-zDH" id="akQ-T4-KQC"/>
                 <outlet property="YearSectionReview" destination="uKc-F7-T83" id="OaV-gw-jc6"/>
                 <outlet property="Yeartextview" destination="FWC-3H-H21" id="YUu-Ec-9oY"/>
                 <outlet property="Yearview" destination="yDe-7O-fhZ" id="joQ-B4-9Op"/>
@@ -158,7 +167,7 @@
                         <outlet property="delegate" destination="-1" id="Dce-bc-Rhs"/>
                     </connections>
                 </textView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Descrioption here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="upJ-pj-tw7">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Description here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="upJ-pj-tw7">
                     <rect key="frame" x="54" y="38" width="154" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -221,7 +230,7 @@
                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="location" minimumFontSize="17" id="tpm-Mb-fY1">
+                <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" id="tpm-Mb-fY1">
                     <rect key="frame" x="54" y="32" width="259" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
@@ -500,15 +509,29 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view contentMode="scaleToFill" id="j0d-6U-Q1P">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="REPORTBADDRIVER.png" id="xsM-JM-Rc8">
-                    <rect key="frame" x="0.0" y="-3" width="320" height="50"/>
+                    <rect key="frame" x="-66" y="-2" width="386" height="61"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
+                <view contentMode="scaleToFill" id="ZQr-1w-izw">
+                    <rect key="frame" x="-13" y="0.0" width="259" height="56"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report an Incident" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8hO-eB-aIh">
+                            <rect key="frame" x="25" y="-1" width="222" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wnO-KO-n3n">
-                    <rect key="frame" x="258" y="0.0" width="62" height="45"/>
+                    <rect key="frame" x="247" y="0.0" width="72" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -750,10 +773,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="228" height="50"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="report a bad driver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h8s-bK-apt">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report an Incident" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wuu-Cg-Qzh">
                             <rect key="frame" x="0.0" y="0.0" width="222" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>

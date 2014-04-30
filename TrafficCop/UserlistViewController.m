@@ -52,6 +52,13 @@
     SearchUserTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 55, 200, 20)];
     SearchUserTextField.delegate = (id)self;
     SearchUserTextField.placeholder = @"Search by name:";
+    
+    SearchUserTextField.font = [UIFont systemFontOfSize:15];
+    
+   // SearchUserTextField.font = [UIFont fontWithName:GLOBALTEXTFONT size:15.0];
+    //[SearchUserTextField setTextColor:UIColorFromRGB(0x575757)];
+    
+    
     SearchUserTextField.textColor = UIColorFromRGB(0xc5c5c5);
     _UserListTable.delegate = (id)self;
     _UserListTable.dataSource = (id)self;
@@ -211,7 +218,7 @@
         
         UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 250, 25)];
         TitleLabel.backgroundColor = [UIColor clearColor];
-        TitleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
+        TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
         TitleLabel.textColor = UIColorFromRGB(0x211e1f);
         TitleLabel.text = [item valueForKey:@"username"];//[NSString stringWithFormat:@"%@ %@",[[UserListHelper stripTags:[item objectForKey:@"first_name"]] capitalizedString],[[UserListHelper stripTags:[item objectForKey:@"last_name"]] capitalizedString]];
         [MainCEllView addSubview:TitleLabel];
@@ -249,7 +256,7 @@
         
         UILabel *LabelTitleReports = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 80, 20)];
         LabelTitleReports.backgroundColor = [UIColor clearColor];
-        LabelTitleReports.font = [UIFont fontWithName:@"OpenSans-Semibold" size:13];
+        LabelTitleReports.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:13];
         LabelTitleReports.textColor = UIColorFromRGB(0x000000);
         LabelTitleReports.text = @"Reports :";
         [documentViewReports addSubview:LabelTitleReports];
@@ -272,7 +279,7 @@
         
         UILabel *LabelTitleComments = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 80, 20)];
         LabelTitleComments.backgroundColor = [UIColor clearColor];
-        LabelTitleComments.font = [UIFont fontWithName:@"OpenSans-Semibold" size:13];
+        LabelTitleComments.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:13];
         LabelTitleComments.textColor = UIColorFromRGB(0x000000);
         LabelTitleComments.text = @"Comments :";
         [documentViewComments addSubview:LabelTitleComments];
@@ -296,7 +303,7 @@
         
         UILabel *LabelTitleTotalpoints = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 90, 20)];
         LabelTitleTotalpoints.backgroundColor = [UIColor clearColor];
-        LabelTitleTotalpoints.font = [UIFont fontWithName:@"OpenSans-Semibold" size:13];
+        LabelTitleTotalpoints.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:13];
         LabelTitleTotalpoints.textColor = UIColorFromRGB(0x000000);
         LabelTitleTotalpoints.text = @"Total Points :";
         [documentViewTotalpoints addSubview:LabelTitleTotalpoints];
@@ -337,12 +344,14 @@
     
     UILabel *SearchTitlelabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 320, 35)];
     SearchTitlelabel.text = @"User List";
+    SearchTitlelabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0];
+    [SearchTitlelabel setTextColor:UIColorFromRGB(0x211e1f)];
     [MainHeaderView addSubview:SearchTitlelabel];
     
   
     [MainHeaderView addSubview:SearchUserTextField];
     
-    [UserListHelper CreateButtonWithText:220 ycord:55 width:90 height:20 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xc5c5c5) labeltext:Nil fontName:Nil fontSize:12 textNameForUIControlStateNormal:@"Search" textNameForUIControlStateSelected:@"Search" textNameForUIControlStateHighlighted:@"Search" textNameForselectedHighlighted:@"Search" selectMethod:@selector(Searchuserdata) selectEvent:UIControlEventTouchUpInside addView:MainHeaderView viewController:self];
+    [UserListHelper CreateButtonWithText:220 ycord:55 width:90 height:20 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xc5c5c5) labeltext:Nil fontName:Nil fontSize:15 textNameForUIControlStateNormal:@"Search" textNameForUIControlStateSelected:@"Search" textNameForUIControlStateHighlighted:@"Search" textNameForselectedHighlighted:@"Search" selectMethod:@selector(Searchuserdata) selectEvent:UIControlEventTouchUpInside addView:MainHeaderView viewController:self];
     
     UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 89, 320/3,1)];
     greenLabel.backgroundColor = UIColorFromRGB(0x1aad4b);

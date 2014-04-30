@@ -5,19 +5,31 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
+
 	<string>33E84004-81EA-4FED-9145-D41577C3FE09</string>
+
+	<string>FAB9CF77-E554-4DE6-89CA-DAEFE6AA113A</string>
+
 	<key>IDESourceControlProjectName</key>
 	<string>TrafficCop</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+
 		<key>D481DBE1-261F-4EFD-BD0C-215BF063B277</key>
+
+		<key>92696334-120A-41BE-94FB-54408C834D84</key>
+
 		<string>https://github.com/santanu1122/TrafficCop_latest.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TrafficCop.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+
 		<key>D481DBE1-261F-4EFD-BD0C-215BF063B277</key>
+
+		<key>92696334-120A-41BE-94FB-54408C834D84</key>
+
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +37,22 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
+
 	<string>D481DBE1-261F-4EFD-BD0C-215BF063B277</string>
+
+	<string>92696334-120A-41BE-94FB-54408C834D84</string>
+
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+
 			<string>D481DBE1-261F-4EFD-BD0C-215BF063B277</string>
+
+			<string>92696334-120A-41BE-94FB-54408C834D84</string>
+
 			<key>IDESourceControlWCCName</key>
 			<string>TrafficCop_latest</string>
 		</dict>

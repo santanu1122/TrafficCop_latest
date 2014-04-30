@@ -99,7 +99,7 @@
     UILabel *Lable=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 22)];
     Lable.text=@"Tips of the day";
     Lable.textAlignment=NSTextAlignmentCenter;
-    Lable.font=[UIFont fontWithName:@"Arial" size:20.0f];
+    Lable.font=[UIFont fontWithName:GLOBALTEXTFONT_Title size:20.0f];
     Lable.textColor=[UIColor blackColor];
     [pushContainScroll addSubview:Lable];
     
@@ -116,7 +116,7 @@
         
         UITextView *commentText=[[UITextView alloc]initWithFrame:CGRectMake(25, 10, 282, textViewSize.height+20)];
         NSLog(@"The text field.hight:%f",textViewSize.height);
-         commentText.font=[UIFont fontWithName:@"Arial" size:13.0f];
+         commentText.font=[UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
          commentText.textColor=[UIColor darkGrayColor];
         NSArray *arr = [[MutDic objectForKey:@"tips"] componentsSeparatedByString:@"<p>"];
         NSArray *arr1 = [[arr objectAtIndex:1] componentsSeparatedByString:@"</p>"];
@@ -132,7 +132,7 @@
         
         UILabel *addDateLable=[[UILabel alloc]initWithFrame:CGRectMake(210,commentText.frame.size.height+commentText.frame.origin.y-5, 105, 13)];
         [addDateLable setTextColor:[UIColor blackColor]];
-         addDateLable.font=[UIFont fontWithName:@"Arial" size:10.0f];
+         addDateLable.font=[UIFont fontWithName:GLOBALTEXTFONT_Title size:10.0f];
          addDateLable.text=[MutDic objectForKey:@"added_date"];
        
         UIView *separetor=[[UIView alloc]initWithFrame:CGRectMake(20, commentText.frame.size.height+commentText.frame.origin.y+25, 280, 1)];

@@ -66,6 +66,19 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *Titellbl;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionlbl;
+@property (weak, nonatomic) IBOutlet UILabel *LicensePlateLbl;
+@property (weak, nonatomic) IBOutlet UILabel *AddPicLbl;
+@property (weak, nonatomic) IBOutlet UILabel *AddVehicleDescriptionLbl;
+@property (weak, nonatomic) IBOutlet UILabel *AddLocationLbl;
+
+@property (weak, nonatomic) IBOutlet UILabel *MakeLbl;
+@property (weak, nonatomic) IBOutlet UILabel *Year;
+@property (weak, nonatomic) IBOutlet UILabel *YearLbl;
+@property (weak, nonatomic) IBOutlet UILabel *ModelLbl;
+@property (weak, nonatomic) IBOutlet UILabel *UniqueCharLbl;
+
+@property (weak, nonatomic) IBOutlet UILabel *ReportAnIncidentLblInPriview;
+@property (weak, nonatomic) IBOutlet UILabel *ReportAnIncidentInPost;
 
 -(IBAction)Scrolltoup:(id)sender;
 -(IBAction)Previewdata:(id)sender;
@@ -110,10 +123,12 @@
 @property (strong, nonatomic) IBOutlet UIView *ViewForreview;
 
 @property (nonatomic,retain) IBOutlet UIScrollView *AddVScrollView;
+
 @property (nonatomic,retain) IBOutlet UIView *Makeview;
 @property (nonatomic,retain) IBOutlet UIView *Modelview;
 @property (nonatomic,retain) IBOutlet UIView *Yearview;
 @property (nonatomic,retain) IBOutlet UIView *Uniquecharacteristicsview;
+
 @property (nonatomic,retain) IBOutlet UIView *Processview;
 @property (nonatomic,retain) IBOutlet UITextField *Maketextview;
 @property (nonatomic,retain) IBOutlet UITextField *Modeltextview;
@@ -382,6 +397,31 @@ int upoloadFirst = 223;
     _ReportDataTableview.dataSource = (id)self;
     
     TableviewDataArray = [[NSArray alloc] initWithObjects:@"Add Title",@"Add Description",@"Add License plate",@"Add Location",@"Add Picture",@"Add Vehicle Description", nil];
+
+    
+    _ReportAnIncidentInPost.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:18.0f];
+    _ReportAnIncidentLblInPriview.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:18.0f];
+    
+    
+    _Titellbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _Titellbl.textColor = UIColorFromRGB(0x211e1f);
+    
+    _descriptionlbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _descriptionlbl.textColor = UIColorFromRGB(0x211e1f);
+    
+    
+    _LicensePlateLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _LicensePlateLbl.textColor = UIColorFromRGB(0x211e1f);
+    
+    _AddLocationLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _AddLocationLbl.textColor = UIColorFromRGB(0x211e1f);
+    
+    _AddPicLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _AddPicLbl.textColor = UIColorFromRGB(0x211e1f);
+    
+    _AddVehicleDescriptionLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _AddVehicleDescriptionLbl.textColor = UIColorFromRGB(0x211e1f);
+    
     
     TableviewImageArray = [[NSArray alloc] initWithObjects:@"public.png",@"car.png",@"sgn.png",@"comm.png",@"cam.png",@"car.png", nil];
     
@@ -434,8 +474,14 @@ int upoloadFirst = 223;
     _TitleTextview.delegate = (id)self;
     _TitleTextview.tag = 100;
     self.ViewForreview.layer.cornerRadius=4.0f;
-    [_UIScrollViewMain addSubview:_Titleview];
     
+    //[_TitleTextview setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    
+    [_TitleTextview setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    
+    _TitleTextview.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    _TitleTextview.textColor = UIColorFromRGB(0x575757);
+    [_UIScrollViewMain addSubview:_Titleview];
     
     // Add report description view in mainview
     
@@ -444,7 +490,14 @@ int upoloadFirst = 223;
     _DescTextview.returnKeyType = UIReturnKeyDone;
     _DescTextview.delegate = (id)self;
     _DescTextview.tag = 101;
-    _DescTextview.textColor = UIColorFromRGB(0xc5c5c5);
+    //_DescTextview.textColor = UIColorFromRGB(0xc5c5c5);
+    
+    _AddDescriptionLbl.textColor = [UIColor lightGrayColor];
+    //        UIColorFromRGB(0x575757);    //place holder for this text view..
+    _AddDescriptionLbl.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    
+    _DescTextview.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    _DescTextview.textColor = UIColorFromRGB(0x575757);
     [_UIScrollViewMain addSubview:_Descriptionview];
     
     // Add report LicencePlateview in mainview
@@ -454,7 +507,14 @@ int upoloadFirst = 223;
     _LicencePlateTextview.returnKeyType = UIReturnKeyDone;
     _LicencePlateTextview.delegate = (id)self;
     _LicencePlateTextview.tag = 102;
+    
+    [_LicencePlateTextview setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _LicencePlateTextview.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    _LicencePlateTextview.textColor = UIColorFromRGB(0x575757);
     [_UIScrollViewMain addSubview:_LicencePlateview];
+    
+    
+    
     
     // Add report Locationview in mainview
     
@@ -462,6 +522,11 @@ int upoloadFirst = 223;
     UITapGestureRecognizer *LocationViewPinch = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(LocationTap:)];
     [_Locationview addGestureRecognizer:LocationViewPinch];
     [self Makeframe:_Locationview];
+    
+    [_locationShow setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _locationShow.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    _locationShow.textColor = UIColorFromRGB(0x575757);
+    
     [_UIScrollViewMain addSubview:_Locationview];
     
     // Add report AddPicview in mainview
@@ -524,6 +589,14 @@ int upoloadFirst = 223;
     _AddVScrollView.scrollEnabled = YES;
     _AddVScrollView.backgroundColor = [UIColor clearColor];
     [_AddVScrollView setContentSize:CGSizeMake(self.view.frame.size.width,self.view.frame.size.height+250)];
+    
+//    _MakeLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+//    _MakeLbl.textColor = [UIColor redColor];
+    
+    //UIColorFromRGB(0x211e1f);
+    
+    
+    
     
     //_ADDIMAGEVIEW.frame = CGRectMake(0, 150, 320, 300);
     
@@ -616,6 +689,7 @@ int upoloadFirst = 223;
                                                             inputView.backgroundColor = [UIColor clearColor];
                                                         }];
     
+    
     _Maketextview.tag = 999;
     _Modeltextview.tag = 998;
     _Yeartextview.tag = 997;
@@ -624,18 +698,26 @@ int upoloadFirst = 223;
     
     _Makeview.frame = CGRectMake(0, 60, 320, 70);
     [self Makeframe:_Makeview];
+    _MakeLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _MakeLbl.textColor = UIColorFromRGB(0x211e1f);
     [_AddVScrollView addSubview:_Makeview];
     
     _Modelview.frame = CGRectMake(0, 131, 320, 70);
     [self Makeframe:_Modelview];
+    _ModelLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _ModelLbl.textColor = UIColorFromRGB(0x211e1f);
     [_AddVScrollView addSubview:_Modelview];
     
     _Yearview.frame = CGRectMake(0, 202, 320, 70);
     [self Makeframe:_Yearview];
+    _YearLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _YearLbl.textColor = UIColorFromRGB(0x211e1f);
     [_AddVScrollView addSubview:_Yearview];
     
     _Uniquecharacteristicsview.frame = CGRectMake(0, 273, 320, 78);
     [self Makeframe:_Uniquecharacteristicsview];
+    _UniqueCharLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _UniqueCharLbl.textColor = UIColorFromRGB(0x211e1f);
     [_AddVScrollView addSubview:_Uniquecharacteristicsview];
     
     _Processview.frame = CGRectMake(0, 392, 320, 50);
@@ -650,27 +732,27 @@ int upoloadFirst = 223;
     
     [ReportBadDriver HidePopupView];
     
-    //if (VehDetlObject.VehicleMake == (id)[NSNull null] || VehDetlObject.VehicleMake.length == 0 ) {
     _Maketextview.placeholder = @"Vehicle Make";
-    //        [_Maketextview becomeFirstResponder];
-    //    } else {
-    //        [_Maketextview setText:VehDetlObject.VehicleMake];
-    //    }
+    [_Maketextview setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _Maketextview.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    _Maketextview.textColor = UIColorFromRGB(0x575757);
     
-    //    if (VehDetlObject.VehicleModel == (id)[NSNull null] || VehDetlObject.VehicleModel.length == 0 )
+    
     _Modeltextview.placeholder = @"Vehicle Model";
-    //    else
-    //        [_Modeltextview setText:VehDetlObject.VehicleModel];
+    [_Modeltextview setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _Modeltextview.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    _Modeltextview.textColor = UIColorFromRGB(0x575757);
     
-    //if (VehDetlObject.VihicleYear == (id)[NSNull null] || VehDetlObject.VihicleYear.length == 0 )
     _Yeartextview.placeholder = @"Vehicle Year";
-    //    else
-    //        [_Yeartextview setText:VehDetlObject.VihicleYear];
+    [_Yeartextview setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _Yeartextview.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    _Yeartextview.textColor = UIColorFromRGB(0x575757);
     
-    //    if (VehDetlObject.VehicleUnique == (id)[NSNull null] || VehDetlObject.VehicleUnique.length == 0 )
     _Uniquecharacteristicstextview.placeholder = @"Unique Characteristics";
-    //    else
-    //        [_Uniquecharacteristicstextview setText:VehDetlObject.VehicleUnique];
+    [_Uniquecharacteristicstextview setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _Uniquecharacteristicstextview.font = [UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+    _Uniquecharacteristicstextview.textColor = UIColorFromRGB(0x575757);
+    
     
 }
 - (void)textField:(UITextField *)textField didSelectObject:(id)object inInputView:(ACEAutocompleteInputView *)inputView
@@ -1292,7 +1374,7 @@ int upoloadFirst = 223;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
-    [_UIScrollViewMain setContentOffset:CGPointMake(0, 0) animated:YES];
+    [_UIScrollViewMain setContentOffset:CGPointMake(0, -15) animated:YES];
     [textField resignFirstResponder];
     return NO;
 }
@@ -1386,8 +1468,16 @@ int upoloadFirst = 223;
     return YES;
 }
 -(IBAction)CancelButtonClicked:(id)sender {
+
+    NSLog(@"www");
     _AddVehicleDescView.hidden = YES;
     _isVehicleDescComplete = NO;
+    
+    _Maketextview.text = @"";
+    _Yeartextview.text = @"";
+    _Modeltextview.text = @"";
+    _Uniquecharacteristicstextview.text = @"";
+  
 }
 -(IBAction)DoneButtonClicked:(id)sender {
     
@@ -1638,7 +1728,8 @@ int upoloadFirst = 223;
             _DescTextview.delegate = (id)self;
             _DescTextview.tag = 101;
             
-            _DescTextview.textColor = UIColorFromRGB(0xc5c5c5);
+//            _DescTextview.textColor = UIColorFromRGB(0xc5c5c5);
+            _DescTextview.textColor = UIColorFromRGB(0x575757);
             [_PriviewScroll addSubview:_Descriptionview];
             
             //_LicencePlateview.frame = CGRectMake(0, 350, 320, 100);
@@ -1896,6 +1987,7 @@ int upoloadFirst = 223;
 }
 -(IBAction)FinalCancel:(id)sender
 {
+    NSLog(@"chkk");
     
     MBAlertView *alert = [MBAlertView alertWithBody:@"Are You Sure To Cancel This Report?" cancelTitle:@"No" cancelBlock:nil];
     [alert addButtonWithText:@"Yes" type:MBAlertViewItemTypePositive block:^{
