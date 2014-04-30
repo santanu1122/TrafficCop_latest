@@ -74,8 +74,6 @@ typedef enum {
     BOOL iscommentpresh;
     NSString *theReviewtext;
     UIButton *GreyImageButton;
-    
-    
     UILabel *NolocationLablel;
     
     
@@ -213,7 +211,7 @@ float Basic_height                          = 0.0f;
     /*
      Scroll View declaration
      */
-    [super viewDidLoad];
+//    [super viewDidLoad];
     NSLog(@"in view will appear");
     
     currentImage = 0;
@@ -251,6 +249,14 @@ float Basic_height                          = 0.0f;
 
 - (void)viewDidLoad
 {
+    
+    _UILabelForPostComment.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0];
+    [_UILabelForPostComment setTextColor:UIColorFromRGB(0x211e1f)];
+    
+    _UILabelForRateComment.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0];
+    [_UILabelForRateComment setTextColor:UIColorFromRGB(0x211e1f)];
+    
+    
     SegmentedControl *segmentedControl1 = [[SegmentedControl alloc] initWithSectionTitles:@[@"Description", @"Map", @"Comment"]];
     segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     segmentedControl1.frame = CGRectMake(0, 51, 320, 43);
@@ -263,7 +269,6 @@ float Basic_height                          = 0.0f;
     segmentedControl1.scrollEnabled = NO;
     [segmentedControl1 addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl1];
-    
 }
 
 
@@ -339,12 +344,23 @@ float Basic_height                          = 0.0f;
                            [ImageArray addObject:imageReport];
                        }
                        NSLog(@"the image array:%@",ImageArray);
+                       
+                  
+//                    if(ImageArray == nil || [ImageArray count]<1)
+//                       {
+//                           NSLog(@"no image heree");
+//                       }
+//                       
+//                       else
+//                       {
                        dispatch_async( dispatch_get_main_queue(), ^(void)
                                       {
                                           [self REportDetailsview];
                                       });
+//                       }
                    });
 }
+
 
 -(IBAction)GotoTheAllSimilerreportPage:(id)sender
 {
@@ -368,8 +384,13 @@ float Basic_height                          = 0.0f;
     [MAinScrollview setBackgroundColor:[UIColor whiteColor]];
     [MAinScrollview setFrame:CGRectMake(0, 75, 320, self.view.frame.size.height-77)];
     
+   // [MAinScrollview setFrame:CGRectMake(0, 75, 320, 568)];
+    
     if ([ImageArray count]>0)
     {
+        //[MAinScrollview setFrame:CGRectMake(0, 75, 320, self.view.frame.size.height-77)];
+        
+        
         NSInteger numbour        =   [ImageArray count];
         CGRect frame            =   [MAinScrollview frame];
         [self.imageSliderview setFrame:CGRectMake(0, 0, 320, 185)];
@@ -391,6 +412,16 @@ float Basic_height                          = 0.0f;
         
         Basic_height = 185.0f;
     }
+    
+    
+    else
+    {
+        NSLog(@"i m in elsee");
+        NSLog(@"scroll h8 is %f", MAinScrollview.layer.frame.size.height);
+        [MAinScrollview setFrame:CGRectMake(0, 75, 320, 568)];
+    }
+    
+    
     
     // Add TitleView
     
@@ -776,6 +807,7 @@ float Basic_height                          = 0.0f;
     //    [MAinScrollview setFrame:CGRectMake(0, 90, 320, DetailsCommentView.frame.origin.y+DetailsCommentView.frame.size.height+50)];
     
     ////
+    
     [self.view setUserInteractionEnabled:YES];
 }
 
@@ -964,9 +996,10 @@ float Basic_height                          = 0.0f;
     [MAinScrollview setScrollEnabled:NO];
     [MAinScrollview setContentOffset:CGPointMake(0, 0)];
     
-    _UIViewForCommentListing.frame=CGRectMake(10, 0, 300, 454);
+    _UIViewForCommentListing.frame=CGRectMake(0, 0, 320, 454);
     [MAinScrollview addSubview:_UIViewForCommentListing];
-    [_UIViewForPostComment setFrame:CGRectMake(0, 10, 300, 300)];
+    [_UIViewForPostComment setFrame:CGRectMake(0, 0, 320, 456)];
+    //modified new
     [_UIViewForCommentListing addSubview:_UIViewForPostComment];
     self.UIViewForPostComment.hidden=YES;
     
@@ -981,19 +1014,20 @@ float Basic_height                          = 0.0f;
     
     float SIZEX = 0;
     float SIZEY = 3;
-    float SIZEW = 30;
-    float SIZEH = 30;
-    
+    float SIZEW = 20;
+    float SIZEH = 20;
+    //modified      30
     for(int i=0; i < 5; i++)
     {
         if(i==0)
-            SIZEX = 10;
-        
+//            SIZEX = 10;
+              SIZEX = 0;
         GreyImageButton = [[UIButton alloc] initWithFrame:CGRectMake(SIZEX, SIZEY, SIZEW, SIZEH)];
-        [GreyImageButton setImage:[UIImage imageNamed:@"GRAYSTAR"] forState:UIControlStateNormal];
-        [GreyImageButton setImage:[UIImage imageNamed:@"YELLOWSTER"] forState:UIControlStateHighlighted];
-        [GreyImageButton setImage:[UIImage imageNamed:@"YELLOWSTER"] forState:UIControlStateReserved];
-        [GreyImageButton setImage:[UIImage imageNamed:@"YELLOWSTER"] forState:UIControlStateSelected];
+        [GreyImageButton setImage:[UIImage imageNamed:@"star1NEW"] forState:UIControlStateNormal];
+        //modified
+        [GreyImageButton setImage:[UIImage imageNamed:@"starNEW"] forState:UIControlStateHighlighted];
+        [GreyImageButton setImage:[UIImage imageNamed:@"starNEW"] forState:UIControlStateReserved];
+        [GreyImageButton setImage:[UIImage imageNamed:@"starNEW"] forState:UIControlStateSelected];
         [GreyImageButton addTarget:self action:@selector(UiGreyImageButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
         [GreyImageButton setTag:(10000+i)];
         [_backgroundRatting addSubview:GreyImageButton];
@@ -1083,8 +1117,8 @@ float Basic_height                          = 0.0f;
     {
         
         UIButton *_infoButton = (UIButton *)[_UIViewForPostComment viewWithTag:(10000+rst)];
-        [_infoButton setImage:[UIImage imageNamed:@"GRAYSTAR"] forState:UIControlStateNormal];
-        
+        [_infoButton setImage:[UIImage imageNamed:@"star1NEW"] forState:UIControlStateNormal];
+         //modified
     }
     
     // set all the button image in yellowstar
@@ -1093,8 +1127,8 @@ float Basic_height                          = 0.0f;
     {
         
         UIButton *_infoButton = (UIButton *)[_UIViewForPostComment viewWithTag:(10000+s)];
-        [_infoButton setImage:[UIImage imageNamed:@"YELLOWSTER"] forState:UIControlStateNormal];
-        
+        [_infoButton setImage:[UIImage imageNamed:@"starNEW"] forState:UIControlStateNormal];
+         //modified
     }
     
     TotalCommentbyme = ButtonShouldBehighLited;
@@ -1299,8 +1333,8 @@ float Basic_height                          = 0.0f;
     {
         
         UIButton *_infoButton = (UIButton *)[_UIViewForPostComment viewWithTag:(10000+s)];
-        [_infoButton setImage:[UIImage imageNamed:@"GRAYSTAR"] forState:UIControlStateNormal];
-        
+        [_infoButton setImage:[UIImage imageNamed:@"star1NEW"] forState:UIControlStateNormal];
+        //modified  star1NEW
     }
     
     [commentShowtable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
@@ -1311,29 +1345,28 @@ float Basic_height                          = 0.0f;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell=[[UITableViewCell alloc]init];
-    
     NSMutableDictionary *item;
     item = [[NSMutableDictionary alloc] initWithDictionary:[AllComment objectAtIndex:indexPath.row]];
     
-    
     NSLog(@"AllComment ---- %@",AllComment);
     
+    UITableViewCell *cell=[[UITableViewCell alloc]init];
     UIView  *MainCellView = [[UIView alloc] init];
+//    UIView  *MainCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, cell.contentView.frame.size.height)];
     
     MainCellView.backgroundColor = [UIColor clearColor];
     
     
-    UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
+    UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 16, 65, 65)];
     
     ImageView.backgroundColor = [UIColor clearColor];
     
     [MainCellView addSubview:ImageView];
     
     
-    ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
     
-    imageView.defaultImage = [UIImage imageNamed:@"FH-noimage-circle.png"];
+    imageView.defaultImage = [UIImage imageNamed:@"NEWNOIMAGE.png"];
     
     imageView.imageUrl = [item objectForKey:@"image"];
     
@@ -1341,17 +1374,22 @@ float Basic_height                          = 0.0f;
     
     imageView.clipsToBounds = YES;
     
-    //imageView.corners = ZSRoundCornerAll;
+    imageView.corners = ZSRoundCornerAll;
     
-    imageView.cornerRadius = 0;
+    imageView.cornerRadius = 25;
     [ImageView addSubview:imageView];
     
+    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
+    [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
+    [ImageView addSubview:ImageOverlay];
     
-    UIImageView *brodgate_image=[[UIImageView alloc]initWithFrame:CGRectMake(250, 10, 20, 21)];
+    
+    
+    UIImageView *brodgate_image=[[UIImageView alloc]initWithFrame:CGRectMake(258, 16, 14, 14)];
     brodgate_image.backgroundColor = [UIColor clearColor];
-    
     [MainCellView addSubview:brodgate_image];
-    ZSImageView *BrodGateView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 21)];
+    
+    ZSImageView *BrodGateView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
     
     BrodGateView.imageUrl = [item objectForKey:@"get_badge"];
     
@@ -1362,7 +1400,7 @@ float Basic_height                          = 0.0f;
     [brodgate_image addSubview:BrodGateView];
     [MainCellView addSubview:brodgate_image];
     
-    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 130, 22)];
+    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 220, 25)];
     
     cell.textLabel.text=[item valueForKey:@"comment_id"];
     cell.textLabel.hidden=YES;
@@ -1370,10 +1408,10 @@ float Basic_height                          = 0.0f;
     
     TitleLabel.backgroundColor = [UIColor clearColor];
     
-    TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
+    TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
     
-    TitleLabel.textColor = UIColorFromRGB(0x000000);
-    
+//    TitleLabel.textColor = UIColorFromRGB(0x000000);
+    TitleLabel.textColor = UIColorFromRGB(0x211e1f);
     TitleLabel.text = [ReportDetailsHelper stripTags:[item objectForKey:@"name"]];
     
     
@@ -1381,13 +1419,13 @@ float Basic_height                          = 0.0f;
     
     [MainCellView addSubview:TitleLabel];
     
-    UILabel *DateLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 30, 110, 22)];
+    UILabel *DateLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 35, 110, 25)];
     
     DateLabel.backgroundColor = [UIColor clearColor];
     
-    DateLabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:12];
+    DateLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:14];
     
-    DateLabel.textColor = UIColorFromRGB(0x000000);
+    DateLabel.textColor = UIColorFromRGB(0x211e1f);
     
     DateLabel.text = [ReportDetailsHelper stripTags:[item objectForKey:@"submit_on"]];
     
@@ -1396,9 +1434,9 @@ float Basic_height                          = 0.0f;
     
     [MainCellView addSubview:DateLabel];
     
-    UIImageView *reportimage=[[UIImageView alloc]initWithFrame:CGRectMake(175, 33, 100, 14)];
+    UIImageView *reportimage=[[UIImageView alloc]initWithFrame:CGRectMake(90, 62, 110, 16)];
     [MainCellView addSubview:reportimage];
-    ZSImageView *ReatingimageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0,100, 14)];
+    ZSImageView *ReatingimageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0,110, 16)];
     
     ReatingimageView.imageUrl = [item objectForKey:@"rating_image"];
     
@@ -1418,23 +1456,32 @@ float Basic_height                          = 0.0f;
     [DetailsTextViewFortext setAttributedText:attributed];
     CGSize size = [DetailsTextViewFortext sizeThatFits:CGSizeMake(310, FLT_MAX)];
     
-    DetailsTextViewFortext.frame = CGRectMake(5, 60, 310, size.height);
+    DetailsTextViewFortext.frame = CGRectMake(90, 83, 225, size.height);
     [DetailsTextViewFortext setTextAlignment:NSTextAlignmentJustified];
-    [DetailsTextViewFortext setFont:[UIFont fontWithName:@"Arial" size:12.0f]];
-    [DetailsTextViewFortext setTextColor:[UIColor darkGrayColor]];
+    [DetailsTextViewFortext setFont:[UIFont fontWithName:GLOBALTEXTFONT size:12.0f]];
+    //[DetailsTextViewFortext setTextColor:[UIColor darkGrayColor]];
+    DetailsTextViewFortext.textColor = UIColorFromRGB(0x575757);
     DetailsTextViewFortext.editable=NO;
     DetailsTextViewFortext.scrollEnabled=NO;
     [DetailsTextViewFortext setBackgroundColor:[UIColor clearColor]];
     [DetailsTextViewFortext setEditable:NO];
     
     [MainCellView addSubview:DetailsTextViewFortext];
-    UIView *theCellSparetoe=[[UIView alloc]initWithFrame:CGRectMake(5, size.height+99, 310, 1)];
-    [theCellSparetoe setBackgroundColor:[UIColor lightGrayColor]];
-    [MainCellView addSubview:theCellSparetoe];
+//    UIView *theCellSparetoe=[[UIView alloc]initWithFrame:CGRectMake(5, size.height+99, 320, 0.5f)];
     
     MainCellView.frame=CGRectMake(0, 0, 320, DetailsTextViewFortext.frame.origin.y+DetailsTextViewFortext.frame.size.height+3);
     
+//    UIView *theCellSparetoe=[[UIView alloc]initWithFrame:CGRectMake(5, MainCellView.layer.frame.size.height, 320, 0.5f)];
+    
+    UIView *theCellSparetoe=[[UIView alloc]initWithFrame:CGRectMake(0,DetailsTextViewFortext.frame.origin.y+DetailsTextViewFortext.frame.size.height+2, 320, 0.5f)];
+    [theCellSparetoe setBackgroundColor:[UIColor blackColor]];
+    theCellSparetoe.layer.opacity = 0.5f;
+    
+    [MainCellView addSubview:theCellSparetoe];
+
     [cell.contentView addSubview:MainCellView];
+    
+    
     
     return cell;
     
@@ -1445,7 +1492,7 @@ float Basic_height                          = 0.0f;
     
     UIView *MainHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     [MainHeaderView setBackgroundColor:[UIColor whiteColor]];
-    UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 320, 35)];
+    UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 320, 35)];
     Titlelabel.text = @"Total Comments";
     [MainHeaderView addSubview:Titlelabel];
     
@@ -1494,7 +1541,8 @@ float Basic_height                          = 0.0f;
     thetexttest=nil;
     
     
-    return size.height+100;
+//    return size.height+100;
+    return size.height+86;
 }
 
 
@@ -1521,8 +1569,9 @@ float Basic_height                          = 0.0f;
                      completion:^(BOOL finished)
      {
          _UIViewForPostComment.hidden=YES;
-         [_backgroundRatting removeFromSuperview];
-         
+         //[_backgroundRatting removeFromSuperview];
+//         [_UIViewForPostComment removeFromSuperview];
+          //modified new
      }];
     
     
@@ -1540,6 +1589,12 @@ float Basic_height                          = 0.0f;
     //    
     //    else
     //    {
+    
+    NSLog(@"add comment btn pressed");
+    _UITextViewForPostComment.text = nil;
+    [_UITextViewForPostComment setText:@"Add Comment Here"];
+    [_UITextViewForPostComment setTextColor:UIColorFromRGB(0xc5c5c5)];
+    
     _UIViewForPostComment.alpha=0;
     _UIViewForPostComment.hidden=NO;
     

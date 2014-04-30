@@ -31,19 +31,24 @@
                         </state>
                     </button>
                     <button opaque="NO" tag="994" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUS-OJ-pbx">
-                        <rect key="frame" x="266" y="0.0" width="54" height="60"/>
+                        <rect key="frame" x="270" y="7" width="45" height="45"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
-                        <state key="normal" image="Delete_Evdince.png">
+                        <state key="normal">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DELETE.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qld-H0-GcQ">
+                        <rect key="frame" x="277" y="15" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Delete_Evdince.png" width="26" height="26"/>
+        <image name="DELETE.png" width="48" height="48"/>
     </resources>
 </document>

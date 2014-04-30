@@ -54,7 +54,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _EvidenceLockerLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16.0f];
+    _EvidenceLockerLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0f];
     _EvidenceLockerLbl.textColor = UIColorFromRGB(0x211e1f);
     
     helperAvidence=[[HelperClass alloc]init];
