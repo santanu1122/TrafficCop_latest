@@ -540,7 +540,6 @@
     
     @try
     {
-        NSLog(@"chk 22--");
         
         NSError *gotError       =   nil;
         NSString *url           =   [NSString stringWithFormat:@"%@me?access_token=%@",GraphAPI, FBAccessToken];
