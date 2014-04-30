@@ -41,6 +41,9 @@
 @property (nonatomic, strong) ACAccount *twitterAccount;
 @property (nonatomic, retain) ACAccountStore *accountStore;
 @property (nonatomic, retain) IBOutlet UIView *Errview;
+@property (strong, nonatomic) IBOutlet UILabel *twitterLabel;
+@property (strong, nonatomic) IBOutlet UILabel *facebookLabel;
+
 @end
 
 @implementation LoginViewController
@@ -103,11 +106,11 @@
     
     [LoginHelper CreateImageviewWithImage:LoginArea xcord:35 ycord:45 width:24 height:24 backgroundColor:[UIColor clearColor] imageName:@"user.png"];
     
-    UserNameField = [LoginHelper CrateTextField:globalTextFieldXCord ycord:127 width:globalTextFieldWidth height:globalTextFieldHeight backgroundColor:[UIColor clearColor] backGroundImage:Nil textcolor:globalTEXTFIELDPLACEHOLDERCOLOR palceholdertext:LOGINFIELDPLACEHOLDER fontName:globalTEXTFIELDPLACEHOLDERFONT fontSize:globalTEXTFIELDPLACEHOLDERFONTSIZE Secure:NO addView:self.view viewController:self delegate:Nil textfieldName:UserNameField];
+    UserNameField = [LoginHelper CrateTextField:globalTextFieldXCord ycord:127 width:globalTextFieldWidth height:globalTextFieldHeight backgroundColor:[UIColor clearColor] backGroundImage:Nil textcolor:globalTEXTFIELDPLACEHOLDERCOLOR palceholdertext:LOGINFIELDPLACEHOLDER fontName:GLOBALTEXTFONT fontSize:globalTEXTFIELDPLACEHOLDERFONTSIZE Secure:NO addView:self.view viewController:self delegate:Nil textfieldName:UserNameField];
     
     [UserNameField addTarget:self action:@selector(RetunButtonClicked:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    UserPassField = [LoginHelper CrateTextField:globalTextFieldXCord ycord:175 width:globalTextFieldWidth height:globalTextFieldHeight backgroundColor:[UIColor clearColor] backGroundImage:Nil textcolor:globalTEXTFIELDPLACEHOLDERCOLOR palceholdertext:PASSWORDFIELDPLACEHOLDER fontName:globalTEXTFIELDPLACEHOLDERFONT fontSize:globalTEXTFIELDPLACEHOLDERFONTSIZE Secure:YES addView:self.view viewController:self delegate:Nil textfieldName:UserPassField];
+    UserPassField = [LoginHelper CrateTextField:globalTextFieldXCord ycord:175 width:globalTextFieldWidth height:globalTextFieldHeight backgroundColor:[UIColor clearColor] backGroundImage:Nil textcolor:globalTEXTFIELDPLACEHOLDERCOLOR palceholdertext:PASSWORDFIELDPLACEHOLDER fontName:GLOBALTEXTFONT fontSize:globalTEXTFIELDPLACEHOLDERFONTSIZE Secure:YES addView:self.view viewController:self delegate:Nil textfieldName:UserPassField];
     
     [UserPassField addTarget:self action:@selector(RetunButtonClicked:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
@@ -115,16 +118,19 @@
     
     [LoginHelper CreateImageviewWithImage:LoginArea xcord:35 ycord:92 width:24 height:24 backgroundColor:[UIColor clearColor] imageName:@"password.png"];
     
-    [LoginHelper CreateButtonWithValue:33 ycord:265 width:255 height:50 backgroundColor:[UIColor clearColor] textcolor:[UIColor whiteColor] labeltext:LOGINBUTTON fontName:globalTEXTFIELDPLACEHOLDERFONT fontSize:16 imageNameForUIControlStateNormal:LOGINBUTTONIMG imageNameForUIControlStateSelected:LOGINBUTTONIMG imageNameForUIControlStateHighlighted:LOGINBUTTONIMG imageNameForselectedHighlighted:LOGINBUTTONIMG selectMethod:@selector(PerformLogin) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
+    [LoginHelper CreateButtonWithValue:33 ycord:265 width:255 height:50 backgroundColor:[UIColor clearColor] textcolor:[UIColor whiteColor] labeltext:LOGINBUTTON fontName:GLOBALTEXTFONT fontSize:16 imageNameForUIControlStateNormal:LOGINBUTTONIMG imageNameForUIControlStateSelected:LOGINBUTTONIMG imageNameForUIControlStateHighlighted:LOGINBUTTONIMG imageNameForselectedHighlighted:LOGINBUTTONIMG selectMethod:@selector(PerformLogin) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
     
-    [LoginHelper CreateButtonWithValue:33 ycord:320 width:255 height:50 backgroundColor:[UIColor clearColor] textcolor:[UIColor whiteColor] labeltext:LOGINBUTTON fontName:globalTEXTFIELDPLACEHOLDERFONT fontSize:16 imageNameForUIControlStateNormal:REGISTERBUTTIMG imageNameForUIControlStateSelected:REGISTERBUTTIMG imageNameForUIControlStateHighlighted:REGISTERBUTTIMG imageNameForselectedHighlighted:REGISTERBUTTIMG selectMethod:@selector(PerformRegister) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
+    [LoginHelper CreateButtonWithValue:33 ycord:320 width:255 height:50 backgroundColor:[UIColor clearColor] textcolor:[UIColor whiteColor] labeltext:LOGINBUTTON fontName:GLOBALTEXTFONT fontSize:16 imageNameForUIControlStateNormal:REGISTERBUTTIMG imageNameForUIControlStateSelected:REGISTERBUTTIMG imageNameForUIControlStateHighlighted:REGISTERBUTTIMG imageNameForselectedHighlighted:REGISTERBUTTIMG selectMethod:@selector(PerformRegister) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
     
-    [LoginHelper CreatelabelWithValue:0 ycord:385 width:320 height:25 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xa6a6a6) labeltext:ALTERNATIVELOGINTEXT fontName:globalTEXTFIELDPLACEHOLDERFONT fontSize:20 addView:self.view];
+    [LoginHelper CreatelabelWithValue:0 ycord:385 width:320 height:25 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xa6a6a6) labeltext:ALTERNATIVELOGINTEXT fontName:GLOBALTEXTFONT fontSize:20 addView:self.view];
     
     
-    [LoginHelper CreateButtonWithValue:71 ycord:424 width:75 height:75 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xa6a6a6) labeltext:Nil fontName:globalTEXTFIELDPLACEHOLDERFONT fontSize:0 imageNameForUIControlStateNormal:LOGINFACEBOOK imageNameForUIControlStateSelected:LOGINFACEBOOK imageNameForUIControlStateHighlighted:LOGINFACEBOOK imageNameForselectedHighlighted:LOGINFACEBOOK selectMethod:@selector(FacebookLoginone) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
+    [LoginHelper CreateButtonWithValue:71 ycord:424 width:75 height:75 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xa6a6a6) labeltext:Nil fontName:GLOBALTEXTFONT fontSize:0 imageNameForUIControlStateNormal:LOGINFACEBOOK imageNameForUIControlStateSelected:LOGINFACEBOOK imageNameForUIControlStateHighlighted:LOGINFACEBOOK imageNameForselectedHighlighted:LOGINFACEBOOK selectMethod:@selector(FacebookLoginone) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
     
-    [LoginHelper CreateButtonWithValue:170 ycord:424 width:75 height:75 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xa6a6a6) labeltext:ALTERNATIVELOGINTEXT fontName:globalTEXTFIELDPLACEHOLDERFONT fontSize:22 imageNameForUIControlStateNormal:LOGINTWITTER imageNameForUIControlStateSelected:LOGINTWITTER imageNameForUIControlStateHighlighted:LOGINTWITTER imageNameForselectedHighlighted:LOGINTWITTER selectMethod:@selector(TwitterLoginone) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
+    [LoginHelper CreateButtonWithValue:170 ycord:424 width:75 height:75 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xa6a6a6) labeltext:ALTERNATIVELOGINTEXT fontName:GLOBALTEXTFONT fontSize:22 imageNameForUIControlStateNormal:LOGINTWITTER imageNameForUIControlStateSelected:LOGINTWITTER imageNameForUIControlStateHighlighted:LOGINTWITTER imageNameForselectedHighlighted:LOGINTWITTER selectMethod:@selector(TwitterLoginone) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
+    
+    _facebookLabel.font=[UIFont fontWithName:GLOBALTEXTFONT size:15];
+    _twitterLabel.font=[UIFont fontWithName:GLOBALTEXTFONT size:15];
     
     UIView *ForgetPassBackview=[[UIView alloc]initWithFrame:CGRectMake(20, 239, 255, 20)];
     ForgetPassBackview.layer.cornerRadius=0.0;
@@ -564,7 +570,7 @@
                         
                       //  NSData *data             =   [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=200&height=200&redirect=false",[NSString stringWithFormat:@"%@",[getArray valueForKey:@"id"]]]]];
                         
-                        NSString *str = [NSString stringWithFormat:@"http://esolzdemos.com/lab3/trafficcop/IOS/appweb.php?mode=connectid_check&connectid=%@&authprovider=%@&device_token=%@",strfbId,@"facebook",deviceToken];
+                        NSString *str = [NSString stringWithFormat:@"%@appweb.php?mode=connectid_check&connectid=%@&authprovider=%@&device_token=%@",DomainURL,strfbId,@"facebook",deviceToken];
                         
                         NSLog(@"The update String:%@",str);
                         
@@ -608,7 +614,7 @@
                                 
                                 
                                 NSUserDefaults *Userdata = [NSUserDefaults standardUserDefaults];
-                                [Userdata setValue:[[userDetails valueForKey:@"userid"]objectAtIndex:0] forKey:@"id"];
+                                [Userdata setValue:[[userDetails valueForKey:@"userid"]objectAtIndex:0] forKey:@"userid"];
                                 [Userdata setValue:[[userDetails valueForKey:@"username"]objectAtIndex:0] forKey:@"username"];
                                 
                                 [Userdata setValue:[[userDetails valueForKey:@"first_name"]objectAtIndex:0] forKey:@"first_name"];
@@ -767,7 +773,7 @@
     
 //     FacebookTwitterIntermidiat *facetwitter=[[FacebookTwitterIntermidiat alloc]initWithNibName:@"FacebookTwitterIntermidiat" bundle:nil];
 //    facetwitter.isCommingFromFacebook=YES;
-//     [self.navigationController pushViewController:facetwitter animated:YES];
+//     [self.navigationController pushViewController:facetwitter animated:YES];iamgenamed
     
     
 }
@@ -895,7 +901,7 @@
                 SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1.1/users/show.json"] parameters:[NSDictionary dictionaryWithObject:_username forKey:@"screen_name"]];
                 
                 [twitterInfoRequest setAccount:twitterAccountone];
-                NSString *string=[NSString stringWithFormat:@"http://esolzdemos.com/lab3/trafficcop/IOS/appweb.php?mode=connectid_check&connectid=%@&authprovider=%@&device_token=%@",user_id,@"twitter",deviceToken];
+                NSString *string=[NSString stringWithFormat:@"%@appweb.php?mode=connectid_check&connectid=%@&authprovider=%@&device_token=%@",DomainURL,user_id,@"twitter",deviceToken];
                 NSLog(@"The update String:%@",string);
                 
                

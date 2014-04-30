@@ -134,6 +134,8 @@
         webdata = [[NSMutableData alloc]init];
     }
     
+    NSUserDefaults *userDetail=[NSUserDefaults standardUserDefaults];
+    NSLog(@"Name %@ firstname %@ lastname %@ email %@",[userDetail valueForKey:@"first_name"],[userDetail valueForKey:@"last_name"],[userDetail valueForKey:@"email"],[userDetail valueForKey:@"username"]);
 }
 
 - (void)segmentedControlChangedValue:(SegmentedControl *)segmentedControl {

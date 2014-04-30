@@ -53,9 +53,9 @@
     MainView.backgroundColor=[UIColor clearColor];
     [self.VarifyCodeScroll addSubview:MainView];
     
-    [VarifyCodeHelper CreatelabelWithValueCenter:87 ycord:20 width:210 height:40 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x00002b) labeltext:@"Forgot Password" fontName:@"Arial" fontSize:16 addView:MainView];
+    [VarifyCodeHelper CreatelabelWithValueCenter:87 ycord:20 width:210 height:40 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0x00002b) labeltext:@"Forgot Password" fontName:GLOBALTEXTFONT_Title fontSize:16 addView:MainView];
     
-    [VarifyCodeHelper CreatelabelWithValueCenter:20 ycord:55 width:280 height:30 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"We need some information to verify your ID.This protects your account from unauthorised access" fontName:@"Arial" fontSize:13.0f addView:MainView];
+    [VarifyCodeHelper CreatelabelWithValueCenter:20 ycord:55 width:280 height:30 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"We need some information to verify your ID.This protects your account from unauthorised access" fontName:GLOBALTEXTFONT fontSize:13.0f addView:MainView];
     
     
     UIView *EnterEmailView=[[UIView alloc]initWithFrame:CGRectMake(10, 100, 300, 180)];
@@ -71,7 +71,7 @@
     theEmailLable.textColor=[UIColor lightGrayColor];
     theEmailLable.text=@"Enter Verification Code";
     theEmailLable.textAlignment=NSTextAlignmentLeft;
-    theEmailLable.font=[UIFont systemFontOfSize:12];
+    theEmailLable.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
     [EnterEmailView addSubview:theEmailLable];
     
     

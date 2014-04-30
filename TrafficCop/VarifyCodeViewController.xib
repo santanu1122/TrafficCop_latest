@@ -24,6 +24,13 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Bi-gk-KAg">
                     <rect key="frame" x="0.0" y="1" width="320" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="traffic_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="RNM-mG-Iw3">
+                            <rect key="frame" x="107" y="15" width="105" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEJ-U6-Yxb">
@@ -44,5 +51,6 @@
     </objects>
     <resources>
         <image name="arrow-left.png" width="48" height="48"/>
+        <image name="traffic_logo.png" width="450" height="94"/>
     </resources>
 </document>

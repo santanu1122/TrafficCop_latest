@@ -17,9 +17,13 @@
     NSString *passwordTxt;
   BOOL changeUserPassword;
 }
-@property (nonatomic, strong) UITextField *Previous_password;
-@property (nonatomic, strong) UITextField *New_Password;
-@property (nonatomic, strong) UITextField *ConformNew_Password;
+
+@property (strong, nonatomic) IBOutlet UITextField *Previous_password;
+@property (strong, nonatomic) IBOutlet UITextField *New_Password;
+@property (strong, nonatomic) IBOutlet UITextField *ConformNew_Password;
+@property (strong, nonatomic) IBOutlet UIView *myPassWordChageView;
+@property (strong, nonatomic) IBOutlet UILabel *headerLabel;
+
 @end
 
 @implementation PassWordChange
@@ -27,6 +31,7 @@
 @synthesize Previous_password;
 @synthesize New_Password;
 @synthesize ConformNew_Password;
+@synthesize headerLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,98 +51,32 @@
 
     [[[self navigationController] navigationBar] setHidden:YES];
     
+    headerLabel.font=[UIFont fontWithName:GLOBALTEXTFONT_Title size:18];
+    
     changePassWordHelper=[[HelperClass alloc]init];
     [changePassWordHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
     [changePassWordHelper SetupHeaderView:self.view viewController:self];
-    UIView *WhiteBackGround=[[UIView alloc]initWithFrame:CGRectMake(10, 10, 300, 300)];
-    WhiteBackGround.layer.cornerRadius=10.0f;
-    WhiteBackGround.layer.borderWidth=1.0f;
-    WhiteBackGround.layer.borderColor=[UIColor whiteColor].CGColor;
-    [WhiteBackGround setBackgroundColor:[UIColor whiteColor]];
-    [changePassScroll addSubview:WhiteBackGround];
-    UILabel *themainheaderLbl=[[UILabel alloc]initWithFrame:CGRectMake(0, 10, 300, 20)];
-    themainheaderLbl.textColor=[UIColor darkGrayColor];
-    themainheaderLbl.text=@"Change Password";
-    themainheaderLbl.textAlignment=NSTextAlignmentCenter;
-    themainheaderLbl.font=[UIFont systemFontOfSize:13];
-    [WhiteBackGround addSubview:themainheaderLbl];
-    
-    UILabel *thenewpassLable=[[UILabel alloc]initWithFrame:CGRectMake(10, 45, 200, 20)];
-    thenewpassLable.textColor=[UIColor darkGrayColor];
-    thenewpassLable.text=@"previous Password";
-    thenewpassLable.textAlignment=NSTextAlignmentLeft;
-    thenewpassLable.font=[UIFont systemFontOfSize:13];
-    [WhiteBackGround addSubview:thenewpassLable];
     
     
-    UIView *textBackView=[[UIView alloc]initWithFrame:CGRectMake(10, 65, 280, 25)];
-    textBackView.backgroundColor=[UIColor whiteColor];
-    textBackView.layer.borderColor=[UIColor lightGrayColor].CGColor;
-    textBackView.layer.borderWidth=1.0f;
-    textBackView.layer.cornerRadius=2.0f;
-    [WhiteBackGround addSubview:textBackView];
-    Previous_password=[[UITextField alloc]initWithFrame:CGRectMake(15, 65, 270, 25)];
-    Previous_password.backgroundColor=[UIColor clearColor];
+    
     Previous_password.secureTextEntry=YES;
-    Previous_password.placeholder=@"previous Password";
-    Previous_password.borderStyle=UITextBorderStyleNone;
-    Previous_password.textColor=[UIColor blackColor];
-    Previous_password.font=[UIFont systemFontOfSize:12];
+    Previous_password.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
     Previous_password.delegate=self;
-    [WhiteBackGround addSubview:Previous_password];
     
-    UILabel *NewPassword=[[UILabel alloc]initWithFrame:CGRectMake(10, 100, 200, 20)];
-    NewPassword.textColor=[UIColor darkGrayColor];
-    NewPassword.text=@"New Password";
-    NewPassword.textAlignment=NSTextAlignmentLeft;
-    NewPassword.font=[UIFont systemFontOfSize:13];
-    [WhiteBackGround addSubview:NewPassword];
-    
-    
-    UIView *textBackView2=[[UIView alloc]initWithFrame:CGRectMake(10, 120, 280, 25)];
-    textBackView2.backgroundColor=[UIColor whiteColor];
-    textBackView2.layer.borderColor=[UIColor lightGrayColor].CGColor;
-    textBackView2.layer.borderWidth=1.0f;
-    textBackView2.layer.cornerRadius=2.0f;
-    [WhiteBackGround addSubview:textBackView2];
-    New_Password=[[UITextField alloc]initWithFrame:CGRectMake(15, 120, 270, 25)];
-    New_Password.backgroundColor=[UIColor clearColor];
-    New_Password.borderStyle=UITextBorderStyleNone;
-    [New_Password setPlaceholder:@"New Password"];
     [New_Password setSecureTextEntry:YES];
-    New_Password.textColor=[UIColor blackColor];
-    New_Password.font=[UIFont systemFontOfSize:12];
+    New_Password.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
     New_Password.delegate=self;
-    [WhiteBackGround addSubview:New_Password];
     
-    UILabel *TheConformNewPassword=[[UILabel alloc]initWithFrame:CGRectMake(10, 155, 200, 20)];
-    TheConformNewPassword.textColor=[UIColor lightGrayColor];
-    TheConformNewPassword.text=@"Confirm New Password";
-    TheConformNewPassword.textAlignment=NSTextAlignmentLeft;
-    TheConformNewPassword.font=[UIFont systemFontOfSize:13];
-    [WhiteBackGround addSubview:TheConformNewPassword];
+   
     
     
-    UIView *textBackView3=[[UIView alloc]initWithFrame:CGRectMake(10, 175, 280, 25)];
-    textBackView3.backgroundColor=[UIColor whiteColor];
-    textBackView3.layer.borderColor=[UIColor lightGrayColor].CGColor;
-    textBackView3.layer.borderWidth=1.0f;
-    textBackView3.layer.cornerRadius=2.0f;
-    [WhiteBackGround addSubview:textBackView3];
-    ConformNew_Password=[[UITextField alloc]initWithFrame:CGRectMake(15, 175, 270, 25)];
     [ConformNew_Password setSecureTextEntry:YES];
-    
-    [ConformNew_Password setPlaceholder:@"Confirm New Password"];
-    ConformNew_Password.backgroundColor=[UIColor clearColor];
-    ConformNew_Password.borderStyle=UITextBorderStyleNone;
-    ConformNew_Password.textColor=[UIColor blackColor];
-    ConformNew_Password.font=[UIFont systemFontOfSize:12];
+    ConformNew_Password.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
     ConformNew_Password.delegate=self;
-    
-    [WhiteBackGround addSubview:ConformNew_Password];
+   
     
     UIButton *ChangepasswordBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    ChangepasswordBtn.frame = CGRectMake(100, 250, 100, 21);
+    ChangepasswordBtn.frame = CGRectMake(100, 220, 100, 21);
     [ChangepasswordBtn setBackgroundColor:UIColorFromRGB(0x1aad4b)];
     [ChangepasswordBtn setTitle:@"Change" forState:UIControlStateNormal];
     [ChangepasswordBtn setTitle:@"Change" forState:UIControlStateSelected];
@@ -148,7 +87,7 @@
     ChangepasswordBtn.titleLabel.font=[UIFont systemFontOfSize:11.0f];
     ChangepasswordBtn.layer.borderColor = UIColorFromRGB(0xc5c5c5).CGColor;
     [ChangepasswordBtn addTarget:self action:@selector(UserPassWordChange:) forControlEvents:UIControlEventTouchUpInside];
-    [WhiteBackGround addSubview:ChangepasswordBtn];
+    [self.myPassWordChageView addSubview:ChangepasswordBtn];
 
 
 }
@@ -169,6 +108,7 @@
         UIAlertView *Show1=[[UIAlertView alloc]initWithTitle:nil message:@"Your password is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [Show1 show];
         changeUserPassword=NO;
+        return;
     }
     
     if (New_Password.text.length<5||ConformNew_Password.text.length<5)
@@ -176,12 +116,14 @@
         UIAlertView *Show1=[[UIAlertView alloc]initWithTitle:nil message:@"Password should have minimum 4 charector" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [Show1 show];
         changeUserPassword=NO;
+        return;
     }
     if (![New_Password.text isEqualToString:ConformNew_Password.text])
     {
         UIAlertView *Show2=[[UIAlertView alloc]initWithTitle:nil message:@"Password did't match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [Show2 show];
         changeUserPassword=NO;
+        return;
     }
     
     if (changeUserPassword==YES)
@@ -195,6 +137,7 @@
         NSString *responce=[Maindic valueForKey:@"response"];
         UIAlertView *Show=[[UIAlertView alloc]initWithTitle:responce message:Successmsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [Show show];
+        return;
     }
     
     

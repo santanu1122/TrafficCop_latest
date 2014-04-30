@@ -102,7 +102,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     /* Text */
 
-    #define LOGINFIELDPLACEHOLDER @"User name"
+    #define LOGINFIELDPLACEHOLDER @"Username"
     #define PASSWORDFIELDPLACEHOLDER @"Password"
     #define REMEMBERME @"remember me"
     #define FORGETPASSWORD @"forgot password ?"
@@ -138,3 +138,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define FACEBOOKIMAGEHEIGHT 200
 #define FACEBOOKIMAGEREDIRECT @"false"
+
+#define GLOBALTEXTFONT_Title @"OpenSans-Semibold"
+

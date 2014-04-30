@@ -158,6 +158,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    NSLog(@"Cell is created");
     UITableViewCell *cell;
     cell=[[UITableViewCell alloc]init];
     NSMutableDictionary *item=[[NSMutableDictionary alloc]init];

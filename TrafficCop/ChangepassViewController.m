@@ -64,14 +64,14 @@
     themainheaderLbl.textColor=[UIColor lightGrayColor];
     themainheaderLbl.text=@"Change Password";
     themainheaderLbl.textAlignment=NSTextAlignmentLeft;
-    themainheaderLbl.font=[UIFont systemFontOfSize:13];
+    themainheaderLbl.font=[UIFont fontWithName:GLOBALTEXTFONT size:13];
     [EnterPassView addSubview:themainheaderLbl];
     
     UILabel *thenewpassLable=[[UILabel alloc]initWithFrame:CGRectMake(10, 45, 200, 20)];
     thenewpassLable.textColor=[UIColor lightGrayColor];
     thenewpassLable.text=@"Password";
     thenewpassLable.textAlignment=NSTextAlignmentLeft;
-    thenewpassLable.font=[UIFont systemFontOfSize:13];
+    thenewpassLable.font=[UIFont fontWithName:GLOBALTEXTFONT size:13];
     [EnterPassView addSubview:thenewpassLable];
     
     UIView *textBackView=[[UIView alloc]initWithFrame:CGRectMake(10, 65, 280, 25)];
@@ -85,7 +85,7 @@
     NewPassWord.backgroundColor=[UIColor clearColor];
     NewPassWord.borderStyle=UITextBorderStyleNone;
     NewPassWord.textColor=[UIColor blackColor];
-    NewPassWord.font=[UIFont systemFontOfSize:12];
+    NewPassWord.font=[UIFont fontWithName:GLOBALTEXTFONT size:13];
     NewPassWord.delegate=self;
     [EnterPassView addSubview:NewPassWord];
     
@@ -93,7 +93,7 @@
     TheConformNewPassword.textColor=[UIColor lightGrayColor];
     TheConformNewPassword.text=@"ConfirmPassword";
     TheConformNewPassword.textAlignment=NSTextAlignmentLeft;
-    TheConformNewPassword.font=[UIFont systemFontOfSize:13];
+    TheConformNewPassword.font=[UIFont fontWithName:GLOBALTEXTFONT size:13];
     [EnterPassView addSubview:TheConformNewPassword];
     
     UIView *textBackView2=[[UIView alloc]initWithFrame:CGRectMake(10, 120, 280, 25)];
@@ -107,7 +107,7 @@
     ConformNewPassWord.backgroundColor=[UIColor clearColor];
     ConformNewPassWord.borderStyle=UITextBorderStyleNone;
     ConformNewPassWord.textColor=[UIColor blackColor];
-    ConformNewPassWord.font=[UIFont systemFontOfSize:12];
+    ConformNewPassWord.font=[UIFont fontWithName:GLOBALTEXTFONT size:13];
     ConformNewPassWord.delegate=self;
     [EnterPassView addSubview:ConformNewPassWord];
     

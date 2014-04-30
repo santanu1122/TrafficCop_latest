@@ -1,20 +1,29 @@
 #import "EditProfileViewController.h"
 #import "MFSideMenu.h"
 #import "MBHUDView.h"
-
-
-@interface EditProfileViewController ()
+#import "ZSImageView.h"
+#import "AppDelegate.h"
+@interface EditProfileViewController ()<UIImagePickerControllerDelegate,UIActionSheetDelegate>
 {
     NSString *userID;
-    UIImageView *ProfilePIcImageView;
+//    UIImageView *ProfilePIcImageView;
     NSOperationQueue *operationQ;
     NSString *MassAge;
+    ZSImageView *imageView;
 }
-@property (nonatomic, strong) UITextField *FistName;
-@property (nonatomic, strong) UITextField *LastName;
-@property (nonatomic, strong) UITextField *Email;
-@property (nonatomic, strong) UITextField *Username;
+//@property (nonatomic, strong) UITextField *FistName;
+//@property (nonatomic, strong) UITextField *LastName;
+//@property (nonatomic, strong) UITextField *Email;
+//@property (nonatomic, strong) UITextField *Username;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *EditprofileActivity;
+@property (strong, nonatomic) IBOutlet UITextField *FistName;
+@property (strong, nonatomic) IBOutlet UITextField *LastName;
+@property (strong, nonatomic) IBOutlet UITextField *Email;
+@property (strong, nonatomic) IBOutlet UITextField *Username;
+@property (strong, nonatomic) IBOutlet UIImageView *ProfilePIcImageView;
+@property (strong, nonatomic) IBOutlet UILabel *editProfile;
+@property (strong, nonatomic) IBOutlet UIScrollView *EditProfileScroll;
+
 
 
 
@@ -28,6 +37,8 @@
 @synthesize Email;
 @synthesize Username;
 @synthesize EditprofileActivity;
+@synthesize ProfilePIcImageView;
+@synthesize editProfile;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,6 +58,18 @@
      EditProfHelper = [[HelperClass alloc] init];
      operationQ=[[NSOperationQueue alloc]init];
     
+    imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
+	imageView.defaultImage = [UIImage imageNamed:@"FH-noimage-circle"];
+	imageView.imageUrl = [[NSUserDefaults standardUserDefaults]objectForKey:@"user_image"];
+	imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self SetroundborderWithborderWidth:2.0f WithColour:UIColorFromRGB(0xc9c9c9) ForImageviewZS:imageView];
+    [self.ProfilePIcImageView addSubview:imageView];
+    
+    [self.ProfilePIcImageView setImage:[UIImage imageNamed:@"FH-noimage-circle"]];
+
+    
+    
+    
     [EditProfHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
     NSUserDefaults *userDetail=[NSUserDefaults standardUserDefaults];
     userID=[userDetail valueForKey:@"userid"];
@@ -59,167 +82,77 @@
     _EditProfileScroll.backgroundColor = [UIColor clearColor];
     _EditProfileScroll.userInteractionEnabled = YES;
     
-    self.whiteBackView.layer.cornerRadius=10.0f;
-    self.whiteBackView.layer.borderWidth=1.0f;
-    self.whiteBackView.layer.borderColor=[UIColor whiteColor].CGColor;
-    self.whiteBackView.backgroundColor=UIColorFromRGB(0xffffff);
+//    self.whiteBackView.layer.cornerRadius=10.0f;
+//    self.whiteBackView.layer.borderWidth=1.0f;
+//    self.whiteBackView.layer.borderColor=[UIColor whiteColor].CGColor;
+//    self.whiteBackView.backgroundColor=UIColorFromRGB(0xffffff);
     [EditProfHelper SetupHeaderView:self.view viewController:self];
-    UILabel *editProfile=[[UILabel alloc]initWithFrame:CGRectMake(0, 10, 300, 20)];
+    
     editProfile.text=@"Edit Profile";
-    editProfile.textAlignment=NSTextAlignmentCenter;
+    
     editProfile.textColor=[UIColor blackColor];
-    editProfile.font=[UIFont fontWithName:globalTEXTFIELDPLACEHOLDERFONT size:13.0f];
-    [whiteBackView addSubview:editProfile];
+    editProfile.font=[UIFont fontWithName:GLOBALTEXTFONT_Title size:18.0f];
     
     
-    UILabel *lable1=[[UILabel alloc]initWithFrame:CGRectMake(10, 45, 200, 20)];
-    lable1.font=[UIFont systemFontOfSize:13];
-    lable1.textColor=[UIColor blackColor];
-    lable1.textAlignment=NSTextAlignmentLeft;
-    lable1.text=@"First Name";
-    [whiteBackView addSubview:lable1];
-    UIView *textbackground=[[UIView alloc]initWithFrame:CGRectMake(10, 65, 280, 25)];
-    textbackground.layer.borderColor=UIColorFromRGB(0xcccccc).CGColor;
-    textbackground.layer.borderWidth=1.0f;
-    textbackground.layer.cornerRadius=1.0f;
-    textbackground.backgroundColor=[UIColor clearColor];
-    [whiteBackView addSubview:textbackground];
-    FistName=[[UITextField alloc]initWithFrame:CGRectMake(15, 65, 270, 25)];
-    FistName.backgroundColor=[UIColor clearColor];
-    FistName.borderStyle=UITextBorderStyleNone;
-    FistName.textColor=[UIColor darkGrayColor];
-    FistName.font=[UIFont systemFontOfSize:12];
+    
+    
+ 
+    
+    FistName.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
     FistName.delegate=self;
     [FistName addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
     [FistName addTarget:self action:@selector(textFieldDidEndEditing) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [whiteBackView addSubview:FistName];
-    
-    UILabel *lable2=[[UILabel alloc]initWithFrame:CGRectMake(10, 100, 200, 20)];
-    lable2.font=[UIFont systemFontOfSize:13];
-    lable2.textColor=[UIColor blackColor];
-    lable2.textAlignment=NSTextAlignmentLeft;
-    lable2.text=@"Last Name";
-    [whiteBackView addSubview:lable2];
-    UIView *textbackground2=[[UIView alloc]initWithFrame:CGRectMake(10, 120, 280, 25)];
-    textbackground2.layer.borderColor=UIColorFromRGB(0xcccccc).CGColor;
-    textbackground2.layer.borderWidth=1.0f;
-    textbackground2.layer.cornerRadius=1.0f;
-    textbackground2.backgroundColor=[UIColor clearColor];
-    [whiteBackView addSubview:textbackground2];
     
     
-    LastName=[[UITextField alloc]initWithFrame:CGRectMake(15, 120, 270, 25)];
-    LastName.backgroundColor=[UIColor clearColor];
-    LastName.borderStyle=UITextBorderStyleNone;
-    LastName.textColor=[UIColor darkGrayColor];
-    LastName.font=[UIFont systemFontOfSize:12];
+    
+    
+    
+    
+    LastName.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
     LastName.delegate=self;
     [LastName addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
     [LastName addTarget:self action:@selector(textFieldDidEndEditing) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [whiteBackView addSubview:LastName];
-    
-    UILabel *lable3=[[UILabel alloc]initWithFrame:CGRectMake(10, 155, 200, 20)];
-    lable3.font=[UIFont systemFontOfSize:13];
-    lable3.textColor=[UIColor blackColor];
-    lable3.textAlignment=NSTextAlignmentLeft;
-    lable3.text=@"Email";
-    [whiteBackView addSubview:lable3];
     
     
-    UIView *textbackground3=[[UIView alloc]initWithFrame:CGRectMake(10, 175, 280, 25)];
-    textbackground3.layer.borderColor=UIColorFromRGB(0xcccccc).CGColor;
-    textbackground3.layer.borderWidth=1.0f;
-    textbackground3.layer.cornerRadius=1.0f;
-    textbackground3.backgroundColor=[UIColor clearColor];
-    [whiteBackView addSubview:textbackground3];
     
-    Email=[[UITextField alloc]initWithFrame:CGRectMake(15, 175, 270, 25)];
-    Email.backgroundColor=[UIColor clearColor];
-    Email.borderStyle=UITextBorderStyleNone;
-    Email.textColor=[UIColor darkGrayColor];
-    Email.font=[UIFont systemFontOfSize:12];
+    
+    Email.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
     Email.delegate=self;
     [Email addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
     [Email addTarget:self action:@selector(textFieldDidEndEditing) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [whiteBackView addSubview:Email];
     
-    UILabel *lable4=[[UILabel alloc]initWithFrame:CGRectMake(10, 210, 200, 20)];
-    lable4.font=[UIFont systemFontOfSize:13];
-    lable4.textColor=[UIColor blackColor];
-    lable4.textAlignment=NSTextAlignmentLeft;
-    lable4.text=@"Username";
-    [whiteBackView addSubview:lable4];
-    UIView *textbackground4=[[UIView alloc]initWithFrame:CGRectMake(10, 230, 280, 25)];
-    textbackground4.layer.borderColor=UIColorFromRGB(0xcccccc).CGColor;
-    textbackground4.layer.borderWidth=1.0f;
-    textbackground4.layer.cornerRadius=1.0f;
-    textbackground4.backgroundColor=[UIColor clearColor];
-    [whiteBackView addSubview:textbackground4];
-    Username=[[UITextField alloc]initWithFrame:CGRectMake(15, 230, 270, 25)];
-    Username.backgroundColor=[UIColor clearColor];
-    Username.borderStyle=UITextBorderStyleNone;
-    Username.textColor=[UIColor darkGrayColor];
-    Username.font=[UIFont systemFontOfSize:12.0f];
+    
+    Username.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
     Username.delegate=self;
-    [whiteBackView addSubview:Username];
+    [Username addTarget:self action:@selector(textFieldDidBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
+    [Username addTarget:self action:@selector(textFieldDidEndEditing) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    UILabel *lable5=[[UILabel alloc]initWithFrame:CGRectMake(10, 265, 200, 20)];
-    lable5.font=[UIFont systemFontOfSize:13];
-    lable5.textColor=[UIColor blackColor];
-    lable5.textAlignment=NSTextAlignmentLeft;
-    lable5.text=@"Change Photo";
-    [whiteBackView addSubview:lable5];
     
-    UIView *choseback=[[UIView alloc]initWithFrame:CGRectMake(10, 290, 100, 21)];
-    choseback.layer.cornerRadius=4.0f;
-    choseback.layer.borderColor=[UIColor lightGrayColor].CGColor;
-    choseback.layer.borderWidth=1.0f;
-    choseback.backgroundColor=[UIColor whiteColor];
-    [whiteBackView addSubview:choseback];
+    
+    
    
-    UIButton *SignUp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    SignUp.frame = CGRectMake(10, 290, 100, 21);
-    [SignUp setBackgroundColor:[UIColor clearColor]];
-    [SignUp setTitle:@"Choose Photo" forState:UIControlStateNormal];
-    [SignUp setTitle:@"Choose Photo" forState:UIControlStateSelected];
-    [SignUp setTitle:@"Choose Photo" forState:UIControlStateHighlighted];
-    [SignUp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [SignUp setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
-    [SignUp setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    SignUp.titleLabel.font=[UIFont systemFontOfSize:10.0f];
-    SignUp.layer.borderColor = UIColorFromRGB(0xc5c5c5).CGColor;
-    [SignUp addTarget:self action:@selector(choseaPhoto) forControlEvents:UIControlEventTouchUpInside];
-    [whiteBackView addSubview:SignUp];
+   
     
-    ProfilePIcImageView = [[UIImageView alloc] initWithFrame:CGRectMake(220, 280, 70, 70)];
-    [ProfilePIcImageView setContentMode:UIViewContentModeScaleAspectFit];
+    
     [ProfilePIcImageView setBackgroundColor:[UIColor clearColor]];
-    //[ProfilePIcImageView setImage:[UIImage imageNamed:@"BABY.jpg"]];
-    [whiteBackView addSubview:ProfilePIcImageView];
+    [self SetroundborderWithborderWidth:2.0f WithColour:UIColorFromRGB(0xc9c9c9) ForImageview:ProfilePIcImageView];
     
     
-    [EditProfHelper CreateButtonWithText:100 ycord:340 width:100 height:21 backgroundColor:UIColorFromRGB(0x1aad4b) textcolor:[UIColor whiteColor] labeltext:@"Save" fontName:@"System" fontSize:11 textNameForUIControlStateNormal:@"Save" textNameForUIControlStateSelected:@"Save" textNameForUIControlStateHighlighted:@"Save" textNameForselectedHighlighted:@"Save" selectMethod:@selector(SaveupdatedInfo:) selectEvent:UIControlEventTouchUpInside addView:whiteBackView viewController:self];
-    [_EditProfileScroll addSubview:whiteBackView];
+    [EditProfHelper CreateButtonWithText:110 ycord:445 width:100 height:21 backgroundColor:UIColorFromRGB(0x1aad4b) textcolor:[UIColor whiteColor] labeltext:@"Save" fontName:@"System" fontSize:11 textNameForUIControlStateNormal:@"Save" textNameForUIControlStateSelected:@"Save" textNameForUIControlStateHighlighted:@"Save" textNameForselectedHighlighted:@"Save" selectMethod:@selector(SaveupdatedInfo:) selectEvent:UIControlEventTouchUpInside addView:self.EditProfileScroll viewController:self];
+    
+    
+    NSLog(@"User details is %@",userDetail);
     FistName.text=[userDetail valueForKey:@"first_name"];
     LastName.text=[userDetail valueForKey:@"last_name"];
     Email.text=[userDetail valueForKey:@"email"];
     Username.text=[userDetail valueForKey:@"username"];
-    Username.userInteractionEnabled=NO;
+    NSString *urlStr=[userDetail valueForKey:@"user_image"];
+    NSLog(@"URL str is %@",urlStr);
+   
+    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(191, 344, 70, 70)];
+    [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
+    [_EditProfileScroll addSubview:ImageOverlay];
     
-}
-- (void)textFieldDidEndEditing {
-    [UIView animateWithDuration:.25 animations:^{
-        _EditProfileScroll.contentOffset = CGPointMake(0, 0);
-    }];
-}
-
-- (void)textFieldDidBeginEditing {
-    [_EditProfileScroll setContentOffset:CGPointMake(0, 50) animated:YES];
-}
-- (void)textFieldDidBeginEditingone {
-    [UIView animateWithDuration:.25 animations:^{
-        _EditProfileScroll.contentOffset = CGPointMake(0, 120);
-    }];
 }
 -(IBAction)SaveupdatedInfo:(id)sender
 {
@@ -228,9 +161,10 @@
     [self ChangetheDetails];
 }
 
+
 -(void)ChangetheDetails
 {
-   
+    
     BOOL ChekeEdit=YES;
     NSString *trimmedusremail = [[self.Email text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
@@ -278,18 +212,18 @@
     }
     if (ChekeEdit==YES)
     {
-         //[self performSelectorOnMainThread:@selector(theActivity) withObject:nil waitUntilDone:NO];
+        //[self performSelectorOnMainThread:@selector(theActivity) withObject:nil waitUntilDone:NO];
         [EditprofileActivity startAnimating];
         
-       
+        
         NSInvocationOperation *operation=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(UploadImageinthread) object:nil];
         [operationQ addOperation:operation];
-            
-       
         
         
-            
-     
+        
+        
+        
+        
     }
     
 }
@@ -329,18 +263,48 @@
     
     NSDictionary *MainDic=[NSJSONSerialization JSONObjectWithData:returnData options:kNilOptions error:nil];
     NSLog(@"main dic:%@",MainDic);
-     MassAge=[MainDic valueForKey:@"message"];
+    MassAge=[MainDic valueForKey:@"message"];
     [self performSelectorOnMainThread:@selector(DoneUpload) withObject:nil waitUntilDone:YES];
-   
+    
 }
 -(void)DoneUpload
 {
     [EditprofileActivity stopAnimating];
     [EditprofileActivity setHidden:YES];
-//    [EditProfHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
+    //    [EditProfHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:MassAge delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     [alert show];
 }
+-(void)SetroundborderWithborderWidth:(CGFloat)BorderWidth WithColour:(UIColor *)RGB ForImageviewZS:(ZSImageView *)ImageView
+{
+    
+    [[ImageView layer] setCornerRadius:[ImageView frame].size.width/2.0f];
+    [[ImageView layer] setBorderColor:[RGB CGColor]];
+    [[ImageView layer] setBorderWidth:BorderWidth];
+    [[ImageView layer] setMasksToBounds:YES];
+    
+}
+- (void)textFieldDidEndEditing {
+    [UIView animateWithDuration:.25 animations:^{
+        _EditProfileScroll.contentOffset = CGPointMake(0, 0);
+    }];
+}
+
+- (void)textFieldDidBeginEditing {
+    [_EditProfileScroll setContentOffset:CGPointMake(0, 50) animated:YES];
+}
+- (void)textFieldDidBeginEditingone {
+    [UIView animateWithDuration:.25 animations:^{
+        _EditProfileScroll.contentOffset = CGPointMake(0, 120);
+    }];
+}
+//-(IBAction)SaveupdatedInfo:(id)sender
+//{
+//    
+//    NSLog(@"The Change user Details:");
+////    [self ChangetheDetails];
+//}
+
 
 -(void)theActivity
 {
@@ -396,30 +360,30 @@
     [destruct addToDisplayQueue];
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-    UIImage* originalImage = nil;
-    originalImage = [info objectForKey:UIImagePickerControllerEditedImage];
-    if(originalImage==nil)
-    {
-        NSLog(@"image picker original");
-        originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    } else {
-        
-        NSLog(@"image picker editedImage");
-    }
-    if(originalImage==nil)
-    {
-        NSLog(@"image picker croprect");
-        originalImage = [info objectForKey:UIImagePickerControllerCropRect];
-    }
-    [ProfilePIcImageView setImage:originalImage];
-}
-
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
+//-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+//{
+//    [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+//    UIImage* originalImage = nil;
+//    originalImage = [info objectForKey:UIImagePickerControllerEditedImage];
+//    if(originalImage==nil)
+//    {
+//        NSLog(@"image picker original");
+//        originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+//    } else {
+//        
+//        NSLog(@"image picker editedImage");
+//    }
+//    if(originalImage==nil)
+//    {
+//        NSLog(@"image picker croprect");
+//        originalImage = [info objectForKey:UIImagePickerControllerCropRect];
+//    }
+//    [ProfilePIcImageView setImage:originalImage];
+//}
+//
+//-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+//    [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+//}
 
 #pragma mark - UIBarButtonItem Callbacks
 
@@ -457,4 +421,90 @@
 -(IBAction)movetotopone:(id)sender {
     [_EditProfileScroll setContentOffset:CGPointMake(0, 150) animated:YES];
 }
+-(void)SetroundborderWithborderWidth:(CGFloat)BorderWidth WithColour:(UIColor *)RGB ForImageview:(UIImageView *)ImageView
+{
+    
+    [[ImageView layer] setCornerRadius:[ImageView frame].size.width/2.0f];
+    [[ImageView layer] setBorderColor:[RGB CGColor]];
+    [[ImageView layer] setBorderWidth:BorderWidth];
+    [[ImageView layer] setMasksToBounds:YES];
+    
+}
+- (IBAction)changePhotoAction:(id)sender {
+    [self openActionSheet];
+}
+-(void)openActionSheet{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"Choose your option"
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"Take a Snap", @"Choose From Library", nil];
+    [actionSheet showInView:self.view];
+}
+-(void)takeSnap{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [imagePicker setDelegate:self];
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+-(void)chooseFromLibrary{
+    UIImagePickerController  *eImagePickerController = [[UIImagePickerController alloc] init];
+    [eImagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    eImagePickerController.delegate = self;
+    [self presentViewController:eImagePickerController animated:YES completion:nil];
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"Button Index %d",buttonIndex);
+    if(buttonIndex==0){
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            NSLog(@"This  is satisfied camera exist");
+            [self takeSnap];
+        }
+        else{
+            NSLog(@"This  is satisfied camera not exist");
+            UIAlertView *noCameraAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You don't have a camera for this device" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+           
+            [noCameraAlert show];
+            
+        }
+    }
+    
+    if(buttonIndex==1){
+        NSLog(@"We are at here");
+        
+           [self chooseFromLibrary];
+        }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+  
+    [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    UIImage* originalImage = nil;
+    originalImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    if(originalImage==nil)
+    {
+        NSLog(@"image picker original");
+        originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    } else {
+        
+        NSLog(@"image picker editedImage");
+    }
+    if(originalImage==nil)
+    {
+        NSLog(@"image picker croprect");
+        originalImage = [info objectForKey:UIImagePickerControllerCropRect];
+    }
+    
+    imageView.imageView.image=originalImage;
+    self.ProfilePIcImageView.image=originalImage;
+//    [self.EditProfileScroll bringSubviewToFront:ProfilePIcImageView];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+     NSLog(@"Image cancelled called");
+    [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

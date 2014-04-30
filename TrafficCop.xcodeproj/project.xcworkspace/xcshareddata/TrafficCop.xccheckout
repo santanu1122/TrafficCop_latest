@@ -5,31 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-<<<<<<< HEAD
-	<string>7A708863-BD72-41B8-A9FE-0503ECCCA3BE</string>
-=======
-	<string>789B1C7A-9446-4870-94BF-4F27DC8EAC8B</string>
->>>>>>> FETCH_HEAD
+	<string>33E84004-81EA-4FED-9145-D41577C3FE09</string>
 	<key>IDESourceControlProjectName</key>
 	<string>TrafficCop</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>F0D0BD2E-D37A-4832-8E36-50D1FDC37BD4</key>
-=======
-		<key>92696334-120A-41BE-94FB-54408C834D84</key>
->>>>>>> FETCH_HEAD
+		<key>D481DBE1-261F-4EFD-BD0C-215BF063B277</key>
 		<string>https://github.com/santanu1122/TrafficCop_latest.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TrafficCop.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>F0D0BD2E-D37A-4832-8E36-50D1FDC37BD4</key>
-=======
-		<key>92696334-120A-41BE-94FB-54408C834D84</key>
->>>>>>> FETCH_HEAD
+		<key>D481DBE1-261F-4EFD-BD0C-215BF063B277</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -37,22 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-<<<<<<< HEAD
-	<string>F0D0BD2E-D37A-4832-8E36-50D1FDC37BD4</string>
-=======
-	<string>92696334-120A-41BE-94FB-54408C834D84</string>
->>>>>>> FETCH_HEAD
+	<string>D481DBE1-261F-4EFD-BD0C-215BF063B277</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-<<<<<<< HEAD
-			<string>F0D0BD2E-D37A-4832-8E36-50D1FDC37BD4</string>
-=======
-			<string>92696334-120A-41BE-94FB-54408C834D84</string>
->>>>>>> FETCH_HEAD
+			<string>D481DBE1-261F-4EFD-BD0C-215BF063B277</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TrafficCop_latest</string>
 		</dict>

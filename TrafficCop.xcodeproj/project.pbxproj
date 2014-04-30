@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06298DE718FCF0DE00EDFF75 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06298DE618FCF0DE00EDFF75 /* FacebookSDK.framework */; };
 		063E29E31907E88200E3F2C8 /* plussign.png in Resources */ = {isa = PBXBuildFile; fileRef = 063E29E21907E88200E3F2C8 /* plussign.png */; };
 		06DDBAE11904EA760032EE99 /* rowfeed.png in Resources */ = {isa = PBXBuildFile; fileRef = 06DDBAE01904EA760032EE99 /* rowfeed.png */; };
 		06DDBAE31904F2A40032EE99 /* topbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 06DDBAE21904F2A40032EE99 /* topbar.png */; };
@@ -296,6 +295,7 @@
 		95E449C91836527B00CBC563 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E449C81836527B00CBC563 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		95E449CB1836548B00CBC563 /* audioloader123.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E449CA1836548B00CBC563 /* audioloader123.png */; };
 		95E449CD183654B600CBC563 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E449CC183654B600CBC563 /* stop.png */; };
+		D934840F190E1442008689A5 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955D494F182A1AB300064D40 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -309,7 +309,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06298DE618FCF0DE00EDFF75 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		063E29E21907E88200E3F2C8 /* plussign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plussign.png; sourceTree = "<group>"; };
 		06DDBAE01904EA760032EE99 /* rowfeed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowfeed.png; sourceTree = "<group>"; };
 		06DDBAE21904F2A40032EE99 /* topbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbar.png; sourceTree = "<group>"; };
@@ -681,6 +680,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D934840F190E1442008689A5 /* FacebookSDK.framework in Frameworks */,
 				9521FC0E1845E8BF00D4C365 /* MapKit.framework in Frameworks */,
 				953989DA183F373C00F8C550 /* CoreLocation.framework in Frameworks */,
 				95A8896E1834F89A001B87F6 /* CoreAudio.framework in Frameworks */,
@@ -694,7 +694,6 @@
 				955F7DAB1828B03400099197 /* UIKit.framework in Frameworks */,
 				955F7DAD1828B03400099197 /* Foundation.framework in Frameworks */,
 				955F7DAF1828B03400099197 /* CoreGraphics.framework in Frameworks */,
-				06298DE718FCF0DE00EDFF75 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,7 +870,6 @@
 				4CAF031E18C9E7A200BB51EF /* icon3.png */,
 				4CAF031F18C9E7A200BB51EF /* icon2.png */,
 				4CAF031518C9E4CA00BB51EF /* man.png */,
-				06298DE618FCF0DE00EDFF75 /* FacebookSDK.framework */,
 				4CAF030118C9E12100BB51EF /* search.png */,
 				4CAF030518C9E13600BB51EF /* view report.png */,
 				4CAF030318C9E12B00BB51EF /* user profile.png */,
@@ -1741,6 +1739,7 @@
 					"/Users/iphone_2/Desktop/san-dev/TrafficCop\\ 6",
 					"/Users/iphone_2/Downloads/TrafficCop\\ 20",
 					"/Users/arnab/Downloads/TrafficCop\\ 22",
+					/Users/esolztech2/Desktop/TrafficCop_latest,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrafficCop/TrafficCop-Prefix.pch";
@@ -1767,6 +1766,7 @@
 					"/Users/iphone_2/Desktop/san-dev/TrafficCop\\ 6",
 					"/Users/iphone_2/Downloads/TrafficCop\\ 20",
 					"/Users/arnab/Downloads/TrafficCop\\ 22",
+					/Users/esolztech2/Desktop/TrafficCop_latest,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrafficCop/TrafficCop-Prefix.pch";

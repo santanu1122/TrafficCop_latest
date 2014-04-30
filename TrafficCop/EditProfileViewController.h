@@ -13,7 +13,6 @@
 {
     HelperClass *EditProfHelper;
 }
-@property (strong, nonatomic) IBOutlet UIScrollView *EditProfileScroll;
 @property (strong, nonatomic) IBOutlet UIView *whiteBackView;
 -(IBAction)movetozero:(id)sender;
 -(IBAction)movetotop:(id)sender;
