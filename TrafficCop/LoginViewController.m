@@ -605,13 +605,6 @@
                                 NSDictionary *userDetails = [dic objectForKey:@"userdetails"];
                                 NSLog(@"user details isss %@", userDetails);
                                 
-                               // NSString *strName = [userDetails valueForKey:@"first_name"];
-                                
-                                //NSLog(@"chk str nameee %@", strName);
-                                
-                                
-                                
-                                
                                 NSUserDefaults *Userdata = [NSUserDefaults standardUserDefaults];
                                 [Userdata setValue:[[userDetails valueForKey:@"userid"]objectAtIndex:0] forKey:@"userid"];
                                 [Userdata setValue:[[userDetails valueForKey:@"username"]objectAtIndex:0] forKey:@"username"];
