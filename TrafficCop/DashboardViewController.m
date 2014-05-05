@@ -719,9 +719,11 @@
            // DetailsTextViewFortext.hidden = YES;
             
             
-            UILabel *Separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 50+79, 320, .5)];
+//            UILabel *Separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 50+79, 320, .5)];
+
+            UILabel *Separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 109, 320, .5)];
             [Separetor setBackgroundColor:[UIColor blackColor]];
-            Separetor.layer.opacity=0.2f;
+            Separetor.layer.opacity=0.5f;
             [MainCellView addSubview:Separetor];
             MainCellView.frame=CGRectMake(0, 0, 320, DetailsTextViewFortext.frame.origin.y+DetailsTextViewFortext.frame.size.height+3);
             [cell.contentView addSubview:MainCellView];

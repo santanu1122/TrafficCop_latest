@@ -14,6 +14,7 @@
                 <outlet property="LastName" destination="52q-Eu-I6q" id="HeT-Kw-CjP"/>
                 <outlet property="ProfilePIcImageView" destination="Oky-W1-p5h" id="ZjP-Sy-C8E"/>
                 <outlet property="Username" destination="OFg-QZ-2Ys" id="hjb-1t-QNc"/>
+                <outlet property="choosePhoto" destination="qJ5-FN-at5" id="g3W-qV-DwG"/>
                 <outlet property="editProfile" destination="NUJ-xv-vfa" id="JHd-Jf-piI"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="whiteBackView" destination="RC6-aW-qru" id="4bY-aW-9rx"/>
@@ -52,7 +53,7 @@
                             <rect key="frame" x="59" y="179" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="sW8-YD-UiN">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="email.png" translatesAutoresizingMaskIntoConstraints="NO" id="sW8-YD-UiN">
                             <rect key="frame" x="59" y="228" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -85,11 +86,11 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oky-W1-p5h">
-                            <rect key="frame" x="191" y="344" width="70" height="70"/>
+                            <rect key="frame" x="191" y="347" width="65" height="65"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-FN-at5">
-                            <rect key="frame" x="45" y="359" width="117" height="30"/>
+                            <rect key="frame" x="46" y="359" width="117" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Choose Photo">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,6 +118,7 @@
     </objects>
     <resources>
         <image name="REG_box.png" width="564" height="413"/>
+        <image name="email.png" width="50" height="50"/>
         <image name="user.png" width="50" height="50"/>
     </resources>
 </document>

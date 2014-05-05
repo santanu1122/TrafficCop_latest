@@ -14,6 +14,8 @@
     HelperClass *EditProfHelper;
 }
 @property (strong, nonatomic) IBOutlet UIView *whiteBackView;
+@property (strong, nonatomic) IBOutlet UIButton *choosePhoto;
+
 -(IBAction)movetozero:(id)sender;
 -(IBAction)movetotop:(id)sender;
 -(IBAction)movetotopone:(id)sender;

@@ -63,4 +63,5 @@
 - (IBAction)playPause2:(id)sender;
 - (IBAction)startStopRecording2:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *myAudioLbl;
 @end

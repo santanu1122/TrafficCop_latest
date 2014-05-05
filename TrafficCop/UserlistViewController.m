@@ -369,11 +369,11 @@
         
         
         
-        UIImageView *ImageViewBadghe = [[UIImageView alloc] initWithFrame:CGRectMake(15, 65, 25, 25)];
+        UIImageView *ImageViewBadghe = [[UIImageView alloc] initWithFrame:CGRectMake(258, 16, 50, 50)];;
         ImageViewBadghe.backgroundColor = [UIColor clearColor];
         [MainCEllView addSubview:ImageViewBadghe];
         
-        ZSImageView *imageViewBadge = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        ZSImageView *imageViewBadge = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
         imageViewBadge.imageUrl = [item objectForKey:@"user_badge"];
         imageViewBadge.contentMode = UIViewContentModeScaleAspectFill;
         imageViewBadge.clipsToBounds = YES;

@@ -58,15 +58,15 @@
      EditProfHelper = [[HelperClass alloc] init];
      operationQ=[[NSOperationQueue alloc]init];
     
-    imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
+    imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(192, 345 , 67, 67)];
 	imageView.defaultImage = [UIImage imageNamed:@"FH-noimage-circle"];
 	imageView.imageUrl = [[NSUserDefaults standardUserDefaults]objectForKey:@"user_image"];
 	imageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self SetroundborderWithborderWidth:2.0f WithColour:UIColorFromRGB(0xc9c9c9) ForImageviewZS:imageView];
-    [self.ProfilePIcImageView addSubview:imageView];
+    [self SetroundborderWithborderWidth:0.0f WithColour:UIColorFromRGB(0xc9c9c9) ForImageviewZS:imageView];
+    [self.EditProfileScroll addSubview:imageView];
     
     [self.ProfilePIcImageView setImage:[UIImage imageNamed:@"FH-noimage-circle"]];
-
+    _choosePhoto.titleLabel.font=[UIFont fontWithName:GLOBALTEXTFONT size:16];
     
     
     

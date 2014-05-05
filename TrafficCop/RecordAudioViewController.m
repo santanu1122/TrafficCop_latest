@@ -45,6 +45,28 @@
 {
     [super viewDidLoad];
     
+//    _playButton.titleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _playButton.titleLabel.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    
+//    _saveButton.titleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _saveButton.titleLabel.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    
+//    _recordButton.titleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _recordButton.titleLabel.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    
+//    _timeleftLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _timeleftLabel.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    
+//    _timetotalLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _timetotalLabel.textColor = UIColorFromRGB(0x211e1f);
+    
+    
+    
+    
     [self HideNavigationBar];
     
     RecordAudioClass = [[HelperClass alloc] init];

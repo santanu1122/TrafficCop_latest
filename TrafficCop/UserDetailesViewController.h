@@ -40,6 +40,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *fullViewScroll;
 
 @property (nonatomic, strong) UILabel *footerLabel;
 

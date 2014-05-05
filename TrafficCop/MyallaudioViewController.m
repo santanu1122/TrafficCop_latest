@@ -385,11 +385,11 @@
 //    [progressSlider setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];
     progressSlider.continuous = YES;
     
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.tintColor = UIColorFromRGB(0x3d2b4f);
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [self.MypostedAudio addSubview:refreshControl];
+//    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+//    refreshControl.tintColor = UIColorFromRGB(0x3d2b4f);
+//    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+//    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+//    [self.MypostedAudio addSubview:refreshControl];
     
     [MyallaudioView SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
 
@@ -410,18 +410,19 @@
     }
 }
 
-- (void)refresh:(UIRefreshControl *)refreshControl {
-    [self.MypostedAudio reloadData];
-    [refreshControl endRefreshing];
-}
--(void)refreshView:(UIRefreshControl *)refresh {
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM d, h:mm a"];
-    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",[formatter stringFromDate:[NSDate date]]];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-    [refresh endRefreshing];
-}
+
+//- (void)refresh:(UIRefreshControl *)refreshControl {
+//    [self.MypostedAudio reloadData];
+//    [refreshControl endRefreshing];
+//}
+//-(void)refreshView:(UIRefreshControl *)refresh {
+//    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"MMM d, h:mm a"];
+//    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",[formatter stringFromDate:[NSDate date]]];
+//    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+//    [refresh endRefreshing];
+//}
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSDictionary *allData = [NSJSONSerialization JSONObjectWithData:webdata options:0 error:nil];
@@ -480,11 +481,33 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 35.0f;
+//    return 35.0f;
+    return 50.0f;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return self.myAudioView;
+    _myAudioLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16];
+    _myAudioLbl.textColor = UIColorFromRGB(0x211e1f);
+    
+    UIView *MainHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    [MainHeaderView setBackgroundColor:[UIColor whiteColor]];
+    
+    [MainHeaderView addSubview:self.myAudioView];
+    
+    UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 49, 320/3,1)];
+    greenLabel.backgroundColor = UIColorFromRGB(0x1aad4b);
+    [MainHeaderView addSubview:greenLabel];
+    
+    UILabel *yellowlabel = [[UILabel alloc] initWithFrame:CGRectMake(320/3, 49, 320/3,1)];
+    yellowlabel.backgroundColor = UIColorFromRGB(0xfcb714);
+    [MainHeaderView addSubview:yellowlabel];
+    
+    UILabel *redlabel = [[UILabel alloc] initWithFrame:CGRectMake(320/3*2, 49, 320/3+5,1)];
+    redlabel.backgroundColor = UIColorFromRGB(0xde1d23);
+    [MainHeaderView addSubview:redlabel];
+    
+    return MainHeaderView;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -499,6 +522,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return MainDataArray.count;
 }
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
@@ -518,6 +542,10 @@
     
         UILabel *CellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 15, 260, 20)];
         CellTextLabel.text = [NSString stringWithFormat:@"Uploaded On %@",[item objectForKey:@"UploadedDate"]];
+   
+    CellTextLabel.font= [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+    CellTextLabel.textColor = UIColorFromRGB(0x211e1f);
+    
         [CellMainView addSubview:CellTextLabel];
     
     [cell.contentView addSubview:CellMainView];
@@ -528,7 +556,8 @@
     [separetor setBackgroundColor:[UIColor blackColor]];
     separetor.layer.opacity=.2f;
     [CellMainView addSubview:separetor];
-    cell.backgroundColor = [UIColor clearColor];
+//    cell.backgroundColor = [UIColor clearColor];
+     cell.backgroundColor = [UIColor whiteColor];
     cell.backgroundView = [UIView new] ;
     cell.selectedBackgroundView = [UIView new];
     return cell;
@@ -562,6 +591,32 @@
 {
     [super viewDidLoad];
     editedstatus = @"N";
+    
+    MypostedAudio.backgroundColor = [UIColor whiteColor];
+    
+//    _playButton.titleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _playButton.titleLabel.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    
+//    _saveButton.titleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _saveButton.titleLabel.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    
+//    _recordButton.titleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _recordButton.titleLabel.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    
+//    _timeleftLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _timeleftLabel.textColor = UIColorFromRGB(0x211e1f);
+//    
+//    
+//    _timetotalLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//    _timetotalLabel.textColor = UIColorFromRGB(0x211e1f);
+
+    
+    
+    
+    
     _ThreadQue = [NSOperationQueue new];
     
     [self.recordButton setImage:[UIImage imageNamed:@"microphone.png"] forState:UIControlStateNormal];
@@ -668,10 +723,49 @@
             NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
             [tempDict setObject:santanu forKey:@"audio_id"];
             [tempDict setObject:DELETEAUDIO forKey:@"mode"];
-            NSString *REturnedURL = [MyallaudioView CallURLForServerReturn:tempDict URL:LOGINPAGE];
-            NSLog(@"REturnedURL --- %@",REturnedURL);
-            
-            [self HideIndicator];
+        
+        NSURLResponse *response = nil;
+        NSError *error;
+        NSString *REturnedURL = [MyallaudioView CallURLForServerReturn:tempDict URL:LOGINPAGE];
+         NSLog(@"REturnedURL --- %@",REturnedURL);
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:REturnedURL]];
+        [request setHTTPMethod:@"POST"];
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        [self HideIndicator];
+        
+        if (error)
+        {
+            NSLog(@"Please check your internet connectivity");
+            NSLog(@"error -- %@", error);
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                
+                UIAlertView  *alert = [[UIAlertView alloc]initWithTitle:@"No Connection" message:@"Please check your internet connectivity" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                
+                return ;
+            });
+        }
+
+        
+        else
+        {
+            NSDictionary *maindic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        
+             if([[maindic objectForKey:@"response"] isEqualToString:@"success"])
+             {
+                 NSLog(@"sucsess--");
+                 dispatch_async(dispatch_get_main_queue(), ^(){
+                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@",[maindic objectForKey:@"response"]] message:[NSString stringWithFormat:@"%@",[maindic objectForKey:@"message"]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                 
+                 [alert show];
+                     });
+             }
+        
+        }
+        
      
        
         [MainDataArray removeObjectAtIndex:indexPath.row];
@@ -679,8 +773,8 @@
         [self.MypostedAudio beginUpdates];
         [self.MypostedAudio deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
         [self.MypostedAudio endUpdates];
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"success" message:@"Audio Deleted Successfully !!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        //UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"success" message:@"Audio Deleted Successfully !!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        //[alert show];
         
            // dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -910,7 +1004,9 @@
             [self HideIndicator];
             MBAlertView *alertss = [MBAlertView alertWithBody:@"Audio Uploded Successfully !!" cancelTitle:nil cancelBlock:nil];
             [alertss addButtonWithText:@"Ok" type:MBAlertViewItemTypePositive block:^{
-                
+            
+//            UIAlertView *alertss = [[UIAlertView alloc]initWithTitle:@"DONE" message:@"Audio Uploded Successfully !!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            
                 [MyallaudioView SetLoader:self.view xcord:0 ycord:self.view.frame.size.height-10 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
                 
                 MyallaudioViewController *MyallAudio = [[MyallaudioViewController alloc] init];
@@ -919,6 +1015,7 @@
                 
             }];
             [alertss addToDisplayQueue];
+//            [alertss show];
         });
     });
 }

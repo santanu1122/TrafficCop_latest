@@ -42,4 +42,6 @@
 @property (strong, nonatomic) IBOutlet UISwitch *tapOutsideSwitch;
 @property (strong, nonatomic) IBOutlet UITextView *textcontent;
 
+
+
 @end

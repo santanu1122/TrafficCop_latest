@@ -80,6 +80,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
     NSDictionary *allData = [NSJSONSerialization JSONObjectWithData:webdata options:0 error:nil];
+    //NSLog(@"alll dattaaa  %@", allData);
     DatasourceTableview = [[NSMutableArray alloc] init];
     
     for(NSMutableDictionary *LeaderBoardData in [allData objectForKey:@"leaderdetails"]) {
@@ -343,6 +344,7 @@
     ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
     imageView.defaultImage = [UIImage imageNamed:@"NEWNOIMAGE.png"];
     imageView.imageUrl = [item objectForKey:@"user_image"];
+    NSLog(@"no image print--- %@", [item objectForKey:@"user_image"]);
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     imageView.corners = ZSRoundCornerAll;
@@ -357,11 +359,11 @@
     
     
     
-    UIImageView *ImageViewBadghe = [[UIImageView alloc] initWithFrame:CGRectMake(15, 65, 25, 25)];
+    UIImageView *ImageViewBadghe = [[UIImageView alloc] initWithFrame:CGRectMake(258, 16, 50, 50)];
     ImageViewBadghe.backgroundColor = [UIColor clearColor];
     [MainCEllView addSubview:ImageViewBadghe];
     
-    ZSImageView *imageViewBadge = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    ZSImageView *imageViewBadge = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
     imageViewBadge.imageUrl = [item objectForKey:@"user_badge"];
     imageViewBadge.contentMode = UIViewContentModeScaleAspectFill;
     imageViewBadge.clipsToBounds = YES;
@@ -385,7 +387,7 @@
     UILabel *LabelTitleRank = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 80, 20)];
     LabelTitleRank.backgroundColor = [UIColor clearColor];
     LabelTitleRank.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:12];
-    LabelTitleRank.textColor = UIColorFromRGB(0x000000);
+    LabelTitleRank.textColor = UIColorFromRGB(0x211e1f);
     LabelTitleRank.text = @"Rank :";
     [documentViewRank addSubview:LabelTitleRank];
     
@@ -434,7 +436,7 @@
     UILabel *LabelTitleReports = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 80, 20)];
     LabelTitleReports.backgroundColor = [UIColor clearColor];
     LabelTitleReports.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:12];
-    LabelTitleReports.textColor = UIColorFromRGB(0x000000);
+    LabelTitleReports.textColor = UIColorFromRGB(0x211e1f);
     LabelTitleReports.text = @"Reports :";
     [documentViewReports addSubview:LabelTitleReports];
     
@@ -457,7 +459,7 @@
     UILabel *LabelTitleComments = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 90, 20)];
     LabelTitleComments.backgroundColor = [UIColor clearColor];
     LabelTitleComments.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:12];
-    LabelTitleComments.textColor = UIColorFromRGB(0x000000);
+    LabelTitleComments.textColor = UIColorFromRGB(0x211e1f);
     LabelTitleComments.text = @"Comments :";
     [documentViewComments addSubview:LabelTitleComments];
     
@@ -481,7 +483,7 @@
     UILabel *LabelTitleTotalpoints = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 90, 20)];
     LabelTitleTotalpoints.backgroundColor = [UIColor clearColor];
     LabelTitleTotalpoints.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:12];
-    LabelTitleTotalpoints.textColor = UIColorFromRGB(0x000000);
+    LabelTitleTotalpoints.textColor = UIColorFromRGB(0x211e1f);
     LabelTitleTotalpoints.text = @"Total Points :";
     [documentViewTotalpoints addSubview:LabelTitleTotalpoints];
     

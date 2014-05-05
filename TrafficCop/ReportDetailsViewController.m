@@ -257,7 +257,7 @@ float Basic_height                          = 0.0f;
     [_UILabelForRateComment setTextColor:UIColorFromRGB(0x211e1f)];
     
     
-    SegmentedControl *segmentedControl1 = [[SegmentedControl alloc] initWithSectionTitles:@[@"Description", @"Map", @"Comment"]];
+    SegmentedControl *segmentedControl1 = [[SegmentedControl alloc] initWithSectionTitles:@[@"User Details", @"Map", @"Comment"]];
     segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     segmentedControl1.frame = CGRectMake(0, 51, 320, 43);
     segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -523,9 +523,9 @@ float Basic_height                          = 0.0f;
     
     [buttonEvidencel addTarget:self action:@selector(buttonEvidenceclick) forControlEvents:UIControlEventTouchUpInside];
     
-    tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(AddToAvidenceLocker:)];
-    [tapGesture setNumberOfTapsRequired:1];
-    [ViewForLicensePlate addGestureRecognizer:tapGesture];
+    //tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(AddToAvidenceLocker:)];
+    //[tapGesture setNumberOfTapsRequired:1];
+    //[ViewForLicensePlate addGestureRecognizer:tapGesture];
     Evidencelocker.textAlignment=NSTextAlignmentCenter;
     Evidencelocker.textColor=[UIColor greenColor];
     Evidencelocker.font=[UIFont systemFontOfSize:10.0f];

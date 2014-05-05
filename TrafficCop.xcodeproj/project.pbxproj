@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		063E29E31907E88200E3F2C8 /* plussign.png in Resources */ = {isa = PBXBuildFile; fileRef = 063E29E21907E88200E3F2C8 /* plussign.png */; };
+		06D690751917A4FA003E311B /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D690731917A4FA003E311B /* EditProfileViewController.m */; };
+		06D690761917A4FA003E311B /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D690741917A4FA003E311B /* EditProfileViewController.xib */; };
+		06D6907A1917A546003E311B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D690781917A546003E311B /* ProfileViewController.m */; };
+		06D6907B1917A546003E311B /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D690791917A546003E311B /* ProfileViewController.xib */; };
+		06D6907F1917A58E003E311B /* PassWordChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D6907D1917A58D003E311B /* PassWordChange.m */; };
+		06D690801917A58E003E311B /* PassWordChange.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D6907E1917A58E003E311B /* PassWordChange.xib */; };
+		06D690871917A9C1003E311B /* CellUserReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D690821917A9C1003E311B /* CellUserReport.m */; };
+		06D690881917A9C1003E311B /* CellUserReport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D690831917A9C1003E311B /* CellUserReport.xib */; };
+		06D690891917A9C1003E311B /* UserReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D690851917A9C1003E311B /* UserReportViewController.m */; };
+		06D6908A1917A9C1003E311B /* UserReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D690861917A9C1003E311B /* UserReportViewController.xib */; };
 		06DDBAE11904EA760032EE99 /* rowfeed.png in Resources */ = {isa = PBXBuildFile; fileRef = 06DDBAE01904EA760032EE99 /* rowfeed.png */; };
 		06DDBAE31904F2A40032EE99 /* topbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 06DDBAE21904F2A40032EE99 /* topbar.png */; };
 		0D8C311018EC091000ABB8E3 /* CellUserBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C310F18EC091000ABB8E3 /* CellUserBadge.m */; };
@@ -27,8 +37,6 @@
 		0D8F58CE18D85E4200DFD6AC /* RemoveFromEvidenceLocker.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0D8F58CB18D85E4200DFD6AC /* RemoveFromEvidenceLocker.jpg */; };
 		0D8F58CF18D85E4200DFD6AC /* AddToEvidenceLocker.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0D8F58CC18D85E4200DFD6AC /* AddToEvidenceLocker.jpg */; };
 		0D8F58D118D87E1C00DFD6AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8F58D018D87E1C00DFD6AC /* Images.xcassets */; };
-		0D91551518EEFD92005A43BC /* CellUserReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D91551418EEFD92005A43BC /* CellUserReport.m */; };
-		0D91551718EEFDA5005A43BC /* CellUserReport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D91551618EEFDA5005A43BC /* CellUserReport.xib */; };
 		0D9FEAE8189FA9F3004DC17E /* ForgetPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9FEAE6189FA9F3004DC17E /* ForgetPassWordViewController.m */; };
 		0D9FEAE9189FA9F4004DC17E /* ForgetPassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FEAE7189FA9F3004DC17E /* ForgetPassWordViewController.xib */; };
 		0D9FEAEC189FB3DB004DC17E /* virgen_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FEAEB189FB3DB004DC17E /* virgen_bg1.png */; };
@@ -62,8 +70,6 @@
 		4C323B6518ACCEB100230EDD /* AddtoevidenceLocker.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C323B6318ACCEB100230EDD /* AddtoevidenceLocker.png */; };
 		4C4CAF6718D03B100067E96E /* FacebookTwitterIntermidiat.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4CAF6518D03B100067E96E /* FacebookTwitterIntermidiat.m */; };
 		4C4CAF6818D03B100067E96E /* FacebookTwitterIntermidiat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CAF6618D03B100067E96E /* FacebookTwitterIntermidiat.xib */; };
-		4C6DFD0718A3A3010009DDB2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DFD0518A3A3010009DDB2 /* ProfileViewController.m */; };
-		4C6DFD0818A3A3010009DDB2 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6DFD0618A3A3010009DDB2 /* ProfileViewController.xib */; };
 		4C7CAD4918A38B4300DD9EC1 /* TermsAndConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CAD4718A38B4300DD9EC1 /* TermsAndConditionViewController.m */; };
 		4C7CAD4A18A38B4300DD9EC1 /* TermsAndConditionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7CAD4818A38B4300DD9EC1 /* TermsAndConditionViewController.xib */; };
 		4C7CAD5018A38DA200DD9EC1 /* PrivacyPoliceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CAD4E18A38DA200DD9EC1 /* PrivacyPoliceViewController.m */; };
@@ -79,8 +85,6 @@
 		4C93DF3A18AB3D5000F965C4 /* CellForevidenceLockerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DF3918AB3D5000F965C4 /* CellForevidenceLockerCell.m */; };
 		4C93DF3C18AB3D6500F965C4 /* CellForevidenceLockerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C93DF3B18AB3D6500F965C4 /* CellForevidenceLockerCell.xib */; };
 		4C94213618B6052B00E1C0EA /* Noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C94213518B6052B00E1C0EA /* Noimage.png */; };
-		4C9631011860315200C100AE /* PassWordChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9630FF1860315200C100AE /* PassWordChange.m */; };
-		4C9631021860315200C100AE /* PassWordChange.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9631001860315200C100AE /* PassWordChange.xib */; };
 		4C96C71118AA1A270050B215 /* EvedenceLockerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C96C70F18AA1A270050B215 /* EvedenceLockerView.m */; };
 		4C96C71218AA1A270050B215 /* EvedenceLockerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C96C71018AA1A270050B215 /* EvedenceLockerView.xib */; };
 		4CA0B9A81858399600916E86 /* SimiarReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0B9A61858399600916E86 /* SimiarReportViewController.m */; };
@@ -124,8 +128,6 @@
 		95027C97185206BA0061C151 /* pushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95027C8C185206BA0061C151 /* pushNotificationViewController.xib */; };
 		95027C98185206BA0061C151 /* SearchBadDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95027C8E185206BA0061C151 /* SearchBadDriverViewController.m */; };
 		95027C99185206BA0061C151 /* SearchBadDriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95027C8F185206BA0061C151 /* SearchBadDriverViewController.xib */; };
-		95027C9A185206BA0061C151 /* UserReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95027C91185206BA0061C151 /* UserReportViewController.m */; };
-		95027C9B185206BA0061C151 /* UserReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95027C92185206BA0061C151 /* UserReportViewController.xib */; };
 		95027C9C185206BA0061C151 /* NODATA.png in Resources */ = {isa = PBXBuildFile; fileRef = 95027C93185206BA0061C151 /* NODATA.png */; };
 		9506D9B818476EC900D8FF85 /* UserDetailesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9506D9B618476EC900D8FF85 /* UserDetailesViewController.m */; };
 		9506D9B918476EC900D8FF85 /* UserDetailesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9506D9B718476EC900D8FF85 /* UserDetailesViewController.xib */; };
@@ -211,8 +213,6 @@
 		955D495C182A545400064D40 /* colps_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 955D495B182A545400064D40 /* colps_pic@2x.png */; };
 		955D49C6182CBBE400064D40 /* REG_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 955D49C5182CBBE400064D40 /* REG_box.png */; };
 		955D49C8182CC45D00064D40 /* register_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 955D49C7182CC45D00064D40 /* register_btn.png */; };
-		955D49CC182CFA1A00064D40 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 955D49CA182CFA1A00064D40 /* EditProfileViewController.m */; };
-		955D49CD182CFA1A00064D40 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 955D49CB182CFA1A00064D40 /* EditProfileViewController.xib */; };
 		955D49D2182D168C00064D40 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 955D49D0182D168C00064D40 /* DashboardViewController.xib */; };
 		955D49D4182D1B3400064D40 /* REG_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 955D49D3182D1B3300064D40 /* REG_BG.png */; };
 		955D49D7182E170E00064D40 /* MostRecentReportsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 955D49D6182E170D00064D40 /* MostRecentReportsCell.m */; };
@@ -310,6 +310,21 @@
 
 /* Begin PBXFileReference section */
 		063E29E21907E88200E3F2C8 /* plussign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plussign.png; sourceTree = "<group>"; };
+		06D690721917A4FA003E311B /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		06D690731917A4FA003E311B /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		06D690741917A4FA003E311B /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		06D690771917A546003E311B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		06D690781917A546003E311B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		06D690791917A546003E311B /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		06D6907C1917A58D003E311B /* PassWordChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassWordChange.h; sourceTree = "<group>"; };
+		06D6907D1917A58D003E311B /* PassWordChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassWordChange.m; sourceTree = "<group>"; };
+		06D6907E1917A58E003E311B /* PassWordChange.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassWordChange.xib; sourceTree = "<group>"; };
+		06D690811917A9C1003E311B /* CellUserReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellUserReport.h; sourceTree = "<group>"; };
+		06D690821917A9C1003E311B /* CellUserReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellUserReport.m; sourceTree = "<group>"; };
+		06D690831917A9C1003E311B /* CellUserReport.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellUserReport.xib; sourceTree = "<group>"; };
+		06D690841917A9C1003E311B /* UserReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserReportViewController.h; sourceTree = "<group>"; };
+		06D690851917A9C1003E311B /* UserReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserReportViewController.m; sourceTree = "<group>"; };
+		06D690861917A9C1003E311B /* UserReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserReportViewController.xib; sourceTree = "<group>"; };
 		06DDBAE01904EA760032EE99 /* rowfeed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowfeed.png; sourceTree = "<group>"; };
 		06DDBAE21904F2A40032EE99 /* topbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbar.png; sourceTree = "<group>"; };
 		0D8C310E18EC091000ABB8E3 /* CellUserBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellUserBadge.h; sourceTree = "<group>"; };
@@ -332,9 +347,6 @@
 		0D8F58CB18D85E4200DFD6AC /* RemoveFromEvidenceLocker.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RemoveFromEvidenceLocker.jpg; sourceTree = "<group>"; };
 		0D8F58CC18D85E4200DFD6AC /* AddToEvidenceLocker.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AddToEvidenceLocker.jpg; sourceTree = "<group>"; };
 		0D8F58D018D87E1C00DFD6AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0D91551318EEFD92005A43BC /* CellUserReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellUserReport.h; sourceTree = "<group>"; };
-		0D91551418EEFD92005A43BC /* CellUserReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellUserReport.m; sourceTree = "<group>"; };
-		0D91551618EEFDA5005A43BC /* CellUserReport.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellUserReport.xib; sourceTree = "<group>"; };
 		0D9FEAE5189FA9F3004DC17E /* ForgetPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassWordViewController.h; sourceTree = "<group>"; };
 		0D9FEAE6189FA9F3004DC17E /* ForgetPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPassWordViewController.m; sourceTree = "<group>"; };
 		0D9FEAE7189FA9F3004DC17E /* ForgetPassWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPassWordViewController.xib; sourceTree = "<group>"; };
@@ -373,9 +385,6 @@
 		4C4CAF6418D03B100067E96E /* FacebookTwitterIntermidiat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookTwitterIntermidiat.h; sourceTree = "<group>"; };
 		4C4CAF6518D03B100067E96E /* FacebookTwitterIntermidiat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookTwitterIntermidiat.m; sourceTree = "<group>"; };
 		4C4CAF6618D03B100067E96E /* FacebookTwitterIntermidiat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookTwitterIntermidiat.xib; sourceTree = "<group>"; };
-		4C6DFD0418A3A3010009DDB2 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		4C6DFD0518A3A3010009DDB2 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		4C6DFD0618A3A3010009DDB2 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		4C7CAD4618A38B4300DD9EC1 /* TermsAndConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsAndConditionViewController.h; sourceTree = "<group>"; };
 		4C7CAD4718A38B4300DD9EC1 /* TermsAndConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsAndConditionViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		4C7CAD4818A38B4300DD9EC1 /* TermsAndConditionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsAndConditionViewController.xib; sourceTree = "<group>"; };
@@ -396,9 +405,6 @@
 		4C93DF3918AB3D5000F965C4 /* CellForevidenceLockerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellForevidenceLockerCell.m; sourceTree = "<group>"; };
 		4C93DF3B18AB3D6500F965C4 /* CellForevidenceLockerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellForevidenceLockerCell.xib; sourceTree = "<group>"; };
 		4C94213518B6052B00E1C0EA /* Noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Noimage.png; sourceTree = "<group>"; };
-		4C9630FE1860315200C100AE /* PassWordChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassWordChange.h; sourceTree = "<group>"; };
-		4C9630FF1860315200C100AE /* PassWordChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassWordChange.m; sourceTree = "<group>"; };
-		4C9631001860315200C100AE /* PassWordChange.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassWordChange.xib; sourceTree = "<group>"; };
 		4C96C70E18AA1A270050B215 /* EvedenceLockerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvedenceLockerView.h; sourceTree = "<group>"; };
 		4C96C70F18AA1A270050B215 /* EvedenceLockerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvedenceLockerView.m; sourceTree = "<group>"; };
 		4C96C71018AA1A270050B215 /* EvedenceLockerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvedenceLockerView.xib; sourceTree = "<group>"; };
@@ -450,9 +456,6 @@
 		95027C8D185206BA0061C151 /* SearchBadDriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBadDriverViewController.h; sourceTree = "<group>"; };
 		95027C8E185206BA0061C151 /* SearchBadDriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBadDriverViewController.m; sourceTree = "<group>"; };
 		95027C8F185206BA0061C151 /* SearchBadDriverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchBadDriverViewController.xib; sourceTree = "<group>"; };
-		95027C90185206BA0061C151 /* UserReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserReportViewController.h; sourceTree = "<group>"; };
-		95027C91185206BA0061C151 /* UserReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserReportViewController.m; sourceTree = "<group>"; };
-		95027C92185206BA0061C151 /* UserReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserReportViewController.xib; sourceTree = "<group>"; };
 		95027C93185206BA0061C151 /* NODATA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NODATA.png; sourceTree = "<group>"; };
 		9506D9B518476EC900D8FF85 /* UserDetailesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailesViewController.h; sourceTree = "<group>"; };
 		9506D9B618476EC900D8FF85 /* UserDetailesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailesViewController.m; sourceTree = "<group>"; };
@@ -562,9 +565,6 @@
 		955D495B182A545400064D40 /* colps_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "colps_pic@2x.png"; path = "../colps_pic@2x.png"; sourceTree = "<group>"; };
 		955D49C5182CBBE400064D40 /* REG_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = REG_box.png; path = ../REG_box.png; sourceTree = "<group>"; };
 		955D49C7182CC45D00064D40 /* register_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = register_btn.png; path = ../register_btn.png; sourceTree = "<group>"; };
-		955D49C9182CFA1900064D40 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
-		955D49CA182CFA1A00064D40 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
-		955D49CB182CFA1A00064D40 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		955D49CE182D168C00064D40 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		955D49D0182D168C00064D40 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		955D49D3182D1B3300064D40 /* REG_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = REG_BG.png; path = ../REG_BG.png; sourceTree = "<group>"; };
@@ -972,18 +972,18 @@
 				95CBF83E1840C2880057C2C4 /* UserlistViewController.h */,
 				95CBF83F1840C2880057C2C4 /* UserlistViewController.m */,
 				95CBF8401840C2880057C2C4 /* UserlistViewController.xib */,
+				06D690811917A9C1003E311B /* CellUserReport.h */,
+				06D690821917A9C1003E311B /* CellUserReport.m */,
+				06D690831917A9C1003E311B /* CellUserReport.xib */,
+				06D690841917A9C1003E311B /* UserReportViewController.h */,
+				06D690851917A9C1003E311B /* UserReportViewController.m */,
+				06D690861917A9C1003E311B /* UserReportViewController.xib */,
 				95027C8A185206BA0061C151 /* pushNotificationViewController.h */,
 				95027C8B185206BA0061C151 /* pushNotificationViewController.m */,
 				95027C8C185206BA0061C151 /* pushNotificationViewController.xib */,
 				95027C8D185206BA0061C151 /* SearchBadDriverViewController.h */,
 				95027C8E185206BA0061C151 /* SearchBadDriverViewController.m */,
 				95027C8F185206BA0061C151 /* SearchBadDriverViewController.xib */,
-				95027C90185206BA0061C151 /* UserReportViewController.h */,
-				95027C91185206BA0061C151 /* UserReportViewController.m */,
-				95027C92185206BA0061C151 /* UserReportViewController.xib */,
-				0D91551318EEFD92005A43BC /* CellUserReport.h */,
-				0D91551418EEFD92005A43BC /* CellUserReport.m */,
-				0D91551618EEFDA5005A43BC /* CellUserReport.xib */,
 				0D8D179318ED7D3700543CE0 /* ShareAppViewController.h */,
 				0D8D179418ED7D3700543CE0 /* ShareAppViewController.m */,
 				0D8D179518ED7D3700543CE0 /* ShareAppViewController.xib */,
@@ -1005,9 +1005,6 @@
 				9518FF4C1856E89B003C76A5 /* ChangepassViewController.h */,
 				9518FF4D1856E89B003C76A5 /* ChangepassViewController.m */,
 				9518FF4E1856E89B003C76A5 /* ChangepassViewController.xib */,
-				955D49C9182CFA1900064D40 /* EditProfileViewController.h */,
-				955D49CA182CFA1A00064D40 /* EditProfileViewController.m */,
-				955D49CB182CFA1A00064D40 /* EditProfileViewController.xib */,
 				4CA0B9A51858399600916E86 /* SimiarReportViewController.h */,
 				4CA0B9A61858399600916E86 /* SimiarReportViewController.m */,
 				4CA0B9A71858399600916E86 /* SimiarReportViewController.xib */,
@@ -1023,9 +1020,12 @@
 				4C96C70E18AA1A270050B215 /* EvedenceLockerView.h */,
 				4C96C70F18AA1A270050B215 /* EvedenceLockerView.m */,
 				4C96C71018AA1A270050B215 /* EvedenceLockerView.xib */,
-				4C6DFD0418A3A3010009DDB2 /* ProfileViewController.h */,
-				4C6DFD0518A3A3010009DDB2 /* ProfileViewController.m */,
-				4C6DFD0618A3A3010009DDB2 /* ProfileViewController.xib */,
+				06D690771917A546003E311B /* ProfileViewController.h */,
+				06D690781917A546003E311B /* ProfileViewController.m */,
+				06D690791917A546003E311B /* ProfileViewController.xib */,
+				06D690721917A4FA003E311B /* EditProfileViewController.h */,
+				06D690731917A4FA003E311B /* EditProfileViewController.m */,
+				06D690741917A4FA003E311B /* EditProfileViewController.xib */,
 				4C93DF3818AB3D5000F965C4 /* CellForevidenceLockerCell.h */,
 				4C93DF3918AB3D5000F965C4 /* CellForevidenceLockerCell.m */,
 				4C93DF3B18AB3D6500F965C4 /* CellForevidenceLockerCell.xib */,
@@ -1090,6 +1090,9 @@
 		955F7DE81828B05D00099197 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				06D6907C1917A58D003E311B /* PassWordChange.h */,
+				06D6907D1917A58D003E311B /* PassWordChange.m */,
+				06D6907E1917A58E003E311B /* PassWordChange.xib */,
 				9506D9B518476EC900D8FF85 /* UserDetailesViewController.h */,
 				9506D9B618476EC900D8FF85 /* UserDetailesViewController.m */,
 				9506D9B718476EC900D8FF85 /* UserDetailesViewController.xib */,
@@ -1110,9 +1113,6 @@
 				95A12AF9183DD33F00A258FC /* ACEAutocompleteInputView.m */,
 				95A12AFA183DD33F00A258FC /* UITextField+ACEAutocompleteBar.h */,
 				95A12AFB183DD33F00A258FC /* UITextField+ACEAutocompleteBar.m */,
-				4C9630FE1860315200C100AE /* PassWordChange.h */,
-				4C9630FF1860315200C100AE /* PassWordChange.m */,
-				4C9631001860315200C100AE /* PassWordChange.xib */,
 				955D4928182A022B00064D40 /* Imageview */,
 				955D48FD1829330E00064D40 /* Sidebar */,
 				955D48D5182925F800064D40 /* MBAlertView */,
@@ -1303,7 +1303,7 @@
 			files = (
 				0D8D179718ED7D3700543CE0 /* ShareAppViewController.xib in Resources */,
 				955D49191829767800064D40 /* ProximaNova-Light.otf in Resources */,
-				95027C9B185206BA0061C151 /* UserReportViewController.xib in Resources */,
+				06D6907B1917A546003E311B /* ProfileViewController.xib in Resources */,
 				95E1561D183B845600682D3D /* sgn.png in Resources */,
 				955D49181829767000064D40 /* OpenSans-Semibold_0.ttf in Resources */,
 				955D49171829766600064D40 /* OpenSans-Regular_0.ttf in Resources */,
@@ -1333,7 +1333,6 @@
 				4CAF031418C9E43100BB51EF /* settings 2.png in Resources */,
 				4CB470A91859AC300083E432 /* normal_usefull.png in Resources */,
 				955D48CE18291D4700064D40 /* twitter_pic@2x.png in Resources */,
-				4C6DFD0818A3A3010009DDB2 /* ProfileViewController.xib in Resources */,
 				955D495C182A545400064D40 /* colps_pic@2x.png in Resources */,
 				4CA0B9A91858399600916E86 /* SimiarReportViewController.xib in Resources */,
 				955D48C0182912F100064D40 /* top_divider@2x.png in Resources */,
@@ -1346,15 +1345,16 @@
 				955D492318297F3500064D40 /* pen@2x.png in Resources */,
 				0D9FEAE9189FA9F4004DC17E /* ForgetPassWordViewController.xib in Resources */,
 				955D492718297F4800064D40 /* view@2x.png in Resources */,
+				06D690881917A9C1003E311B /* CellUserReport.xib in Resources */,
 				4CB470A81859AC300083E432 /* hilight_cool.png in Resources */,
 				955F7E351828D7D000099197 /* Default-568h@2x.png in Resources */,
 				4CAF032418C9E7A200BB51EF /* icon4.png in Resources */,
-				955D49CD182CFA1A00064D40 /* EditProfileViewController.xib in Resources */,
 				4CB470A61859AC300083E432 /* normal_funny.png in Resources */,
 				4CAF030818C9E13E00BB51EF /* sign out.png in Resources */,
 				955D48B6182903BC00064D40 /* user_box@2x.png in Resources */,
 				4CB470A41859AC300083E432 /* hilight_useful.png in Resources */,
 				4CAF030E18C9E2F500BB51EF /* confirm password'.png in Resources */,
+				06D690801917A58E003E311B /* PassWordChange.xib in Resources */,
 				955D49C6182CBBE400064D40 /* REG_box.png in Resources */,
 				0DC0BE231909377600E16EFE /* NEWsearch-for-incident.png in Resources */,
 				4CAF032118C9E7A200BB51EF /* icon7.png in Resources */,
@@ -1382,7 +1382,6 @@
 				4C323B6118AC99DA00230EDD /* reportDetaiswithlicenceplate.xib in Resources */,
 				0D9FEAF6189FD14B004DC17E /* 114x114 in Resources */,
 				4C93DF3C18AB3D6500F965C4 /* CellForevidenceLockerCell.xib in Resources */,
-				0D91551718EEFDA5005A43BC /* CellUserReport.xib in Resources */,
 				0DC0BE2B1909477800E16EFE /* NEWdivider.png in Resources */,
 				955D491F18297A1D00064D40 /* signout@2x.png in Resources */,
 				0D8C311818EC147E00ABB8E3 /* 1396450082_icon-ios7-plus-outline.png in Resources */,
@@ -1394,6 +1393,7 @@
 				4C323B6418ACCEB100230EDD /* RemoveFrom.png in Resources */,
 				95553997183A298A0018E36C /* GREENPROG1.png in Resources */,
 				0DC0BE2E19095E0D00E16EFE /* star1NEW.png in Resources */,
+				06D690761917A4FA003E311B /* EditProfileViewController.xib in Resources */,
 				955F7E361828D7D000099197 /* Default@2x.png in Resources */,
 				955D4958182A4A4200064D40 /* butt6.png in Resources */,
 				9521FC161845FCE400D4C365 /* tutorial_background_02@2x.jpg in Resources */,
@@ -1421,6 +1421,7 @@
 				95E1561A183B845600682D3D /* car.png in Resources */,
 				0D8C311618EC142800ABB8E3 /* 1396449795_Facebook.png in Resources */,
 				0D8F58CF18D85E4200DFD6AC /* AddToEvidenceLocker.jpg in Resources */,
+				06D6908A1917A9C1003E311B /* UserReportViewController.xib in Resources */,
 				4CAF030018C9E11700BB51EF /* Report a bad driver.png in Resources */,
 				0DC0BE1D1909377600E16EFE /* NEWhome.png in Resources */,
 				955D48BA18290F7A00064D40 /* user_box.png in Resources */,
@@ -1430,7 +1431,6 @@
 				955F7DC71828B03400099197 /* ViewController_iPhone.xib in Resources */,
 				955D492518297F4000064D40 /* search_icon@2x.png in Resources */,
 				4CAF032018C9E7A200BB51EF /* iocn_1.png in Resources */,
-				4C9631021860315200C100AE /* PassWordChange.xib in Resources */,
 				953989D8183F2DEB00F8C550 /* SAVEDATA.png in Resources */,
 				953989D7183F2DEB00F8C550 /* CNCLDATA.png in Resources */,
 				955D4914182964CF00064D40 /* cool.png in Resources */,
@@ -1558,7 +1558,9 @@
 				955D490C1829333800064D40 /* SideMenuViewControllerOne.m in Sources */,
 				955F7DB71828B03400099197 /* main.m in Sources */,
 				0D8C5EFF18EBE1C70048B240 /* UserBadgeViewController.m in Sources */,
+				06D690751917A4FA003E311B /* EditProfileViewController.m in Sources */,
 				0D8C311018EC091000ABB8E3 /* CellUserBadge.m in Sources */,
+				06D6907A1917A546003E311B /* ProfileViewController.m in Sources */,
 				955D49051829331C00064D40 /* MFSideMenuContainerViewController.m in Sources */,
 				4CAB5601185B14CC0060F1B6 /* ShowAllCommentViewController.m in Sources */,
 				4CFE33CE18571FAE00CF2FAE /* ReportDetailsViewController.m in Sources */,
@@ -1568,11 +1570,10 @@
 				953989E2183F432E00F8C550 /* TableViewController.m in Sources */,
 				955D490D1829333800064D40 /* SideMenuViewController.m in Sources */,
 				955F7DBB1828B03400099197 /* AppDelegate.m in Sources */,
-				955D49CC182CFA1A00064D40 /* EditProfileViewController.m in Sources */,
+				06D6907F1917A58E003E311B /* PassWordChange.m in Sources */,
 				955D48ED182925F800064D40 /* NSString+Trim.m in Sources */,
 				0D8D179618ED7D3700543CE0 /* ShareAppViewController.m in Sources */,
 				9518FF531856E89B003C76A5 /* ChangepassViewController.m in Sources */,
-				4C6DFD0718A3A3010009DDB2 /* ProfileViewController.m in Sources */,
 				95A889691834F49C001B87F6 /* RecordAudioViewController.m in Sources */,
 				4C92966A18616B4300340EC0 /* LeaderboardViewController.m in Sources */,
 				95A12AFC183DD33F00A258FC /* ACEAutocompleteInputView.m in Sources */,
@@ -1583,6 +1584,7 @@
 				955D492F182A024300064D40 /* JMImageCache.m in Sources */,
 				955D49071829331C00064D40 /* MFSideMenuShadow.m in Sources */,
 				955D48F0182925F800064D40 /* MBAlertView.m in Sources */,
+				06D690871917A9C1003E311B /* CellUserReport.m in Sources */,
 				955F7DC41828B03400099197 /* ViewController.m in Sources */,
 				95027C98185206BA0061C151 /* SearchBadDriverViewController.m in Sources */,
 				4CFE33D1185720A800CF2FAE /* DashboardViewController.m in Sources */,
@@ -1592,7 +1594,6 @@
 				955D48EF182925F800064D40 /* UIView+Animations.m in Sources */,
 				95E449B4183634B600CBC563 /* MyallaudioViewController.m in Sources */,
 				955F7DEE1828B0A100099197 /* languageClass.m in Sources */,
-				4C9631011860315200C100AE /* PassWordChange.m in Sources */,
 				4C93DF3A18AB3D5000F965C4 /* CellForevidenceLockerCell.m in Sources */,
 				955D49DD182E176200064D40 /* MostRecentCommentsCell.m in Sources */,
 				4CA0B9A81858399600916E86 /* SimiarReportViewController.m in Sources */,
@@ -1600,8 +1601,7 @@
 				4CAB5603185B14CC0060F1B6 /* ShowAllReportViewController.m in Sources */,
 				955D48F4182925F800064D40 /* MBCheckMarkView.m in Sources */,
 				4C4CAF6718D03B100067E96E /* FacebookTwitterIntermidiat.m in Sources */,
-				0D91551518EEFD92005A43BC /* CellUserReport.m in Sources */,
-				95027C9A185206BA0061C151 /* UserReportViewController.m in Sources */,
+				06D690891917A9C1003E311B /* UserReportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

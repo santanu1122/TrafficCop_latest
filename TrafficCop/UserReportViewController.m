@@ -24,7 +24,7 @@ typedef enum {
     TwitterShatreButtonClicked
 } ShareButtonClicked;
 
-@interface UserReportViewController ()<UITextViewDelegate> {
+@interface UserReportViewController () <UITextViewDelegate,UIAlertViewDelegate>  {
     HelperClass *UserReportClass;
     NSMutableArray *UserReportClassDataArray;
     NSMutableData* webdata;
@@ -36,6 +36,9 @@ typedef enum {
     NSString *LinkForSocialShare;
     NSString *LinkDataForSocialShare;
     ShareButtonClicked WhichSharebuttonClicked;
+    UIImageView *image1,*image2,*image3,*image4,*image5;
+    UIImage *imageStar,*imageNoStar;
+    int mytag;
 }
 @property (nonatomic,retain) IBOutlet UITableView *UserreportResultTableView;
 @property (nonatomic,retain) IBOutlet UIView *UserreportNoResult;
@@ -112,6 +115,10 @@ int GlobalSelectedIndexPathOne = 0;
     [UserReportClass SetupHeaderView:self.view viewController:self];
     [_UserreportResultTableView setDelegate:self];
     [_UserreportResultTableView setDataSource:self];
+    
+    imageStar=[UIImage imageNamed:@"starNEW.png"];
+    imageNoStar=[UIImage imageNamed:@"star1NEW.png"];
+    
     NSInvocationOperation *detaFitcheration=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(fetchdataFormyreport) object:nil];
     [operationq addOperation:detaFitcheration];
 }
@@ -147,6 +154,7 @@ int GlobalSelectedIndexPathOne = 0;
             [mutdic setValue:[Dic valueForKey:@"report_desc"] forKey:@"report_desc"];
             [mutdic setValue:[Dic valueForKey:@"report_id"] forKey:@"report_id"];
             [mutdic setValue:[Dic valueForKey:@"getlink"] forKey:@"getlink"];
+            [mutdic setValue:[Dic valueForKey:@"report_avg_rating"] forKey:@"Rating"];
             
             [UserReportClassDataArray addObject:mutdic];
         }
@@ -176,7 +184,7 @@ int GlobalSelectedIndexPathOne = 0;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.0f;
+    return 150.0f;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -189,7 +197,57 @@ int GlobalSelectedIndexPathOne = 0;
         tableCell = (CellUserReport *)[nibArray objectAtIndex:0];
         
     }
+    tableCell.tag=300+indexPath.row;
+    image1=[[UIImageView alloc]initWithFrame:CGRectMake(87, 37, 20, 20)];
+    image2=[[UIImageView alloc]initWithFrame:CGRectMake(108, 37, 20, 20)];
+    image3=[[UIImageView alloc]initWithFrame:CGRectMake(129, 37, 20, 20)];
+    image4=[[UIImageView alloc]initWithFrame:CGRectMake(150, 37, 20, 20)];
+    image5=[[UIImageView alloc]initWithFrame:CGRectMake(171, 37, 20, 20)];
+    image1.image=imageNoStar;
+    image2.image=imageNoStar;
+    image3.image=imageNoStar;
+    image4.image=imageNoStar;
+    image5.image=imageNoStar;
+    [tableCell.contentView addSubview:image1];
+    [tableCell.contentView addSubview:image2];
+    [tableCell.contentView addSubview:image3];
+    [tableCell.contentView addSubview:image4];
+    [tableCell.contentView addSubview:image5];
+    
+    
+    
     NSMutableDictionary *CellData = [UserReportClassDataArray objectAtIndex:indexPath.row];
+     NSLog(@"We are at number of star = %@",[CellData objectForKey:@"Rating"]);
+    
+    int numberOfStar=[[CellData objectForKey:@"Rating"]integerValue];
+    switch(numberOfStar){
+           
+        case 1:
+           image1.image=imageStar;
+            break;
+        case 2:
+            image1.image=imageStar;
+            image2.image=imageStar;
+            break;
+        case 3:
+            image1.image=imageStar;
+            image2.image=imageStar;
+            image3.image=imageStar;
+            break;
+        case 4:
+            image1.image=imageStar;
+            image2.image=imageStar;
+            image3.image=imageStar;
+            image4.image=imageStar;
+            break;
+        case 5:
+            image1.image=imageStar;
+            image2.image=imageStar;
+            image3.image=imageStar;
+            image4.image=imageStar;
+            image5.image=imageStar;
+            break;
+    }
     
     //  UIActivityIndicatorView *CellImageBadgeActivity     = (UIActivityIndicatorView *)[tableCell viewWithTag:256];
     UIImageView *CellBadgeImage                         = (UIImageView *)[tableCell viewWithTag:257];
@@ -197,6 +255,7 @@ int GlobalSelectedIndexPathOne = 0;
     UILabel *CellBadgeFooterLable                       = (UILabel *)[tableCell viewWithTag:555];
     UIButton *CellBadgeShareOnFacebook                  = (UIButton *)[tableCell viewWithTag:260];
     UIButton *CellBadgeShareOnTwitter                   = (UIButton *)[tableCell viewWithTag:261];
+    UIButton *CellBadgeShareOnDelete                   = (UIButton *)[tableCell viewWithTag:262];
     UIView *CellBadgeShareOnView                        = (UIView *)[tableCell viewWithTag:777];
     UILabel *CellBadgeShareOnLabel                      = (UILabel *)[tableCell viewWithTag:666];//654
     UITextView *Detailslabel                            = (UITextView *)[tableCell viewWithTag:654];
@@ -221,6 +280,9 @@ int GlobalSelectedIndexPathOne = 0;
     [CellBadgeShareOnTwitter setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
     [CellBadgeShareOnTwitter setTitleColor:[UIColor clearColor] forState:UIControlStateHighlighted];
     [CellBadgeShareOnTwitter addTarget:self action:@selector(ShareOnTwitter:) forControlEvents:UIControlEventTouchUpInside];
+    
+    CellBadgeShareOnDelete.tag=300+indexPath.row;
+    [CellBadgeShareOnDelete addTarget:self action:@selector(deleteMyComments:) forControlEvents:UIControlEventTouchUpInside];
     
     //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
     //
@@ -337,11 +399,18 @@ int GlobalSelectedIndexPathOne = 0;
     //    [tableViewCell addSubview:MainCellView];
     //
     //    }
+    
+    UILabel *Separator=[[UILabel alloc]initWithFrame:CGRectMake(0, 149, 320, .5)];
+    [Separator setBackgroundColor:[UIColor blackColor]];
+    [Separator.layer setOpacity:.5f];
+    [tableCell addSubview:Separator];
+    
     return tableCell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"ViewController sideview clicked");
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     AppDelegate *maindelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -401,7 +470,17 @@ int GlobalSelectedIndexPathOne = 0;
     WhichSharebuttonClicked = TwitterShatreButtonClicked;
     [self SetupPopupview:[Selecter.titleLabel.text intValue]];
 }
-
+-(void)deleteMyComments:(UIButton *)Selecter {
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Warning !" message:@"Do you want to delete the report ?" delegate:self cancelButtonTitle:nil otherButtonTitles:@"YES",@"NO", nil];
+    
+    alert.tag=303;
+    
+    [alert show];
+    
+    mytag=Selecter.tag;
+    
+    NSLog(@"Delete my comments");
+}
 -(void)SetupPopupview :(int)IndexpathVal{
     
     GlobalSelectedIndexPathOne             = IndexpathVal;
@@ -714,6 +793,58 @@ int GlobalSelectedIndexPathOne = 0;
     }
 }
 
+
+
+-(void)confirmDelete{
+    
+    int tag=mytag;
+    
+    NSDictionary *dict=[UserReportClassDataArray objectAtIndex:tag-300];
+    
+    NSString *strURL=[NSString stringWithFormat:@"%@appweb.php?reportid=%@&mode=delete_my_report&getuser=%@",DomainURL,[dict valueForKey:@"report_id"],userID];
+    
+    NSLog(@"Url for deletion is %@",strURL);
+    
+    NSHTTPURLResponse *response = nil;
+    
+    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:strURL]];
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    
+    if ([response statusCode] == 404){
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"Error during delete the report" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [alert show];
+        
+        return;
+        
+    }
+    
+    NSError *error;
+    
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:returnData options:kNilOptions error:&error];
+    
+    NSLog(@" %@ %@",[jsonData objectForKey:@"message"],[jsonData objectForKey:@"response"]);
+    
+    if([[jsonData objectForKey:@"response"] isEqualToString:@"success"]){
+        
+        [UserReportClassDataArray removeObjectAtIndex:tag-300];
+        
+        [_UserreportResultTableView reloadData];
+        
+    }
+    
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@",[jsonData objectForKey:@"response"]] message:[NSString stringWithFormat:@"%@",[jsonData objectForKey:@"message"]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    [alert show];
+    
+}
+
+
+
+
+
 -(IBAction)FinalCancel:(UIButton *)sender
 {
     GlobalSelectedIndexPathOne = 0;
@@ -721,6 +852,17 @@ int GlobalSelectedIndexPathOne = 0;
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self FinalCancel:nil];
+    
+    if(alertView.tag==303){
+        
+        if(buttonIndex==0){
+            
+            [self confirmDelete];
+            
+        }
+        
+    }
     
     [self FinalCancel:nil];
 }

@@ -7,6 +7,7 @@
 //  http://esolzdemos.com/lab3/trafficcop/IOS/pages/useractivity.php?userid=28&mode=report
 
 #import "ShowAllReportViewController.h"
+#import "MFSideMenu.h"
 #import "ZSImageView.h"
 #import "HelperClass.h"
 #import "AppDelegate.h"
@@ -37,6 +38,8 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"ShowAllReportViewController.m--");
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     reportLableHelper=[[HelperClass alloc]init];
@@ -68,25 +71,32 @@
     return [ReportOftheuserArray count];
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        return 110.0f;
+}
+
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 320, 110)];
     
     NSLog(@"The indexpath of sectiopnm for report:%d",indexPath.section);
-    [cell setFrame:CGRectMake(0, 0, 320, 70)];
+    [cell setFrame:CGRectMake(0, 0, 320, 110)];
     NSMutableDictionary *item1;
     NSLog(@"report tableview");
     item1 = [[NSMutableDictionary alloc] initWithDictionary:[ReportOftheuserArray objectAtIndex:indexPath.row]];
     
-    UIView  *MainCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
+    UIView  *MainCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 110)];
     
     MainCellView.backgroundColor = [UIColor clearColor];
     [cell addSubview:MainCellView];
     
     
     
-    UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
+    UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 16, 65, 65)];
     
     ImageView.backgroundColor = [UIColor clearColor];
     
@@ -95,9 +105,9 @@
     cell.textLabel.text=[item1 valueForKey:@"report_id"];
     cell.textLabel.hidden=YES;
     
-    ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
     
-    imageView.defaultImage = [UIImage imageNamed:@"FH-noimage-circle.png"];
+    imageView.defaultImage = [UIImage imageNamed:@"NEWNOIMAGE.png"];
     
     imageView.imageUrl = [item1 objectForKey:@"report_image"];
     
@@ -105,24 +115,32 @@
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     imageView.clipsToBounds = YES;
-    
-    // imageView.corners = ZSRoundCornerAll;
-    
-    imageView.cornerRadius = 0;
+    imageView.corners = ZSRoundCornerAll;
+    imageView.cornerRadius = 25;
     
     [ImageView addSubview:imageView];
     
     
     
-    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 5, 260, 25)];
+    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
+    [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
+    [ImageView addSubview:ImageOverlay];
+    
+    
+    
+    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 225, 20)];
     
     TitleLabel.backgroundColor = [UIColor clearColor];
     
-    TitleLabel.font = [UIFont fontWithName:@"Arial" size:12];
-    
-    TitleLabel.textColor = UIColorFromRGB(0xfcb714);
+    TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:14];
+    //TitleLabel.textColor = UIColorFromRGB(0x000000);
+    TitleLabel.textColor = UIColorFromRGB(0x211e1f);
     
     TitleLabel.text = [reportLableHelper stripTags:[item1 objectForKey:@"report_title"]];
+    
+    TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:14];
+    //TitleLabel.textColor = UIColorFromRGB(0x000000);
+    TitleLabel.textColor = UIColorFromRGB(0x211e1f);
     
     
     [MainCellView addSubview:TitleLabel];
@@ -140,17 +158,17 @@
         
         if(i==0)
             
-            SIZEX = 60+5;
+            SIZEX = 90;
         
-        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 30, 16, 16)];
+        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 35, 16, 16)];
         
         ImageViewone.backgroundColor = [UIColor clearColor];
         
-        ImageViewone.image = [UIImage imageNamed:@"YELLOWSTER"];
+        ImageViewone.image = [UIImage imageNamed:@"starNEW"];
         
         [MainCellView addSubview:ImageViewone];
         
-        SIZEX = SIZEX + 16;
+        SIZEX = SIZEX + 20;
         
     }
     
@@ -158,33 +176,94 @@
         
         if(GRAY==5 && j==0)
             
-            SIZEX = 60+5;
+            SIZEX = 90;
         
-        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 30, 16, 16)];
+        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 35, 16, 16)];
         
         ImageViewone.backgroundColor = [UIColor clearColor];
         
-        ImageViewone.image = [UIImage imageNamed:@"GRAYSTAR"];
+        ImageViewone.image = [UIImage imageNamed:@"star1NEW"];
         
         [MainCellView addSubview:ImageViewone];
         
-        SIZEX = SIZEX + 16;
+        SIZEX = SIZEX + 20;
         
     }
     
     
-    UILabel *Numborofcmtlabl=[[UILabel alloc]initWithFrame:CGRectMake(150, 30, 80, 16)];
-    Numborofcmtlabl.textColor=[UIColor darkGrayColor];
-    Numborofcmtlabl.font=[UIFont fontWithName:@"Arial" size:11];
+    UILabel *Numborofcmtlabl=[[UILabel alloc]initWithFrame:CGRectMake(90, 55, 80, 25)];
+    Numborofcmtlabl.font=[UIFont fontWithName:GLOBALTEXTFONT size:12];
+    //        Numborofcmtlabl.textColor = UIColorFromRGB(0x575757);
+    Numborofcmtlabl.textColor = UIColorFromRGB(0x000000);
     NSString *detaString=[NSString stringWithFormat:@"%@ %@",[item1 objectForKey:@"total_comment_this_report"],@"Comment"];
     Numborofcmtlabl.text=detaString;
     [MainCellView addSubview:Numborofcmtlabl];
-    UIView *sepateroview=[[UIView alloc]initWithFrame:CGRectMake(0, 69, 320, 1)];
-    [sepateroview setBackgroundColor:[UIColor lightGrayColor]];
-    [MainCellView addSubview:sepateroview];
+    
+    UILabel *Separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 109, 320, .5)];
+    [Separetor setBackgroundColor:[UIColor blackColor]];
+    Separetor.layer.opacity=0.5f;
+    [MainCellView addSubview:Separetor];
+    
+    [cell.contentView addSubview:MainCellView];
+        
     return cell;
     
 }
+
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *MainHeaderView;
+    
+    MainHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    [MainHeaderView setBackgroundColor:[UIColor whiteColor]];
+    
+    
+//    UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(7, 7, 320, 35)];
+    UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(89, 7, 180, 35)];
+    
+    [MainHeaderView addSubview:Titlelabel];
+//    if (section==0)
+//    {
+        Titlelabel.text=@"Reports of this user";
+        Titlelabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+        Titlelabel.textColor = UIColorFromRGB(0x211e1f);
+//    }
+//    else
+//    {
+//        Titlelabel.text=@"Comments of this user";
+//        Titlelabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
+//        Titlelabel.textColor = UIColorFromRGB(0x211e1f);
+//    }
+    
+    UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 49, 320/3,1)];
+    
+    greenLabel.backgroundColor = UIColorFromRGB(0x1aad4b);
+    
+    [MainHeaderView addSubview:greenLabel];
+    
+    UILabel *yellowlabel = [[UILabel alloc] initWithFrame:CGRectMake(320/3, 49, 320/3,1)];
+    
+    yellowlabel.backgroundColor = UIColorFromRGB(0xfcb714);
+    
+    [MainHeaderView addSubview:yellowlabel];
+    
+    UILabel *redlabel = [[UILabel alloc] initWithFrame:CGRectMake(320/3*2, 49, 320/3+5,1)];
+    
+    redlabel.backgroundColor = UIColorFromRGB(0xde1d23);
+    
+    [MainHeaderView addSubview:redlabel];
+    
+    return MainHeaderView;
+    
+}
+
+
+
+
+
+
 
 -(void)loadAllReportofuser
 {
@@ -253,5 +332,19 @@
     [reportLableHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
     [self.ShowallReportTbl reloadData];
 }
+
+
+
+- (void)leftSideMenuButtonPressed:(id)sender {
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
+}
+
+
+- (void)rightSideMenuButtonPressed:(id)sender {
+    [self.menuContainerViewController toggleRightSideMenuCompletion:^{}];
+}
+
+
+
 
 @end

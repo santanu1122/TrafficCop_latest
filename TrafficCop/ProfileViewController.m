@@ -98,7 +98,7 @@
     Email.text=[userDefauld valueForKey:@"email"];
     Username.text=[userDefauld valueForKey:@"username"];
     
-    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(20, 27, 70, 70)];
+    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(115, 44, 68, 68)];
     [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
     [_Whitebackview addSubview:ImageOverlay];
     
