@@ -234,7 +234,8 @@ int NumberOfPages = 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80.0f;
+//    return 80.0f;
+     return 110.0f;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -244,9 +245,9 @@ int NumberOfPages = 1;
     
     NSMutableDictionary *CellData = [SearchResultDataArray objectAtIndex:indexPath.row];
     
-    UIView  *MainCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+    UIView  *MainCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 110)];
     MainCellView.backgroundColor = [UIColor clearColor];
-    UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 60, 60)];
+    UIImageView *ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 16, 65, 65)];
     ImageView.backgroundColor = [UIColor clearColor];
     [MainCellView addSubview:ImageView];
    // ImageView.layer.cornerRadius=6.0f;
@@ -254,18 +255,18 @@ int NumberOfPages = 1;
    // ImageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
     
     
-    ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
     imageView.defaultImage = [UIImage imageNamed:@"NEWNOIMAGE.png"];
     imageView.imageUrl = [CellData objectForKey:@"userimage"];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     imageView.backgroundColor = [UIColor clearColor];
     imageView.corners = ZSRoundCornerAll;
-    imageView.cornerRadius = 20;
+    imageView.cornerRadius = 25;
     [ImageView addSubview:imageView];
     
     
-    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
     [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
     [ImageView addSubview:ImageOverlay];
     
@@ -273,7 +274,7 @@ int NumberOfPages = 1;
     tableViewCell.textLabel.text=[CellData objectForKey:@"report_id"];
     tableViewCell.textLabel.hidden=YES;
     
-    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 220, 20)];
+    UILabel *TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 220, 25)];
     TitleLabel.backgroundColor = [UIColor clearColor];
     TitleLabel.numberOfLines = 0;
     TitleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0f];
@@ -281,7 +282,52 @@ int NumberOfPages = 1;
     TitleLabel.text = [SearchBadDriverHelper stripTags:[CellData objectForKey:@"report_title"]];
     [MainCellView addSubview:TitleLabel];
     
-    UITextView *Detailslabel = [[UITextView alloc] initWithFrame:CGRectMake(77, 35, 223, 40)];
+    
+    int TOTAL = 5;
+    int YELLOW = [[CellData objectForKey:@"report_avg_rating"] intValue];
+    int GRAY = TOTAL - YELLOW;
+    float SIZEX = 5;
+    
+    for(int i=0; i < YELLOW; i++) {
+        
+        if(i==0)
+            
+            SIZEX = 90;
+        
+        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 35, 20, 20)];
+        
+        ImageViewone.backgroundColor = [UIColor clearColor];
+        
+        ImageViewone.image = [UIImage imageNamed:@"starNEW"];
+        
+        [MainCellView addSubview:ImageViewone];
+        
+        SIZEX = SIZEX + 22;
+        
+    }
+    
+    for(int j=0; j < GRAY; j++) {
+        
+        if(GRAY==5 && j==0)
+            
+            SIZEX = 90;
+        
+        UIImageView *ImageViewone = [[UIImageView alloc] initWithFrame:CGRectMake(SIZEX, 35, 20, 20)];
+        
+        ImageViewone.backgroundColor = [UIColor clearColor];
+        
+        ImageViewone.image = [UIImage imageNamed:@"star1NEW"];
+        
+        [MainCellView addSubview:ImageViewone];
+        
+        SIZEX = SIZEX + 22;
+        
+    }
+    
+    
+    
+    
+    UITextView *Detailslabel = [[UITextView alloc] initWithFrame:CGRectMake(90, 60, 223, 40)];
     Detailslabel.backgroundColor = [UIColor clearColor];
     Detailslabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:12.0f];
     Detailslabel.textColor = UIColorFromRGB(0x575757);
@@ -299,8 +345,8 @@ int NumberOfPages = 1;
     Detailslabel.userInteractionEnabled=NO;
     Detailslabel.scrollEnabled=NO;
     Detailslabel.textAlignment = NSTextAlignmentLeft;
-    UILabel *separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 79, 320, .5)];
-    //separetor.layer.opacity=0.2f;
+    UILabel *separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 109, 320, .5)];
+    separetor.layer.opacity=0.2f;
     [separetor setBackgroundColor:[UIColor blackColor]];
     [MainCellView addSubview:separetor];
     [MainCellView addSubview:Detailslabel];

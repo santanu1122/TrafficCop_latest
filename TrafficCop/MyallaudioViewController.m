@@ -754,11 +754,19 @@
         {
             NSDictionary *maindic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
         
-             if([[maindic objectForKey:@"response"] isEqualToString:@"success"])
+            NSLog(@"main dic is %@", maindic);
+//            NSString *messEge=[maindic valueForKey:@"message"];
+//            NSString *Response=[maindic valueForKey:@"response"];
+            
+            NSDictionary *mainNewdic = [[maindic objectForKey:@"extraparam"]objectAtIndex:0];
+            
+            
+             if([[mainNewdic objectForKey:@"response"] isEqualToString:@"success"])
              {
-                 NSLog(@"sucsess--");
+                 
                  dispatch_async(dispatch_get_main_queue(), ^(){
-                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@",[maindic objectForKey:@"response"]] message:[NSString stringWithFormat:@"%@",[maindic objectForKey:@"message"]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                     NSLog(@"sucsess--");
+                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@",[mainNewdic valueForKey:@"response"]] message:[NSString stringWithFormat:@"%@",[mainNewdic valueForKey:@"message"]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                  
                  [alert show];
                      });
