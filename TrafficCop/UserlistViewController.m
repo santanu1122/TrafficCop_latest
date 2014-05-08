@@ -41,7 +41,11 @@
     return self;
 }
 
--(void)viewDidAppear:(BOOL)animated {
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
     Noresultfound.hidden=YES;
     UserListHelper = [[HelperClass alloc] init];
     operationQ=[[NSOperationQueue alloc]init];
@@ -55,7 +59,7 @@
     
     SearchUserTextField.font = [UIFont systemFontOfSize:15];
     
-   // SearchUserTextField.font = [UIFont fontWithName:GLOBALTEXTFONT size:15.0];
+    // SearchUserTextField.font = [UIFont fontWithName:GLOBALTEXTFONT size:15.0];
     //[SearchUserTextField setTextColor:UIColorFromRGB(0x575757)];
     
     
@@ -67,7 +71,7 @@
     [UserListHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
     
     
-     Fetchuserdata = [NSUserDefaults standardUserDefaults];
+    Fetchuserdata = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *tempDictOne = [[NSMutableDictionary alloc] init];
     [tempDictOne setObject:@"userlist" forKey:@"mode"];
     [tempDictOne setObject:[Fetchuserdata objectForKey:@"userid"] forKey:@"loginuser"];
@@ -80,6 +84,50 @@
     if(connection) {
         webdata = [[NSMutableData alloc]init];
     }
+    
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated {
+//    Noresultfound.hidden=YES;
+//    UserListHelper = [[HelperClass alloc] init];
+//    operationQ=[[NSOperationQueue alloc]init];
+//    [self HideNavigationBar];
+//    //ZSImageView *imageView = [[ZSImageView alloc] init];
+//    [UserListHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+//    [UserListHelper SetupHeaderView:self.view viewController:self];
+//    SearchUserTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 55, 200, 20)];
+//    SearchUserTextField.delegate = (id)self;
+//    SearchUserTextField.placeholder = @"Search by name:";
+//    
+//    SearchUserTextField.font = [UIFont systemFontOfSize:15];
+//    
+//   // SearchUserTextField.font = [UIFont fontWithName:GLOBALTEXTFONT size:15.0];
+//    //[SearchUserTextField setTextColor:UIColorFromRGB(0x575757)];
+//    
+//    
+//    SearchUserTextField.textColor = UIColorFromRGB(0xc5c5c5);
+//    _UserListTable.delegate = (id)self;
+//    _UserListTable.dataSource = (id)self;
+//    _UserListTable.hidden = YES;
+//    
+//    [UserListHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
+//    
+//    
+//     Fetchuserdata = [NSUserDefaults standardUserDefaults];
+//    NSMutableDictionary *tempDictOne = [[NSMutableDictionary alloc] init];
+//    [tempDictOne setObject:@"userlist" forKey:@"mode"];
+//    [tempDictOne setObject:[Fetchuserdata objectForKey:@"userid"] forKey:@"loginuser"];
+//    
+//    NSString *REturnedURL = [UserListHelper CallURLForServerReturn:tempDictOne URL:LOGINPAGE];
+//    NSLog(@"REturnedURL ---- %@",REturnedURL);
+//    NSURL *url = [NSURL URLWithString:REturnedURL];
+//    NSURLRequest *restrict1 = [NSURLRequest requestWithURL:url];
+//    connection = [NSURLConnection connectionWithRequest:restrict1 delegate:self];
+//    if(connection) {
+//        webdata = [[NSMutableData alloc]init];
+//    }
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
@@ -161,10 +209,17 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    AppDelegate *MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    AppDelegate *MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    UserDetailesViewController *UserDetails = [[UserDetailesViewController alloc] init];
+//    UserDetails.userId = [[DatasourceTableview objectAtIndex:indexPath.row] objectForKey:@"userid"];
+//    [MainDelegate SetUpTabbarControllerwithcenterView:UserDetails];
+    
+    
     UserDetailesViewController *UserDetails = [[UserDetailesViewController alloc] init];
     UserDetails.userId = [[DatasourceTableview objectAtIndex:indexPath.row] objectForKey:@"userid"];
-    [MainDelegate SetUpTabbarControllerwithcenterView:UserDetails];
+    UserDetails.backBtnEnable = YES;
+    [self.navigationController pushViewController:UserDetails animated:YES];
+    
     
     NSLog(@"userid --- %@",[[DatasourceTableview objectAtIndex:indexPath.row] objectForKey:@"userid"]);
 }
@@ -526,7 +581,23 @@
   
     [MainHeaderView addSubview:SearchUserTextField];
     
-    [UserListHelper CreateButtonWithText:220 ycord:55 width:90 height:20 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xc5c5c5) labeltext:Nil fontName:Nil fontSize:15 textNameForUIControlStateNormal:@"Search" textNameForUIControlStateSelected:@"Search" textNameForUIControlStateHighlighted:@"Search" textNameForselectedHighlighted:@"Search" selectMethod:@selector(Searchuserdata) selectEvent:UIControlEventTouchUpInside addView:MainHeaderView viewController:self];
+//    [UserListHelper CreateButtonWithText:220 ycord:55 width:90 height:20 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xc5c5c5) labeltext:Nil fontName:Nil fontSize:15 textNameForUIControlStateNormal:@"Search" textNameForUIControlStateSelected:@"Search" textNameForUIControlStateHighlighted:@"Search" textNameForselectedHighlighted:@"Search" selectMethod:@selector(Searchuserdata) selectEvent:UIControlEventTouchUpInside addView:MainHeaderView viewController:self];
+    
+    UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(220, 55, 90, 20)];
+    [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
+    [searchBtn setTitle:@"Search" forState:UIControlStateSelected];
+    [searchBtn setTitle:@"Search" forState:UIControlStateHighlighted];
+
+    searchBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    searchBtn.titleLabel.textColor = UIColorFromRGB(0xBDE7BF);
+    searchBtn.backgroundColor = UIColorFromRGB(0x289E40);
+    
+    [searchBtn addTarget:self
+               action:@selector(Searchuserdata)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [MainHeaderView addSubview:searchBtn];
     
     UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 89, 320/3,1)];
     greenLabel.backgroundColor = UIColorFromRGB(0x1aad4b);
@@ -617,10 +688,7 @@
    
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
+
 
 - (void)backButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

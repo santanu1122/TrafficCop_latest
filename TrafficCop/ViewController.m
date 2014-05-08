@@ -37,7 +37,8 @@
     
     // set background view with image
     
-    [SS SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+    [SS SetViewBackgroundImage:self.view imageName:GLOBALBACKIMAGE];
+    [SS setTopView:self.view];
     
     // Create logo image
     

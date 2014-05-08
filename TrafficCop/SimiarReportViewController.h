@@ -16,5 +16,7 @@
 }
 @property (strong, nonatomic) IBOutlet UITableView *SimilerReporttbl;
 @property (strong, nonatomic) NSString *Reportid;
+@property BOOL backBtnEnableInSimilarReport;
+
 
 @end

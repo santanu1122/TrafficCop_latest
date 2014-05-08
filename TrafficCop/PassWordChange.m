@@ -76,7 +76,7 @@
    
     
     UIButton *ChangepasswordBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    ChangepasswordBtn.frame = CGRectMake(100, 220, 100, 21);
+    ChangepasswordBtn.frame = CGRectMake(108, 220, 115, 30);//CreateButtonWithText:108 ycord:445 width:115 height:30
     [ChangepasswordBtn setBackgroundColor:UIColorFromRGB(0x1aad4b)];
     [ChangepasswordBtn setTitle:@"Change" forState:UIControlStateNormal];
     [ChangepasswordBtn setTitle:@"Change" forState:UIControlStateSelected];
@@ -84,7 +84,7 @@
     [ChangepasswordBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [ChangepasswordBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [ChangepasswordBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    ChangepasswordBtn.titleLabel.font=[UIFont systemFontOfSize:11.0f];
+    ChangepasswordBtn.titleLabel.font=[UIFont fontWithName:GLOBALTEXTFONT size:14];
     ChangepasswordBtn.layer.borderColor = UIColorFromRGB(0xc5c5c5).CGColor;
     [ChangepasswordBtn addTarget:self action:@selector(UserPassWordChange:) forControlEvents:UIControlEventTouchUpInside];
     [self.myPassWordChageView addSubview:ChangepasswordBtn];

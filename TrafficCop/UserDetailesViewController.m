@@ -85,9 +85,9 @@ int count = 1;    // for showing 3 image/badge per line...
 int positionY = 5; // for showing 3 image/badge per line...
 
 
-
-
-
+-(void) setBack{
+  [self.navigationController popViewControllerAnimated:YES];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
 {
@@ -153,8 +153,13 @@ int positionY = 5; // for showing 3 image/badge per line...
     
     [UserDetailhelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
     
-    [UserDetailhelper SetupHeaderView:self.view viewController:self];
     
+    if(self.backBtnEnable== YES){
+        [UserDetailhelper SetupHeaderViewWithBack:self.view viewController:self];
+    }
+    else{
+     [UserDetailhelper SetupHeaderView:self.view viewController:self];
+    }
     
     
     loadImage=[[ImageLoader alloc]init];
@@ -336,16 +341,16 @@ int positionY = 5; // for showing 3 image/badge per line...
 {
     
     NSLog(@"The footer was tapped!");
-    
-    AppDelegate *maindelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    [maindelegate SetUpTabbarController];
-    
+//    
+//    AppDelegate *maindelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    
+//    [maindelegate SetUpTabbarController];
+//    [maindelegate SetUpTabbarControllerwithcenterView:showCmt];
     ShowAllCommentViewController *showCmt = [[ShowAllCommentViewController alloc] initWithNibName:@"ShowAllCommentViewController" bundle:Nil];
-    
+    showCmt.isBackEnabled=YES;
     showCmt.theUserString=userId;
+    [self.navigationController pushViewController:showCmt animated:YES];
     
-    [maindelegate SetUpTabbarControllerwithcenterView:showCmt];
     
 }
 
@@ -679,16 +684,16 @@ int positionY = 5; // for showing 3 image/badge per line...
     
     
     
-    
-    AppDelegate *maindelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    [maindelegate SetUpTabbarController];
-    
+//    AppDelegate *maindelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    
+//    [maindelegate SetUpTabbarController];
+//    [maindelegate SetUpTabbarControllerwithcenterView:showreport];
     ShowAllReportViewController *showreport = [[ShowAllReportViewController alloc] initWithNibName:@"ShowAllReportViewController" bundle:nil];
-    
+    showreport.isBackEnabled=YES;
     showreport.userid=userId;
+    [self.navigationController pushViewController:showreport animated:YES];
+
     
-    [maindelegate SetUpTabbarControllerwithcenterView:showreport];
     
     
     
@@ -1621,9 +1626,8 @@ int positionY = 5; // for showing 3 image/badge per line...
         NSLog(@"Reporting JUJU From ReportWhenDone:: :: %@", juju);
         
     }
-    
-}
 
+}
 
 
 

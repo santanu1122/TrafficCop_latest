@@ -63,6 +63,9 @@ int NumberOfPages = 1;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    
+    _UIsearchBarTap.tintColor = [UIColor blackColor];
+    
     SearchBadDriverHelper = [[HelperClass alloc] init];
     [self HideNavigationBar];
     [SearchBadDriverHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
@@ -346,7 +349,7 @@ int NumberOfPages = 1;
     Detailslabel.scrollEnabled=NO;
     Detailslabel.textAlignment = NSTextAlignmentLeft;
     UILabel *separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 109, 320, .5)];
-    separetor.layer.opacity=0.2f;
+    separetor.layer.opacity=0.5f;
     [separetor setBackgroundColor:[UIColor blackColor]];
     [MainCellView addSubview:separetor];
     [MainCellView addSubview:Detailslabel];
@@ -443,11 +446,36 @@ int NumberOfPages = 1;
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
-    AppDelegate *MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc] init];
+//    AppDelegate *MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc] init];
+//    reportDetails.reportId=cell.textLabel.text;
+//    [MainDelegate SetUpTabbarControllerwithcenterView:reportDetails];
+    
+    
+    
+    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc]initWithNibName:@"ReportDetailsViewController" bundle:nil];
     reportDetails.reportId=cell.textLabel.text;
-    [MainDelegate SetUpTabbarControllerwithcenterView:reportDetails];
+    reportDetails.backBtnEnableInReportDetails = YES;
+    [self.navigationController pushViewController:reportDetails animated:YES];
+    
+    
  }
+
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    
+    [searchBar setPlaceholder:@""];
+    
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    if([searchText isEqualToString:@""])
+        
+        [searchBar setPlaceholder:@"Search For an Incident"];
+    
+}
+
+
 
 - (void)backButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="TermsbackView" destination="6GS-aL-gFV" id="8fA-MS-NG6"/>
                 <outlet property="termsAndCondition" destination="6jS-zo-v8V" id="4rB-we-bVS"/>
+                <outlet property="termsAndConditionLabel" destination="0r4-0z-ToQ" id="Eao-su-Hcl"/>
                 <outlet property="termsTextView" destination="lTA-IM-fPx" id="hgF-dA-iQR"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -26,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6jS-zo-v8V">
-                    <rect key="frame" x="5" y="102" width="310" height="460"/>
+                    <rect key="frame" x="0.0" y="102" width="320" height="466"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </webView>

@@ -374,7 +374,8 @@
     _IsAudioPlayPopupOpen = NO;
     Mainview.frame = CGRectMake(0, 0, self.view.layer.frame.size.width,self.view.frame.size.height);
     [self.view addSubview:Mainview];
-    Mainview.layer.opacity = 0.8;
+//    Mainview.layer.opacity = 0.8;   //modified
+    Mainview.layer.opacity = 1;
     Mainview.hidden  = YES;
     
     progressSlider.backgroundColor = [UIColor clearColor];
@@ -512,7 +513,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 52.0f;
+    return 60.0f;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -533,14 +534,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    UIView *CellMainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 52)];
+    UIView *CellMainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60.0f)];
     
-        UIImageView *CellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 32, 32)];
+        UIImageView *CellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 10, 40, 40)];
         CellMainView.backgroundColor = [UIColor clearColor];
         CellImageView.image = [UIImage imageNamed:@"play_bak.png"];
         [CellMainView addSubview:CellImageView];
     
-        UILabel *CellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 15, 260, 20)];
+        UILabel *CellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(66, 20, 260, 20)];
         CellTextLabel.text = [NSString stringWithFormat:@"Uploaded On %@",[item objectForKey:@"UploadedDate"]];
    
     CellTextLabel.font= [UIFont fontWithName:GLOBALTEXTFONT_Title size:15];
@@ -552,9 +553,9 @@
     
     cell.textLabel.text = [item objectForKey:@"UploadedFile"];
     cell.textLabel.hidden = YES;
-    UILabel *separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 51, 320, .5)];
+    UILabel *separetor=[[UILabel alloc]initWithFrame:CGRectMake(0, 59, 320, .5)];
     [separetor setBackgroundColor:[UIColor blackColor]];
-    separetor.layer.opacity=.2f;
+    separetor.layer.opacity=.5f;
     [CellMainView addSubview:separetor];
 //    cell.backgroundColor = [UIColor clearColor];
      cell.backgroundColor = [UIColor whiteColor];

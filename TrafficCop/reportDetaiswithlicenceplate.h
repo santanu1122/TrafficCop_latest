@@ -11,6 +11,7 @@
 @interface reportDetaiswithlicenceplate : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSString *Licenceplate;
 
+@property BOOL backBtnEnableForEvidenceDetails;
 
 
 @end

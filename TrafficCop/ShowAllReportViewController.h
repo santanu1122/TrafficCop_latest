@@ -12,6 +12,7 @@
 @interface ShowAllReportViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,NSURLConnectionDataDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *ShowallReportTbl;
 @property (nonatomic, strong) NSString *userid;
+@property (assign) BOOL isBackEnabled;
 
 
 @end

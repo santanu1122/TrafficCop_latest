@@ -96,6 +96,8 @@ int GlobalSelectedIndexPath = 0;
         NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@mybadge.php?userid=%@",DomainURL,[standeruser objectForKey:@"userid"]]]];
        // NSLog(@"request url ---- %@",request);
         
+//         NSLog(@"request url ---- %@",);
+        
         _Connecttion = [[NSURLConnection alloc] initWithRequest: request delegate: self startImmediately: NO];
  
         [_Connecttion setDelegateQueue: [NSOperationQueue mainQueue]];
@@ -239,6 +241,7 @@ int GlobalSelectedIndexPath = 0;
             
             [CellBadgeImage setImage:[UIImage imageWithData:ImageData]];
             
+            CellBadgeImage.contentMode = UIViewContentModeScaleAspectFit;
             
 //            ZSImageView *imageView = [[ZSImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
 //            imageView.image = [UIImage imageWithData:ImageData];

@@ -15,4 +15,5 @@
 @property (strong, nonatomic) IBOutlet UITableView *detatabl;
 @property (strong, nonatomic) NSString *theUserString;
 @property (strong, nonatomic) IBOutlet UIView *footerView;
+@property (assign) BOOL isBackEnabled;
 @end

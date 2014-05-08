@@ -38,6 +38,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *commentTbl;
 @property (nonatomic,retain) NSString *userId;
 
+@property BOOL backBtnEnable;
+
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *fullViewScroll;
@@ -47,7 +49,7 @@
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *brodGateScroll;
-
+-(void)setBack;
 @end
 @interface ImageLoader : NSObject
 {
@@ -55,4 +57,5 @@
 }
 
 -(void)LoadImage:(NSArray *)Param;
+
 @end

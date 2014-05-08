@@ -34,7 +34,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *imageSlider;
 @property (strong, nonatomic) IBOutlet UIView *imageSliderview;
 
-
+@property BOOL backBtnEnableInReportDetails;
 
 
 @end

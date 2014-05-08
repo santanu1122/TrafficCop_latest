@@ -38,7 +38,11 @@
     return self;
 }
 
--(void)viewDidAppear:(BOOL)animated {
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
     LeaderBoardHelper = [[HelperClass alloc] init];
     [self HideNavigationBar];
     //ZSImageView *imageView = [[ZSImageView alloc] init];
@@ -62,6 +66,34 @@
     if(connection) {
         webdata = [[NSMutableData alloc]init];
     }
+}
+
+
+
+-(void)viewDidAppear:(BOOL)animated {
+//    LeaderBoardHelper = [[HelperClass alloc] init];
+//    [self HideNavigationBar];
+//    //ZSImageView *imageView = [[ZSImageView alloc] init];
+//    [LeaderBoardHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+//    [LeaderBoardHelper SetupHeaderView:self.view viewController:self];
+//    
+//    _LeaderBoardTable.delegate = (id)self;
+//    _LeaderBoardTable.dataSource = (id)self;
+//    _LeaderBoardTable.hidden = YES;
+//    
+//    [LeaderBoardHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
+//    
+//    NSMutableDictionary *tempDictOne = [[NSMutableDictionary alloc] init];
+//    [tempDictOne setObject:@"leaderboard" forKey:@"mode"];
+//    
+//    NSString *REturnedURL = [LeaderBoardHelper CallURLForServerReturn:tempDictOne URL:LOGINPAGE];
+//    NSLog(@"The leader bord:%@",REturnedURL);
+//    NSURL *url = [NSURL URLWithString:REturnedURL];
+//    NSURLRequest *restrict1 = [NSURLRequest requestWithURL:url];
+//    connection = [NSURLConnection connectionWithRequest:restrict1 delegate:self];
+//    if(connection) {
+//        webdata = [[NSMutableData alloc]init];
+//    }
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
@@ -552,17 +584,19 @@
    
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    AppDelegate *appdel=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UserDetailesViewController *userdetais=[[UserDetailesViewController alloc]initWithNibName:@"UserDetailesViewController" bundle:nil];
-    userdetais.userId=cell.textLabel.text;
-    [appdel SetUpTabbarControllerwithcenterView:userdetais];
+//    AppDelegate *appdel=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    UserDetailesViewController *userdetais=[[UserDetailesViewController alloc]initWithNibName:@"UserDetailesViewController" bundle:nil];
+    
+    UserDetailesViewController *UserDetails = [[UserDetailesViewController alloc]initWithNibName:@"UserDetailesViewController" bundle:nil];
+    UserDetails.backBtnEnable = YES;
+    UserDetails.userId=cell.textLabel.text;
+    [self.navigationController pushViewController:UserDetails animated:YES];
+    
+//    [appdel SetUpTabbarControllerwithcenterView:userdetais];
     
     
 }
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
+
 
 - (void)backButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

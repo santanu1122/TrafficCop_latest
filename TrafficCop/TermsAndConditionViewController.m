@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIView *TermsbackView;
 @property (strong, nonatomic) IBOutlet UITextView *termsTextView;
 @property (strong, nonatomic) IBOutlet UIWebView *termsAndCondition;
+@property (strong, nonatomic) IBOutlet UILabel *termsAndConditionLabel;
 
 @end
 
@@ -24,7 +25,7 @@
 @synthesize TermsbackView;
 @synthesize termsTextView;
 @synthesize termsAndCondition;
-
+@synthesize termsAndConditionLabel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,6 +39,7 @@
 {
     [super viewDidLoad];
 //  Do any additional setup after loading the view from its nib.         //
+    termsAndConditionLabel.font=[UIFont fontWithName:GLOBALTEXTFONT_Title size:16];
     termsandConditionhelper=[[HelperClass alloc]init];
     [[self.navigationController navigationBar] setHidden:YES];
     [termsandConditionhelper SetupHeaderView:self.view viewController:self];

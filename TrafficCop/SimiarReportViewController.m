@@ -40,15 +40,6 @@
 {
    
     
-     [NavigationbarView setBackgroundColor:[UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1]];
-     SimilarreportHelper=[[HelperClass alloc]init];
-     AllReports=[[NSMutableArray alloc]init];
-     NSUserDefaults *userDetails=[NSUserDefaults standardUserDefaults];
-     userID=[userDetails valueForKey:@"userid"];
-     [SimilarreportHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
-     [SimilerReporttbl setHidden:YES];
-     [SimilarreportHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
-     [self SemilerReport];
     
 }
 
@@ -57,6 +48,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+//    [NavigationbarView setBackgroundColor:[UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1]];
+    SimilarreportHelper=[[HelperClass alloc]init];
+    AllReports=[[NSMutableArray alloc]init];
+    NSUserDefaults *userDetails=[NSUserDefaults standardUserDefaults];
+    userID=[userDetails valueForKey:@"userid"];
+    [SimilarreportHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+    [SimilerReporttbl setHidden:YES];
+    
+    if(self.backBtnEnableInSimilarReport== YES){
+        [SimilarreportHelper SetupHeaderViewWithBack:self.view viewController:self];
+    }
+    else{
+        [SimilarreportHelper SetupHeaderView:self.view viewController:self];
+    }
+
+    
+    
+    [SimilarreportHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
+    [self SemilerReport];
+    
+    
     
 }
 
@@ -160,10 +174,10 @@ dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
         UIView *mainView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 80)];
         mainView.backgroundColor=[UIColor whiteColor];
         UILabel *noSuchreport=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 80)];
-        noSuchreport.font=[UIFont fontWithName:@"Arial" size:20];
+        noSuchreport.font=[UIFont fontWithName:GLOBALTEXTFONT_Title size:17];
         noSuchreport.textAlignment=NSTextAlignmentCenter;
-        noSuchreport.textColor=[UIColor blackColor];
-        noSuchreport.text=@"NO REPORT FOUND";
+        noSuchreport.textColor = UIColorFromRGB(0x211e1f);
+        noSuchreport.text=@"No Reports Found";
         [mainView addSubview:noSuchreport];
         [cell.contentView addSubview:mainView];
     }
@@ -317,7 +331,10 @@ dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 320, 35)];
     
     Titlelabel.text = @"Similar Reports";
+    Titlelabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:16];
+    Titlelabel.textColor = UIColorFromRGB(0x211e1f);
     Titlelabel.textAlignment=NSTextAlignmentCenter;
+    
     [MainHeaderView addSubview:Titlelabel];
     
     UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 49, 320/3,1)];
@@ -374,15 +391,24 @@ dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
 
     
 }
+
+
+-(void) setBack{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+
 - (void)backButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)BackToReportDetais:(id)sender
-{
-     [self.navigationController popViewControllerAnimated:YES];
-    
-}
+//- (IBAction)BackToReportDetais:(id)sender
+//{
+//     [self.navigationController popViewControllerAnimated:YES];
+//    
+//}
 
 
 

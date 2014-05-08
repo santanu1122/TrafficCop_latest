@@ -198,11 +198,11 @@ int GlobalSelectedIndexPathOne = 0;
         
     }
     tableCell.tag=300+indexPath.row;
-    image1=[[UIImageView alloc]initWithFrame:CGRectMake(87, 37, 20, 20)];
-    image2=[[UIImageView alloc]initWithFrame:CGRectMake(108, 37, 20, 20)];
-    image3=[[UIImageView alloc]initWithFrame:CGRectMake(129, 37, 20, 20)];
-    image4=[[UIImageView alloc]initWithFrame:CGRectMake(150, 37, 20, 20)];
-    image5=[[UIImageView alloc]initWithFrame:CGRectMake(171, 37, 20, 20)];
+    image1=[[UIImageView alloc]initWithFrame:CGRectMake(90, 37, 20, 20)];
+    image2=[[UIImageView alloc]initWithFrame:CGRectMake(111, 37, 20, 20)];
+    image3=[[UIImageView alloc]initWithFrame:CGRectMake(132, 37, 20, 20)];
+    image4=[[UIImageView alloc]initWithFrame:CGRectMake(153, 37, 20, 20)];
+    image5=[[UIImageView alloc]initWithFrame:CGRectMake(174, 37, 20, 20)];
     image1.image=imageNoStar;
     image2.image=imageNoStar;
     image3.image=imageNoStar;
@@ -413,10 +413,18 @@ int GlobalSelectedIndexPathOne = 0;
     NSLog(@"ViewController sideview clicked");
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    AppDelegate *maindelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-    ReportDetailsViewController *report=[[ReportDetailsViewController alloc]init];
+    
+    
+//    AppDelegate *maindelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    ReportDetailsViewController *report=[[ReportDetailsViewController alloc]init];
+//    report.reportId=cell.textLabel.text;
+//    [maindelegate SetUpTabbarControllerwithcenterView:report];
+    
+   
+    ReportDetailsViewController *report=[[ReportDetailsViewController alloc]initWithNibName:@"ReportDetailsViewController" bundle:nil];
     report.reportId=cell.textLabel.text;
-    [maindelegate SetUpTabbarControllerwithcenterView:report];
+    report.backBtnEnableInReportDetails = YES;
+    [self.navigationController pushViewController:report animated:YES];
     
 }
 
@@ -825,7 +833,7 @@ int GlobalSelectedIndexPathOne = 0;
     
     NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:returnData options:kNilOptions error:&error];
     
-    NSLog(@" %@ %@",[jsonData objectForKey:@"message"],[jsonData objectForKey:@"response"]);
+    NSLog(@" ---- %@ %@",[jsonData objectForKey:@"message"],[jsonData objectForKey:@"response"]);
     
     if([[jsonData objectForKey:@"response"] isEqualToString:@"success"]){
         

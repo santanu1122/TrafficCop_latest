@@ -153,6 +153,11 @@
     [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
     [_EditProfileScroll addSubview:ImageOverlay];
     
+    UITapGestureRecognizer *gesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(photochange)];
+    ProfilePIcImageView.userInteractionEnabled=YES;
+    ImageOverlay.userInteractionEnabled=YES;
+    [ProfilePIcImageView addGestureRecognizer:gesture];
+    [ImageOverlay addGestureRecognizer:gesture];
 }
 -(IBAction)SaveupdatedInfo:(id)sender
 {
@@ -160,7 +165,11 @@
     NSLog(@"The Change user Details:");
     [self ChangetheDetails];
 }
-
+-(void)photochange{
+    NSLog(@"Photo change is called");
+    [self openActionSheet];
+   
+}
 
 -(void)ChangetheDetails
 {
@@ -433,6 +442,7 @@
 - (IBAction)changePhotoAction:(id)sender {
     [self openActionSheet];
 }
+
 -(void)openActionSheet{
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:@"Choose your option"

@@ -28,6 +28,7 @@
 @implementation ShowAllCommentViewController
 @synthesize AllCommentArray;
 @synthesize theUserString;
+@synthesize isBackEnabled;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,10 +51,22 @@
     ShowAllClassHelper=[[HelperClass alloc]init];
     
     [ShowAllClassHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
-    [ShowAllClassHelper SetupHeaderView:self.view viewController:self];
+    
+    if(isBackEnabled==YES){
+        [ShowAllClassHelper SetupHeaderViewWithBack:self.view viewController:self];
+    }else{
+        [ShowAllClassHelper SetupHeaderView:self.view viewController:self];
+    }
+    //[ShowAllClassHelper SetupHeaderView:self.view viewController:self];
     
     NSInvocationOperation *commentLoad=[[ NSInvocationOperation alloc]initWithTarget:self selector:@selector(loadAllommentContain) object:nil];
     [CommentOperfation addOperation:commentLoad];
+}
+
+- (void)backButtonPressed:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -42,17 +42,24 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    self.navigationController.navigationBar.hidden=YES;
-    self.noResultFound.hidden=YES;
-    _EvedenceLockertable.hidden=YES;
-    NSUserDefaults *userdetas=[NSUserDefaults standardUserDefaults];
-    userID=[userdetas valueForKey:@"userid"];
+//    self.navigationController.navigationBar.hidden=YES;
+//    self.noResultFound.hidden=YES;
+//    _EvedenceLockertable.hidden=YES;
+//    NSUserDefaults *userdetas=[NSUserDefaults standardUserDefaults];
+//    userID=[userdetas valueForKey:@"userid"];
     
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    self.navigationController.navigationBar.hidden=YES;
+    self.noResultFound.hidden=YES;
+    _EvedenceLockertable.hidden=YES;
+    NSUserDefaults *userdetas=[NSUserDefaults standardUserDefaults];
+    userID=[userdetas valueForKey:@"userid"];
     
     _EvidenceLockerLbl.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0f];
     _EvidenceLockerLbl.textColor = UIColorFromRGB(0x211e1f);
@@ -250,14 +257,19 @@
 {
     NSString *strAdd;
      strAdd=[NSString stringWithFormat:@"%@appweb.php?mode=delete_evidance_locker&getuser=%@&licence=%@",DomainURL,userID,licenceplate];
+    NSLog(@"delete license is %@", strAdd);
     NSURL *Url=[NSURL URLWithString:strAdd];
     NSData *datta=[NSData dataWithContentsOfURL:Url];
     NSDictionary *dicTion=[NSJSONSerialization JSONObjectWithData:datta options:kNilOptions error:nil];
     NSString *message=[dicTion valueForKey:@"message"];
     NSString *responce=[dicTion valueForKey:@"response"];
+    
+      dispatch_async(dispatch_get_main_queue(), ^{
+    
     [helperAvidence SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:responce message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
+      });
 
 }
 
@@ -265,11 +277,21 @@
 {
     NSMutableDictionary *mutDic=[StoreLicenceplate objectAtIndex:sender.tag-500];
     NSLog(@"sender.tag:%d",sender.tag);
-    AppDelegate *mainDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
-    reportDetaiswithlicenceplate *report=[[reportDetaiswithlicenceplate alloc]init];
+    
+//    AppDelegate *mainDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
+//    reportDetaiswithlicenceplate *report=[[reportDetaiswithlicenceplate alloc]init];
+//    NSLog(@"The value of licence plate:%@",[mutDic valueForKey:@"licence"]);
+//    report.Licenceplate=[mutDic valueForKey:@"licence"];
+//    [mainDelegate SetUpTabbarControllerwithcenterView:report];
+    
+    
+    reportDetaiswithlicenceplate *report=[[reportDetaiswithlicenceplate alloc]initWithNibName:@"reportDetaiswithlicenceplate" bundle:nil];
     NSLog(@"The value of licence plate:%@",[mutDic valueForKey:@"licence"]);
     report.Licenceplate=[mutDic valueForKey:@"licence"];
-    [mainDelegate SetUpTabbarControllerwithcenterView:report];
+    report.backBtnEnableForEvidenceDetails = YES;
+    [self.navigationController pushViewController:report animated:YES];
+    
+    
 }
 
 

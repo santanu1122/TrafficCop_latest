@@ -100,7 +100,8 @@
 //    }
     
     [DashboardHelper SetupHeaderView:self.view viewController:self];
-    [[self DashboardTable] setFrame:CGRectMake(0, 60, 320, 520)];
+//    [[self DashboardTable] setFrame:CGRectMake(0, 60, 320, 520)];
+    [[self DashboardTable] setFrame:CGRectMake(0, 58, 320, 520)];
     [[self DashboardTable]setDelegate:self];
     [[self DashboardTable]setDataSource:self];
     [self.view addSubview:[self DashboardTable]];
@@ -855,10 +856,20 @@
     
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    AppDelegate *MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc] init];
+    
+    
+//    AppDelegate *MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc] init];
+//    reportDetails.reportId=cell.textLabel.text;
+//    [MainDelegate SetUpTabbarControllerwithcenterView:reportDetails];
+    
+    
+    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc]initWithNibName:@"ReportDetailsViewController" bundle:nil];
     reportDetails.reportId=cell.textLabel.text;
-    [MainDelegate SetUpTabbarControllerwithcenterView:reportDetails];
+    reportDetails.backBtnEnableInReportDetails = YES;
+    [self.navigationController pushViewController:reportDetails animated:YES];
+    
+    
     
 }
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {

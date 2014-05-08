@@ -84,7 +84,8 @@
     TwitterUserData = [[NSMutableDictionary alloc] init];
     
     
-    [LoginHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+    [LoginHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKIMAGE];
+    [LoginHelper setTopView:self.view];
     
     self.UserNameField.delegate = self;
     self.UserPassField.delegate = self;
@@ -106,11 +107,11 @@
     
     [LoginHelper CreateImageviewWithImage:LoginArea xcord:35 ycord:45 width:24 height:24 backgroundColor:[UIColor clearColor] imageName:@"user.png"];
     
-    UserNameField = [LoginHelper CrateTextField:globalTextFieldXCord ycord:127 width:globalTextFieldWidth height:globalTextFieldHeight backgroundColor:[UIColor clearColor] backGroundImage:Nil textcolor:globalTEXTFIELDPLACEHOLDERCOLOR palceholdertext:LOGINFIELDPLACEHOLDER fontName:GLOBALTEXTFONT fontSize:globalTEXTFIELDPLACEHOLDERFONTSIZE Secure:NO addView:self.view viewController:self delegate:Nil textfieldName:UserNameField];
+    UserNameField = [LoginHelper CrateTextField:globalTextFieldXCord ycord:127 width:globalTextFieldWidth height:globalTextFieldHeight backgroundColor:[UIColor clearColor] backGroundImage:Nil textcolor:globalTEXTFIELDPLACEHOLDERCOLOR palceholdertext:LOGINFIELDPLACEHOLDER fontName:GLOBALTEXTFONT fontSize:globalTEXTFIELDPLACEHOLDERFONTSIZE+4 Secure:NO addView:self.view viewController:self delegate:Nil textfieldName:UserNameField];
     
     [UserNameField addTarget:self action:@selector(RetunButtonClicked:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    UserPassField = [LoginHelper CrateTextField:globalTextFieldXCord ycord:175 width:globalTextFieldWidth height:globalTextFieldHeight backgroundColor:[UIColor clearColor] backGroundImage:Nil textcolor:globalTEXTFIELDPLACEHOLDERCOLOR palceholdertext:PASSWORDFIELDPLACEHOLDER fontName:GLOBALTEXTFONT fontSize:globalTEXTFIELDPLACEHOLDERFONTSIZE Secure:YES addView:self.view viewController:self delegate:Nil textfieldName:UserPassField];
+    UserPassField = [LoginHelper CrateTextField:globalTextFieldXCord ycord:175 width:globalTextFieldWidth height:globalTextFieldHeight backgroundColor:[UIColor clearColor] backGroundImage:Nil textcolor:globalTEXTFIELDPLACEHOLDERCOLOR palceholdertext:PASSWORDFIELDPLACEHOLDER fontName:GLOBALTEXTFONT fontSize:globalTEXTFIELDPLACEHOLDERFONTSIZE+4 Secure:YES addView:self.view viewController:self delegate:Nil textfieldName:UserPassField];
     
     [UserPassField addTarget:self action:@selector(RetunButtonClicked:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
@@ -118,9 +119,46 @@
     
     [LoginHelper CreateImageviewWithImage:LoginArea xcord:35 ycord:92 width:24 height:24 backgroundColor:[UIColor clearColor] imageName:@"password.png"];
     
-    [LoginHelper CreateButtonWithValue:33 ycord:265 width:255 height:50 backgroundColor:[UIColor clearColor] textcolor:[UIColor whiteColor] labeltext:LOGINBUTTON fontName:GLOBALTEXTFONT fontSize:16 imageNameForUIControlStateNormal:LOGINBUTTONIMG imageNameForUIControlStateSelected:LOGINBUTTONIMG imageNameForUIControlStateHighlighted:LOGINBUTTONIMG imageNameForselectedHighlighted:LOGINBUTTONIMG selectMethod:@selector(PerformLogin) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
+    [LoginHelper CreateButtonWithValue:34 ycord:265 width:254 height:48 backgroundColor:[UIColor clearColor] textcolor:[UIColor whiteColor] labeltext:LOGINBUTTON fontName:GLOBALTEXTFONT fontSize:14 imageNameForUIControlStateNormal:LOGINBUTTONIMG imageNameForUIControlStateSelected:LOGINBUTTONIMG imageNameForUIControlStateHighlighted:LOGINBUTTONIMG imageNameForselectedHighlighted:LOGINBUTTONIMG selectMethod:@selector(PerformLogin) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
     
-    [LoginHelper CreateButtonWithValue:33 ycord:320 width:255 height:50 backgroundColor:[UIColor clearColor] textcolor:[UIColor whiteColor] labeltext:LOGINBUTTON fontName:GLOBALTEXTFONT fontSize:16 imageNameForUIControlStateNormal:REGISTERBUTTIMG imageNameForUIControlStateSelected:REGISTERBUTTIMG imageNameForUIControlStateHighlighted:REGISTERBUTTIMG imageNameForselectedHighlighted:REGISTERBUTTIMG selectMethod:@selector(PerformRegister) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
+    
+//    UIButton *loginButton = [[UIButton alloc]initWithFrame:CGRectMake(33, 265, 255, 50)];
+//    [loginButton setBackgroundImage:[UIImage imageNamed:@"login_pic.png"] forState:UIControlStateNormal];
+//    [loginButton setTitle:@"login" forState:UIControlStateNormal];
+//    [loginButton setTitle:@"login" forState:UIControlStateHighlighted];
+//    [loginButton setTitle:@"login" forState:UIControlStateSelected];
+//    
+//    [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+//    [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+//    
+//    loginButton.titleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:16];
+//    
+//    [loginButton addTarget:self action:@selector(PerformLogin) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:loginButton];
+    
+    
+   [LoginHelper CreateButtonWithValue:33 ycord:320 width:255 height:50 backgroundColor:[UIColor clearColor] textcolor:[UIColor whiteColor] labeltext:LOGINBUTTON fontName:GLOBALTEXTFONT fontSize:16 imageNameForUIControlStateNormal:REGISTERBUTTIMG imageNameForUIControlStateSelected:REGISTERBUTTIMG imageNameForUIControlStateHighlighted:REGISTERBUTTIMG imageNameForselectedHighlighted:REGISTERBUTTIMG selectMethod:@selector(PerformRegister) selectEvent:UIControlEventTouchUpInside addView:self.view viewController:self];
+    
+//    UIButton *registerButton = [[UIButton alloc]initWithFrame:CGRectMake(33, 320, 255, 50)];
+////    [registerButton setBackgroundImage:[UIImage imageNamed:@"login_pic.png"] forState:UIControlStateNormal];
+//    
+//    [registerButton setBackgroundColor:[UIColor redColor]];
+//    
+//    [registerButton setTitle:@"register" forState:UIControlStateNormal];
+//    [registerButton setTitle:@"register" forState:UIControlStateHighlighted];
+//    [registerButton setTitle:@"register" forState:UIControlStateSelected];
+//    
+//    [registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+//    [registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+//    
+//    registerButton.titleLabel.font = [UIFont fontWithName:GLOBALTEXTFONT size:16];
+//    
+//    [registerButton addTarget:self action:@selector(PerformRegister) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:registerButton];
+    
+    
     
     [LoginHelper CreatelabelWithValue:0 ycord:385 width:320 height:25 backgroundColor:[UIColor clearColor] textcolor:UIColorFromRGB(0xa6a6a6) labeltext:ALTERNATIVELOGINTEXT fontName:GLOBALTEXTFONT fontSize:20 addView:self.view];
     
@@ -132,7 +170,7 @@
     _facebookLabel.font=[UIFont fontWithName:GLOBALTEXTFONT size:15];
     _twitterLabel.font=[UIFont fontWithName:GLOBALTEXTFONT size:15];
     
-    UIView *ForgetPassBackview=[[UIView alloc]initWithFrame:CGRectMake(20, 239, 255, 20)];
+    UIView *ForgetPassBackview=[[UIView alloc]initWithFrame:CGRectMake(20, 237, 255, 20)];
     ForgetPassBackview.layer.cornerRadius=0.0;
     ForgetPassBackview.layer.borderWidth=0.0;
     ForgetPassBackview.layer.borderColor=[UIColor lightGrayColor].CGColor;
@@ -141,7 +179,7 @@
     backviewLbl.backgroundColor=[UIColor clearColor];
     backviewLbl.text=@"Forgot password?";
     backviewLbl.textColor=[UIColor darkGrayColor];
-    backviewLbl.font=[UIFont systemFontOfSize:10.00];
+    backviewLbl.font=[UIFont systemFontOfSize:12.00];
     backviewLbl.textAlignment=NSTextAlignmentLeft;
     [ForgetPassBackview addSubview:backviewLbl];
     
@@ -169,20 +207,26 @@
 
 -(void)PerformLogin
 {
-    if(![LoginHelper CleanTextField:UserNameField.text].length > 0) {
-        alert = [MBAlertView alertWithBody:USERNAMEBLANKERR cancelTitle:@"Cancel" cancelBlock:nil];
-        [alert addButtonWithText:@"Ok" type:MBAlertViewItemTypePositive block:^{
-        }];
-        [alert addToDisplayQueue];
-        [UserNameField becomeFirstResponder];
+       if(![LoginHelper CleanTextField:UserNameField.text].length > 0) {
+           UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"error" message:USERNAMEBLANKERR delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+           [alertView show];
+
+//        alert = [MBAlertView alertWithBody:USERNAMEBLANKERR cancelTitle:@"Cancel" cancelBlock:nil];
+//        [alert addButtonWithText:@"Ok" type:MBAlertViewItemTypePositive block:^{
+//        }];
+//        [alert addToDisplayQueue];
+       // [UserNameField becomeFirstResponder];
         return;
     }
     else if(![LoginHelper CleanTextField:UserPassField.text].length > 0) {
-        alert = [MBAlertView alertWithBody:PASSWORDBLANKERR cancelTitle:@"Cancel" cancelBlock:nil];
-        [alert addButtonWithText:@"Ok" type:MBAlertViewItemTypePositive block:^{
-        }];
-        [alert addToDisplayQueue];
-        [UserPassField becomeFirstResponder];
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"error" message:PASSWORDBLANKERR delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        
+//        alert = [MBAlertView alertWithBody:PASSWORDBLANKERR cancelTitle:@"Cancel" cancelBlock:nil];
+//        [alert addButtonWithText:@"Ok" type:MBAlertViewItemTypePositive block:^{
+//        }];
+//        [alert addToDisplayQueue];
+        //[UserPassField becomeFirstResponder];
         return;
     } else {
         
@@ -220,10 +264,13 @@
                 for (NSDictionary *statData in [Retrneddata objectForKey:@"extraparam"]) {
                     
                     if([[statData objectForKey:@"response"] isEqualToString:GLOBALERRSTRING]) {
-                        alert = [MBAlertView alertWithBody:[statData objectForKey:@"message"] cancelTitle:@"Cancel" cancelBlock:nil];
-                        [alert addButtonWithText:@"Ok" type:MBAlertViewItemTypePositive block:^{
-                        }];
-                        [alert addToDisplayQueue];
+                        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"error" message:[statData objectForKey:@"message"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alertView show];
+                        
+//                        alert = [MBAlertView alertWithBody:[statData objectForKey:@"message"] cancelTitle:@"Cancel" cancelBlock:nil];
+//                        [alert addButtonWithText:@"Ok" type:MBAlertViewItemTypePositive block:^{
+//                        }];
+//                        [alert addToDisplayQueue];
                     } else {
                         for (NSDictionary *statDataone in [Retrneddata objectForKey:@"userdetails"]) {
                             

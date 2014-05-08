@@ -143,3 +143,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define GLOBALTEXTFONT_Title @"OpenSans-Semibold"
 
+#define  GLOBALBACKIMAGE @"VirgenBG"
+
+

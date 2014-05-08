@@ -73,12 +73,14 @@ UIActivityIndicatorView *Spinner;
     EditProfHelper = [[HelperClass alloc] init];
     operationQ=[[NSOperationQueue alloc]init];
     
-    _alertLabel.textColor=UIColorFromRGB(0xa6a6a6);
+//    _alertLabel.textColor=UIColorFromRGB(0xa6a6a6);
     _alertLabel.font=[UIFont fontWithName:GLOBALTEXTFONT size:15];
     _alertLabel.text=@"Your username and photo will be publicly available. Please make the necessary changes if you wish to remain anonymous";
     
-    [EditProfHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
-    NSUserDefaults *userDetail=[NSUserDefaults standardUserDefaults];
+    [EditProfHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKIMAGE];
+    [EditProfHelper setTopView:self.view];
+    
+    NSUserDefaults *userDetail=[NSUserDefaults standardUserDefaults];    
     userID=[userDetail valueForKey:@"userid"];
     NSLog(@"The value for key id:%@",userID);
     NSLog(@"The value for the basik update:%hhd",isCommingFromFacebook);
@@ -198,9 +200,18 @@ UIActivityIndicatorView *Spinner;
 //    }];
 //    [alertmb addToDisplayQueue];
     
-    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(191, 363, 70, 70)];
+    UIImageView *ImageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(191, 387, 70, 70)];
     [ImageOverlay setImage:[UIImage imageNamed:@"out-line.png"]];
     [self.view addSubview:ImageOverlay];
+    
+    UITapGestureRecognizer *gesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(photochange)];
+    ProfilePIcImageView.userInteractionEnabled=YES;
+    ImageOverlay.userInteractionEnabled=YES;
+    [ProfilePIcImageView addGestureRecognizer:gesture];
+    [ImageOverlay addGestureRecognizer:gesture];
+}
+-(void)photochange{
+    [self changePhotoAction:nil];
 }
 -(IBAction)flip:(id)sender
 

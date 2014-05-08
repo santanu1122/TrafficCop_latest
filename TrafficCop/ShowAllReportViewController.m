@@ -25,6 +25,7 @@
 
 @implementation ShowAllReportViewController
 @synthesize userid;
+@synthesize isBackEnabled;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,11 +43,20 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
     reportLableHelper=[[HelperClass alloc]init];
     operation=[[NSOperationQueue alloc]init];
       NSLog(@"the user id of the:%@",userid);
     [reportLableHelper SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+    
+    
+    if(isBackEnabled==YES){
+    [reportLableHelper SetupHeaderViewWithBack:self.view viewController:self];
+    }else{
     [reportLableHelper SetupHeaderView:self.view viewController:self];
+    }
+    
     ReportOftheuserArray=[[NSMutableArray alloc]init];
     [self.navigationController setNavigationBarHidden:YES];
     [reportLableHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
@@ -55,6 +65,11 @@
     [operation addOperation:ShowallReport];
     
   
+    
+}
+- (void)backButtonPressed:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
@@ -320,10 +335,17 @@
 {
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     
-    AppDelegate *MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc] init];
+//    AppDelegate *MainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc] init];
+//    reportDetails.reportId=cell.textLabel.text;
+//    [MainDelegate SetUpTabbarControllerwithcenterView:reportDetails];
+    
+    
+    ReportDetailsViewController *reportDetails = [[ReportDetailsViewController alloc]initWithNibName:@"ReportDetailsViewController" bundle:nil];
     reportDetails.reportId=cell.textLabel.text;
-    [MainDelegate SetUpTabbarControllerwithcenterView:reportDetails];
+    reportDetails.backBtnEnableInReportDetails = YES;
+    
+    [self.navigationController pushViewController:reportDetails animated:YES];
 }
 
 -(void)ReportDetailsmaintablereloag

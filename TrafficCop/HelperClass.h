@@ -113,5 +113,9 @@
 //-(void)calculateSpeedofmotorbyck;
 //-(NSString *)CheckSpeedForeachmoment;
 
+-(void)setTopView:(UIView *)view;
+-(void)SetupHeaderViewWithBack:(UIView *)AddToView viewController:(UIViewController *)ViewController;
+    
+
 @end
 

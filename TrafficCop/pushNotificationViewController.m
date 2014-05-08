@@ -193,13 +193,15 @@
     
     int i=0;
     
-    UIView *HeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 22)];
+    UIView *HeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     
-    [HeaderView setBackgroundColor:[UIColor whiteColor]];
+//    [HeaderView setBackgroundColor:[UIColor whiteColor]];
+    
+    [HeaderView setBackgroundColor:[UIColor clearColor]];
     
     //    [pushnotiFicationHelper CreatelabelWithValue:0 ycord:0 width:320 height:22 backgroundColor:[UIColor clearColor] textcolor:[UIColor blackColor] labeltext:@"Tips of the day" fontName:@"Arial"  fontSize:15.0f addView:pushContainScroll];
     
-    UILabel *Lable=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 22)];
+    UILabel *Lable=[[UILabel alloc]initWithFrame:CGRectMake(0, -8, 320, 30)];
     
     Lable.text=@"Tips of the day";
     
@@ -209,13 +211,26 @@
     
     Lable.textColor = UIColorFromRGB(0x211e1f);
     
-    [pushContainScroll addSubview:Lable];
+    [HeaderView addSubview:Lable];
     
     
     
+    UILabel *greenLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 29, 320/3,1)];
+    greenLabel.backgroundColor = UIColorFromRGB(0x1aad4b);
+    [HeaderView addSubview:greenLabel];
+    
+    UILabel *yellowlabel = [[UILabel alloc] initWithFrame:CGRectMake(320/3, 29, 320/3,1)];
+    yellowlabel.backgroundColor = UIColorFromRGB(0xfcb714);
+    [HeaderView addSubview:yellowlabel];
+    
+    UILabel *redlabel = [[UILabel alloc] initWithFrame:CGRectMake(320/3*2, 29, 320/3+5,1)];
+    redlabel.backgroundColor = UIColorFromRGB(0xde1d23);
+    [HeaderView addSubview:redlabel];
     
     
-    int ipos=25;
+    [pushContainScroll addSubview:HeaderView];
+    
+    int ipos=31;
     
     for (NSMutableDictionary *MutDic in ContainArry)
         
@@ -223,7 +238,7 @@
         
         UIView *cellBackView=[[UIView alloc]init];
         
-        [cellBackView setBackgroundColor:[UIColor whiteColor]];
+        [cellBackView setBackgroundColor:[UIColor clearColor]];
         
         
         
@@ -237,13 +252,14 @@
         
         
         
-        UITextView *commentText=[[UITextView alloc]initWithFrame:CGRectMake(25, 10, 282, textViewSize.height+20)];
+        UITextView *commentText=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, 300, textViewSize.height+20)];
         
         NSLog(@"The text field.hight:%f",textViewSize.height);
         
         commentText.font=[UIFont fontWithName:GLOBALTEXTFONT size:14.0f];
+        commentText.textColor = UIColorFromRGB(0x575757);
         
-        Lable.textColor = UIColorFromRGB(0x575757);
+      //  Lable.textColor = UIColorFromRGB(0x575757);
         
         //        NSArray *arr = [[MutDic objectForKey:@"tips"] componentsSeparatedByString:@"<p>"];
         
@@ -266,38 +282,35 @@
         [cellBackView addSubview:commentText];
         
         
+//        UILabel *addDateLable=[[UILabel alloc]initWithFrame:CGRectMake(17,commentText.frame.size.height+commentText.frame.origin.y-5, 105, 13)];
         
         
+        UILabel *addDateLable=[[UILabel alloc]initWithFrame:CGRectMake(17,commentText.frame.size.height+commentText.frame.origin.y, 105, 13)];
         
-        UILabel *addDateLable=[[UILabel alloc]initWithFrame:CGRectMake(210,commentText.frame.size.height+commentText.frame.origin.y-5, 105, 13)];
-        
-        [addDateLable setTextColor:[UIColor blackColor]];
+        //[addDateLable setTextColor:[UIColor blackColor]];
         
         addDateLable.font=[UIFont fontWithName:GLOBALTEXTFONT_Title size:10.0f];
         
-        addDateLable.textColor = UIColorFromRGB(0x211e1f);
-        
+//        addDateLable.textColor = UIColorFromRGB(0x211e1f);
+        addDateLable.textAlignment =NSTextAlignmentLeft;
+        addDateLable.textColor = [UIColor blackColor];
         addDateLable.text=[MutDic objectForKey:@"added_date"];
         
+    
+//        UIView *separetor=[[UIView alloc]initWithFrame:CGRectMake(20, commentText.frame.size.height+commentText.frame.origin.y+20, 280, 1)];
         
-        
-        UIView *separetor=[[UIView alloc]initWithFrame:CGRectMake(20, commentText.frame.size.height+commentText.frame.origin.y+20, 280, 1)];
+        UIView *separetor=[[UIView alloc]initWithFrame:CGRectMake(0, commentText.frame.size.height+commentText.frame.origin.y+20, 320, .5)];
         
         [separetor setBackgroundColor:[UIColor blackColor]];
         separetor.layer.opacity = 0.5f;
         
-        
         [cellBackView addSubview:separetor];
-        
-        
         
         [cellBackView setFrame:CGRectMake(0, ipos, 320, separetor.frame.origin.y+1)];
         
         [cellBackView addSubview:separetor];
         
         [cellBackView addSubview:addDateLable];
-        
-        
         
         [pushContainScroll addSubview:cellBackView];
         
@@ -309,12 +322,8 @@
         
     }
     
+        [pushnotiFicationHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
     
-    
-    [pushnotiFicationHelper SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:NO];
-    
-    
-
 }
 
 

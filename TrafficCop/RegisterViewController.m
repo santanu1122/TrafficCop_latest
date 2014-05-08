@@ -14,6 +14,7 @@
 #import "EditProfileViewController.h"
 #import "DashboardViewController.h"
 #import "AppDelegate.h"
+#import "TermsConditionViewController.h"
 
 @interface RegisterViewController ()<UIAlertViewDelegate>
 
@@ -57,14 +58,17 @@
  
     //Assigning background image
     
-    [RegHelperClass SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
     
+    [RegHelperClass SetViewBackgroundImage:self.view imageName:GLOBALBACKIMAGE];
+    [RegHelperClass setTopView:self.view];
+    
+        
 }
 
 /* Validation Start */
 
 -(IBAction)RegButtonClicked:(id)sender {
-    [self movetotop:Nil];
+    //[self movetotop:Nil];
     [self hideKeyboard:Nil];
     
     NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
@@ -323,7 +327,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [_REGScrollview setContentOffset:CGPointMake(0, 0)];
+    //[_REGScrollview setContentOffset:CGPointMake(0, 0)];
 }
 -(IBAction)goBack:(id)sender {
     
@@ -336,6 +340,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+- (IBAction)termsAndConditionPage:(id)sender {
+    TermsConditionViewController *terms=[[TermsConditionViewController alloc]initWithNibName:@"TermsConditionViewController" bundle:nil];
+    [self.navigationController pushViewController:terms animated:YES];
+
 }
 
 @end

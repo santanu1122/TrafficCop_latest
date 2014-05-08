@@ -41,17 +41,17 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    helprforlicencedetails=[[HelperClass alloc]init];
-    self.navigationController.navigationBar.hidden=YES;
-    [helprforlicencedetails SetupHeaderView:self.view viewController:self];
-    [helprforlicencedetails SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
-    Roportofthelicence=[[NSMutableArray alloc]init];
-    operation=[[NSOperationQueue alloc]init];
-    NSUserDefaults *userdefals=[NSUserDefaults standardUserDefaults];
-    userId=  [userdefals valueForKey:@"userid"];
-    [helprforlicencedetails SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
-    NSInvocationOperation *operationTODone=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(LoadAllreportForthisLicence) object:nil];
-    [operation addOperation:operationTODone];
+//    helprforlicencedetails=[[HelperClass alloc]init];
+//    self.navigationController.navigationBar.hidden=YES;
+//    [helprforlicencedetails SetupHeaderView:self.view viewController:self];
+//    [helprforlicencedetails SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+//    Roportofthelicence=[[NSMutableArray alloc]init];
+//    operation=[[NSOperationQueue alloc]init];
+//    NSUserDefaults *userdefals=[NSUserDefaults standardUserDefaults];
+//    userId=  [userdefals valueForKey:@"userid"];
+//    [helprforlicencedetails SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
+//    NSInvocationOperation *operationTODone=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(LoadAllreportForthisLicence) object:nil];
+//    [operation addOperation:operationTODone];
     
     
     
@@ -64,6 +64,33 @@
     // Do any additional setup after loading the view from its nib.
     
     _NoReportExist.hidden = YES;
+    
+
+    helprforlicencedetails=[[HelperClass alloc]init];
+    self.navigationController.navigationBar.hidden=YES;
+    //[helprforlicencedetails SetupHeaderView:self.view viewController:self];
+    
+    if(self.backBtnEnableForEvidenceDetails == YES){
+        [helprforlicencedetails SetupHeaderViewWithBack:self.view viewController:self];
+    }
+    else{
+        [helprforlicencedetails SetupHeaderView:self.view viewController:self];
+    }
+    
+    
+    
+    [helprforlicencedetails SetViewBackgroundImage:self.view imageName:GLOBALBACKGROUND];
+    Roportofthelicence=[[NSMutableArray alloc]init];
+    operation=[[NSOperationQueue alloc]init];
+    NSUserDefaults *userdefals=[NSUserDefaults standardUserDefaults];
+    userId=  [userdefals valueForKey:@"userid"];
+    [helprforlicencedetails SetLoader:self.view xcord:80 ycord:self.view.frame.size.height/2+self.view.frame.size.height/4 width:globalLOGOWIDTH height:globalLOGOHEIGHT backgroundColor:[UIColor clearColor] imageName:nil viewcolor:[UIColor clearColor] animationDuration:1.0f dotColor:globalACTIVITYDOTCOLOR animationStatus:YES];
+    NSInvocationOperation *operationTODone=[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(LoadAllreportForthisLicence) object:nil];
+    [operation addOperation:operationTODone];
+
+    
+    
+    
 }
 
 
@@ -142,7 +169,7 @@
     [MainHeaderView setBackgroundColor:[UIColor whiteColor]];
 
     UILabel *Titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 35)];
-    Titlelabel.text=[[NSString stringWithFormat:@"%@ %@",@"License plates",Licenceplate] uppercaseString];
+    Titlelabel.text=[[NSString stringWithFormat:@"%@ %@",@"License plate",Licenceplate] uppercaseString];
     Titlelabel.textAlignment=NSTextAlignmentCenter;
     Titlelabel.font = [UIFont fontWithName:GLOBALTEXTFONT_Title size:15.0f];
     Titlelabel.textColor = UIColorFromRGB(0x211e1f);
@@ -321,12 +348,20 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AppDelegate *maindelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
+//    AppDelegate *maindelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
+//    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+//       cell.selectionStyle=UITableViewCellSelectionStyleNone;
+//    ReportDetailsViewController *reportdetais=[[ReportDetailsViewController alloc]init];
+//    reportdetais.reportId=cell.textLabel.text;
+//    [maindelegate SetUpTabbarControllerwithcenterView:reportdetais];
+    
+    
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
-       cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    ReportDetailsViewController *reportdetais=[[ReportDetailsViewController alloc]init];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    ReportDetailsViewController *reportdetais=[[ReportDetailsViewController alloc]initWithNibName:@"ReportDetailsViewController" bundle:nil];
     reportdetais.reportId=cell.textLabel.text;
-    [maindelegate SetUpTabbarControllerwithcenterView:reportdetais];
+    reportdetais.backBtnEnableInReportDetails = YES;
+    [self.navigationController pushViewController:reportdetais animated:YES];
  
     
 }
@@ -342,6 +377,11 @@
 
 - (void)rightSideMenuButtonPressed:(id)sender {
     [self.menuContainerViewController toggleRightSideMenuCompletion:^{}];
+}
+
+
+-(void) setBack{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
